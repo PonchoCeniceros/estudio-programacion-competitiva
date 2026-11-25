@@ -1,0 +1,57 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Una cadena de iteradores, elemento por elemento</span><span class="pie">Cada fila es un elemento, en el orden en que entra. Recorre la cadena completa antes de que el origen entregue el siguiente, así que no se crea ninguna colección intermedia.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 284" role="img" aria-label="Cadena con cuatro etapas: origen, filter, map y sum. Los elementos 1 a 6 entran de uno en uno; los impares se descartan en filter; los pares pasan a map, que los multiplica por diez, y sum los acumula hasta 120.">
+<g class="r-neutro"><rect class="caja" x="40.0" y="0.75" width="110" height="44" rx="6"/><text class="tit" x="95" y="18" text-anchor="middle">origen</text><text class="cod" x="95" y="36" text-anchor="middle">v.iter()</text></g>
+<g class="r-neutro"><rect class="caja" x="163.0" y="0.75" width="110" height="44" rx="6"/><text class="tit" x="218" y="18" text-anchor="middle">filter</text><text class="cod" x="218" y="36" text-anchor="middle">n % 2 == 0</text></g>
+<g class="r-neutro"><rect class="caja" x="286.0" y="0.75" width="110" height="44" rx="6"/><text class="tit" x="341" y="18" text-anchor="middle">map</text><text class="cod" x="341" y="36" text-anchor="middle">n * 10</text></g>
+<g class="r-neutro"><rect class="caja" x="409.0" y="0.75" width="110" height="44" rx="6"/><text class="tit" x="464" y="18" text-anchor="middle">sum</text><text class="cod" x="464" y="36" text-anchor="middle">acumula</text></g>
+<path class="fl-neutro" d="M150.0,23 H156.0"/><polygon class="pt-neutro" points="163.0,23 155.0,19 155.0,27"/>
+<path class="fl-neutro" d="M273.0,23 H279.0"/><polygon class="pt-neutro" points="286.0,23 278.0,19 278.0,27"/>
+<path class="fl-neutro" d="M396.0,23 H402.0"/><polygon class="pt-neutro" points="409.0,23 401.0,19 401.0,27"/>
+<g class="num"><circle cx="12" cy="72" r="9"/><text x="12" y="76">1</text></g>
+<g class="r-neutro"><rect class="caja" x="65.0" y="62.0" width="60" height="20" rx="6"/><text class="val" x="95" y="76">1</text></g>
+<path class="fl-neutro" d="M127.0,72 H179.0"/><polygon class="pt-neutro" points="186.0,72 178.0,68 178.0,76"/>
+<g class="r-movido"><rect class="caja" x="188.0" y="62.0" width="60" height="20" rx="6"/><text class="val" x="218" y="76">1</text></g>
+<text class="nota" x="256.0" y="76">impar: se descarta</text>
+<g class="num"><circle cx="12" cy="100" r="9"/><text x="12" y="104">2</text></g>
+<g class="r-neutro"><rect class="caja" x="65.0" y="90.0" width="60" height="20" rx="6"/><text class="val" x="95" y="104">2</text></g>
+<path class="fl-neutro" d="M127.0,100 H179.0"/><polygon class="pt-neutro" points="186.0,100 178.0,96 178.0,104"/>
+<g class="r-dueno"><rect class="caja" x="188.0" y="90.0" width="60" height="20" rx="6"/><text class="val" x="218" y="104">2</text></g>
+<path class="fl-dueno" d="M250.0,100 H302.0"/><polygon class="pt-dueno" points="309.0,100 301.0,96 301.0,104"/>
+<g class="r-dueno"><rect class="caja" x="311.0" y="90.0" width="60" height="20" rx="6"/><text class="val" x="341" y="104">20</text></g>
+<path class="fl-dueno" d="M373.0,100 H425.0"/><polygon class="pt-dueno" points="432.0,100 424.0,96 424.0,104"/>
+<g class="r-dueno"><rect class="caja" x="434.0" y="90.0" width="60" height="20" rx="6"/><text class="val" x="464" y="104">20</text></g>
+<g class="num"><circle cx="12" cy="128" r="9"/><text x="12" y="132">3</text></g>
+<g class="r-neutro"><rect class="caja" x="65.0" y="118.0" width="60" height="20" rx="6"/><text class="val" x="95" y="132">3</text></g>
+<path class="fl-neutro" d="M127.0,128 H179.0"/><polygon class="pt-neutro" points="186.0,128 178.0,124 178.0,132"/>
+<g class="r-movido"><rect class="caja" x="188.0" y="118.0" width="60" height="20" rx="6"/><text class="val" x="218" y="132">3</text></g>
+<text class="nota" x="256.0" y="132">impar: se descarta</text>
+<g class="num"><circle cx="12" cy="156" r="9"/><text x="12" y="160">4</text></g>
+<g class="r-neutro"><rect class="caja" x="65.0" y="146.0" width="60" height="20" rx="6"/><text class="val" x="95" y="160">4</text></g>
+<path class="fl-neutro" d="M127.0,156 H179.0"/><polygon class="pt-neutro" points="186.0,156 178.0,152 178.0,160"/>
+<g class="r-dueno"><rect class="caja" x="188.0" y="146.0" width="60" height="20" rx="6"/><text class="val" x="218" y="160">4</text></g>
+<path class="fl-dueno" d="M250.0,156 H302.0"/><polygon class="pt-dueno" points="309.0,156 301.0,152 301.0,160"/>
+<g class="r-dueno"><rect class="caja" x="311.0" y="146.0" width="60" height="20" rx="6"/><text class="val" x="341" y="160">40</text></g>
+<path class="fl-dueno" d="M373.0,156 H425.0"/><polygon class="pt-dueno" points="432.0,156 424.0,152 424.0,160"/>
+<g class="r-dueno"><rect class="caja" x="434.0" y="146.0" width="60" height="20" rx="6"/><text class="val" x="464" y="160">60</text></g>
+<g class="num"><circle cx="12" cy="184" r="9"/><text x="12" y="188">5</text></g>
+<g class="r-neutro"><rect class="caja" x="65.0" y="174.0" width="60" height="20" rx="6"/><text class="val" x="95" y="188">5</text></g>
+<path class="fl-neutro" d="M127.0,184 H179.0"/><polygon class="pt-neutro" points="186.0,184 178.0,180 178.0,188"/>
+<g class="r-movido"><rect class="caja" x="188.0" y="174.0" width="60" height="20" rx="6"/><text class="val" x="218" y="188">5</text></g>
+<text class="nota" x="256.0" y="188">impar: se descarta</text>
+<g class="num"><circle cx="12" cy="212" r="9"/><text x="12" y="216">6</text></g>
+<g class="r-neutro"><rect class="caja" x="65.0" y="202.0" width="60" height="20" rx="6"/><text class="val" x="95" y="216">6</text></g>
+<path class="fl-neutro" d="M127.0,212 H179.0"/><polygon class="pt-neutro" points="186.0,212 178.0,208 178.0,216"/>
+<g class="r-dueno"><rect class="caja" x="188.0" y="202.0" width="60" height="20" rx="6"/><text class="val" x="218" y="216">6</text></g>
+<path class="fl-dueno" d="M250.0,212 H302.0"/><polygon class="pt-dueno" points="309.0,212 301.0,208 301.0,216"/>
+<g class="r-dueno"><rect class="caja" x="311.0" y="202.0" width="60" height="20" rx="6"/><text class="val" x="341" y="216">60</text></g>
+<path class="fl-dueno" d="M373.0,212 H425.0"/><polygon class="pt-dueno" points="432.0,212 424.0,208 424.0,216"/>
+<g class="r-dueno"><rect class="caja" x="434.0" y="202.0" width="60" height="20" rx="6"/><text class="val" x="464" y="216">120</text></g>
+<path class="fl-neutro" d="M40,234 H519"/>
+<text class="col" x="40" y="252">LO QUE PASA POR CADA ETAPA</text>
+<text class="val" x="95" y="274">1 2 3 4 5 6</text>
+<text class="val" x="218" y="274">2 4 6</text>
+<text class="val" x="341" y="274">20 40 60</text>
+<text class="val" x="464" y="274">120</text>
+</svg>
+</figure>

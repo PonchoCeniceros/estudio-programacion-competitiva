@@ -59,12 +59,12 @@ capitulos = [
 numero = 5
 nombre = "Vocabulario stdlib"
 capitulos = [
-  { numero = "5.1", titulo = "Option" },
-  { numero = "5.2", titulo = "Result" },
-  { numero = "5.3", titulo = "Vec" },
-  { numero = "5.4", titulo = "HashMap y HashSet" },
-  { numero = "5.5", titulo = "Otras colecciones" },
-  { numero = "5.6", titulo = "Iteradores" },
+  { numero = "5.1", titulo = "Option", archivo = "src/5-stdlib/5.1-option.md" },
+  { numero = "5.2", titulo = "Result", archivo = "src/5-stdlib/5.2-result.md" },
+  { numero = "5.3", titulo = "Vec", archivo = "src/5-stdlib/5.3-vec.md" },
+  { numero = "5.4", titulo = "HashMap y HashSet", archivo = "src/5-stdlib/5.4-hashmap-hashset.md" },
+  { numero = "5.5", titulo = "Otras colecciones", archivo = "src/5-stdlib/5.5-otras-colecciones.md" },
+  { numero = "5.6", titulo = "Iteradores", archivo = "src/5-stdlib/5.6-iteradores.md" },
   { numero = "5.7", titulo = "Iteradores a fondo" },
 ]
 
@@ -72,7 +72,7 @@ capitulos = [
 numero = 6
 nombre = "Indirección"
 capitulos = [
-  { numero = "6.1", titulo = "Box y listas enlazadas" },
+  { numero = "6.1", titulo = "Box y listas enlazadas", archivo = "src/6-indireccion/6.1-box-listas.md" },
   { numero = "6.2", titulo = "Rc, RefCell y árboles" },
   { numero = "6.3", titulo = "Despacho dinámico" },
 ]

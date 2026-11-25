@@ -1,0 +1,22 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">El camino de ?</span><span class="pie">Con Ok, el valor sale y la función sigue. Con Err, la función termina y devuelve el error convertido a quien la llamó.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 250" role="img" aria-label="La expresión a.parse::&lt;i32&gt;()? se bifurca: si el resultado es Ok(v), x vale v y la función sigue en la línea siguiente; si es Err(e), la función ejecuta return Err(From::from(e)) y el error sale hacia quien llamó.">
+<text class="col" x="130" y="12">LA EXPRESIÓN</text>
+<g class="r-neutro"><rect class="caja" x="130" y="20" width="260" height="30" rx="6"/><text class="val" x="260" y="40">let x = a.parse::&lt;i32&gt;()?;</text></g>
+<path class="fl-dueno" d="M200,50 L130,82"/><polygon class="pt-dueno" points="124,85 129,77 134,84"/>
+<path class="fl-err" d="M320,50 L390,82"/><polygon class="pt-err" points="396,85 386,84 391,77"/>
+<g class="num"><circle cx="10" cy="104" r="9"/><text x="10" y="108">1</text></g>
+<g class="r-dueno"><rect class="caja" x="24" y="89" width="216" height="30" rx="6"/><text class="val" x="132" y="109">Ok(v)</text></g>
+<g class="num"><circle cx="268" cy="104" r="9"/><text x="268" y="108">2</text></g>
+<g class="r-err"><rect class="caja" x="282" y="89" width="216" height="30" rx="6"/><text class="val" x="390" y="109">Err(e)</text></g>
+<path class="fl-dueno" d="M132,119 V139"/><polygon class="pt-dueno" points="132,146 128,138 136,138"/>
+<path class="fl-err" d="M390,119 V139"/><polygon class="pt-err" points="390,146 386,138 394,138"/>
+<g class="r-dueno"><rect class="caja" x="24" y="147" width="216" height="58" rx="6"/>
+<rect class="celda" x="36" y="157" width="192" height="24" rx="3"/><text class="val" x="132" y="173">x = v</text></g>
+<text class="nota" x="132" y="198" text-anchor="middle">la función sigue</text>
+<g class="r-err"><rect class="caja" x="282" y="147" width="216" height="58" rx="6"/>
+<rect class="celda" x="294" y="157" width="192" height="24" rx="3"/><text class="cod" x="302" y="173">return Err(From::from(e))</text></g>
+<text class="nota" x="390" y="198" text-anchor="middle">la función termina aquí</text>
+<text class="nota" x="24" y="236">En el caso 1 se ejecuta la línea siguiente; en el caso 2, ninguna más.</text>
+</svg>
+</figure>

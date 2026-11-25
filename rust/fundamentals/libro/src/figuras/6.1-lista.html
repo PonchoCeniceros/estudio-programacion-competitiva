@@ -1,0 +1,16 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Una lista de tres nodos</span><span class="pie">El primer nodo está en la variable. Cada Box es dueño del nodo siguiente, que vive en el heap.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 206" role="img" aria-label="La variable primero guarda en el stack el valor 1 y un Box que apunta al nodo con valor 2 en el heap. Ese nodo apunta al nodo con valor 3, cuyo campo siguiente es None.">
+<text class="col" x="28" y="12">STACK</text><text class="col" x="336" y="12">HEAP</text>
+<g class="r-dueno"><rect class="caja" x="28" y="24" width="176" height="62" rx="6"/><text class="tit" x="40" y="42">primero · dueño de la lista</text><rect class="celda" x="40" y="50" width="64" height="26" rx="3"/><text class="val" x="72" y="67">valor 1</text><rect class="celda" x="108" y="50" width="84" height="26" rx="3"/><text class="val" x="150" y="67">siguiente</text></g>
+<text class="nota" x="28" y="104">16 bytes: un i32, relleno y un puntero</text>
+<path class="fl-dueno" d="M204,63 H326"/><polygon class="pt-dueno" points="333,63 325,59 325,67"/>
+<text class="nota" x="268" y="54" text-anchor="middle">Some(Box)</text>
+<g class="r-heap"><rect class="caja" x="336" y="24" width="176" height="62" rx="6"/><text class="tit" x="348" y="42">segundo nodo</text><rect class="celda" x="348" y="50" width="64" height="26" rx="3"/><text class="val" x="380" y="67">valor 2</text><rect class="celda" x="416" y="50" width="84" height="26" rx="3"/><text class="val" x="458" y="67">siguiente</text></g>
+<path class="fl-dueno" d="M458,86 V114"/><polygon class="pt-dueno" points="458,121 454,113 462,113"/>
+<text class="nota" x="446" y="107" text-anchor="end">Some(Box)</text>
+<g class="r-heap"><rect class="caja" x="336" y="124" width="176" height="62" rx="6"/><text class="tit" x="348" y="142">tercer nodo</text><rect class="celda" x="348" y="150" width="64" height="26" rx="3"/><text class="val" x="380" y="167">valor 3</text><rect class="celda" x="416" y="150" width="84" height="26" rx="3"/><text class="val" x="458" y="167">None</text></g>
+<text class="nota" x="324" y="167" text-anchor="end">None: aquí termina la lista</text>
+<text class="nota" x="424" y="202" text-anchor="middle">un bloque del heap por nodo</text>
+</svg>
+</figure>
