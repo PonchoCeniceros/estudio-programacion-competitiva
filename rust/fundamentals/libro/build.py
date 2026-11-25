@@ -4,6 +4,11 @@
     python3 build.py              # verifica el código y genera PDF y EPUB
     python3 build.py --solo-pdf
     python3 build.py --sin-verificar
+    python3 build.py --solo src/3-memoria/3.5-impl-metodos.md
+
+`--solo` verifica y construye un único capítulo en build-cap/<número>/libro.pdf, sin
+tocar build/ ni exigir que el capítulo esté dado de alta en libro.toml. Sirve para
+escribir varios capítulos a la vez.
 
 Pasos:
   1. Verifica los bloques ```rust de cada capítulo con rustc: los normales deben
@@ -208,13 +213,14 @@ def pandoc(entrada: str, *args) -> str:
 
 # ── Verificación del código ───────────────────────────────────────────────────
 
-def verificar() -> bool:
+def verificar(archivos=None) -> bool:
     ok = True
+    if archivos is None:
+        archivos = [cap["archivo"] for _, cap in capitulos() if "archivo" in cap]
     with tempfile.TemporaryDirectory() as tmp:
-        for _, cap in capitulos():
-            if "archivo" not in cap:
-                continue
-            texto = (RAIZ / cap["archivo"]).read_text()
+        for archivo in archivos:
+            cap = {"archivo": archivo}
+            texto = (RAIZ / archivo).read_text()
             for n, m in enumerate(BLOQUE.finditer(texto), 1):
                 if not m[1].startswith("rust"):
                     continue
@@ -283,9 +289,12 @@ def html_contenido() -> str:
     partes = ['<div class="contenido">', '<div class="encabezado">Contenido</div>']
     for sec in LIBRO["secciones"]:
         href = f"#sec-{sec['numero']}"
-        partes.append(f'<div class="seccion"><div class="seccion-titulo">'
-                      f'<a href="{href}">{sec["numero"]}. {html.escape(sec["nombre"])}</a>'
-                      f'<a class="pag pag-ref" href="{href}"></a></div>'
+        titulo = f'{sec["numero"]}. {html.escape(sec["nombre"])}'
+        if any("archivo" in cap for cap in sec["capitulos"]):
+            cabeza = f'<a href="{href}">{titulo}</a><a class="pag pag-ref" href="{href}"></a>'
+        else:
+            cabeza = f'<a class="pendiente">{titulo}</a>'
+        partes.append(f'<div class="seccion"><div class="seccion-titulo">{cabeza}</div>'
                       f'<div class="temas">{lista_temas(sec)}</div></div>')
     partes.append("</div>")
     return "\n".join(partes)
@@ -303,6 +312,8 @@ def html_apertura(sec: dict) -> str:
 def construir_pdf():
     cuerpo = [html_portada(), html_contenido()]
     for sec in LIBRO["secciones"]:
+        if not any("archivo" in cap for cap in sec["capitulos"]):
+            continue
         cuerpo.append(html_apertura(sec))
         for cap in sec["capitulos"]:
             if "archivo" in cap:
@@ -365,19 +376,58 @@ def construir_epub():
     print("build/libro.epub", file=sys.stderr)
 
 
+def copiar_estilo(destino: pathlib.Path):
+    (destino / "estilo" / "img").mkdir(parents=True)
+    for css in (RAIZ / "estilo").glob("*.css"):
+        shutil.copy(css, destino / "estilo")
+    for svg in (RAIZ / "estilo" / "img").glob("*.svg"):
+        shutil.copy(svg, destino / "estilo" / "img")
+    shutil.copytree(RAIZ / "estilo" / "fuentes", destino / "fonts")
+
+
+def construir_solo(archivo: str):
+    """Un capítulo suelto, en build-cap/<número>/, para trabajar varios a la vez."""
+    ruta = (RAIZ / archivo) if not pathlib.Path(archivo).is_absolute() else pathlib.Path(archivo)
+    archivo = str(ruta.relative_to(RAIZ))
+    m = re.match(r"# (\d+)\.(\d+) · (.+)", ruta.read_text())
+    if not m:
+        sys.exit(f"{archivo}: la primera línea debe ser «# N.M · Título»")
+    numero = f"{m[1]}.{m[2]}"
+    sec = next((s for s in LIBRO["secciones"] if str(s["numero"]) == m[1]), None)
+    if sec is None:
+        sys.exit(f"{archivo}: la sección {m[1]} no está en libro.toml")
+    if not verificar([archivo]):
+        sys.exit(1)
+    destino = RAIZ / "build-cap" / numero
+    if destino.exists():
+        shutil.rmtree(destino)
+    copiar_estilo(destino)
+    cap = {"numero": numero, "titulo": m[3], "archivo": archivo}
+    cuerpo = pandoc(preprocesar(sec, cap), "--to", "html5", "--section-divs")
+    (destino / "libro.html").write_text(f"""<!DOCTYPE html>
+<html lang="{LIBRO['idioma']}"><head><meta charset="utf-8"><title>{numero}</title>
+<link rel="stylesheet" href="estilo/libro.css">
+<link rel="stylesheet" href="estilo/impresion.css">
+</head><body>
+{cuerpo}
+</body></html>""")
+    relativo = destino.relative_to(RAIZ)
+    subprocess.run(["pnpm", "exec", "vivliostyle", "build", str(relativo / "libro.html"),
+                    "-o", str(relativo / "libro.pdf")], cwd=RAIZ, check=True,
+                   stdout=subprocess.DEVNULL)
+    print(relativo / "libro.pdf", file=sys.stderr)
+
+
 def main():
+    if "--solo" in sys.argv:
+        construir_solo(sys.argv[sys.argv.index("--solo") + 1])
+        return
     opciones = set(sys.argv[1:])
     if "--sin-verificar" not in opciones and not verificar():
         sys.exit(1)
     if BUILD.exists():
         shutil.rmtree(BUILD)
-    (BUILD / "estilo").mkdir(parents=True)
-    for css in (RAIZ / "estilo").glob("*.css"):
-        shutil.copy(css, BUILD / "estilo")
-    (BUILD / "estilo" / "img").mkdir()
-    for svg in (RAIZ / "estilo" / "img").glob("*.svg"):
-        shutil.copy(svg, BUILD / "estilo" / "img")
-    shutil.copytree(RAIZ / "estilo" / "fuentes", BUILD / "fonts")
+    copiar_estilo(BUILD)
     construir_pdf()
     if "--solo-pdf" not in opciones:
         construir_epub()

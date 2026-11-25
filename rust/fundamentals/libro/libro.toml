@@ -11,6 +11,28 @@ idioma = "es"
 creditos = "El hilo de las explicaciones sigue el del curso «Aprende Rust» (aprenderust.dev) de midudev."
 
 [[secciones]]
+numero = 1
+nombre = "Fundamentos"
+capitulos = [
+  { numero = "1.1", titulo = "Tokens" },
+  { numero = "1.2", titulo = "Tipos escalares" },
+  { numero = "1.3", titulo = "Variables" },
+  { numero = "1.4", titulo = "Todo es una expresión" },
+  { numero = "1.5", titulo = "Funciones" },
+  { numero = "1.6", titulo = "Control de flujo" },
+]
+
+[[secciones]]
+numero = 2
+nombre = "Tipos compuestos"
+capitulos = [
+  { numero = "2.1", titulo = "Tuplas y arreglos" },
+  { numero = "2.2", titulo = "Structs" },
+  { numero = "2.3", titulo = "Enums" },
+  { numero = "2.4", titulo = "Patrones" },
+]
+
+[[secciones]]
 numero = 3
 nombre = "Memoria"
 capitulos = [
@@ -20,4 +42,70 @@ capitulos = [
   { numero = "3.4", titulo = "Strings", archivo = "src/3-memoria/3.4-strings.md" },
   { numero = "3.5", titulo = "impl y métodos" },
   { numero = "3.6", titulo = "Lifetimes" },
+]
+
+[[secciones]]
+numero = 4
+nombre = "Abstracciones de costo cero"
+capitulos = [
+  { numero = "4.1", titulo = "Traits" },
+  { numero = "4.2", titulo = "Generics" },
+  { numero = "4.3", titulo = "Closures" },
+  { numero = "4.4", titulo = "Traits de la stdlib" },
+  { numero = "4.5", titulo = "Operadores y conversiones" },
+]
+
+[[secciones]]
+numero = 5
+nombre = "Vocabulario stdlib"
+capitulos = [
+  { numero = "5.1", titulo = "Option" },
+  { numero = "5.2", titulo = "Result" },
+  { numero = "5.3", titulo = "Vec" },
+  { numero = "5.4", titulo = "HashMap y HashSet" },
+  { numero = "5.5", titulo = "Otras colecciones" },
+  { numero = "5.6", titulo = "Iteradores" },
+  { numero = "5.7", titulo = "Iteradores a fondo" },
+]
+
+[[secciones]]
+numero = 6
+nombre = "Indirección"
+capitulos = [
+  { numero = "6.1", titulo = "Box y listas enlazadas" },
+  { numero = "6.2", titulo = "Rc, RefCell y árboles" },
+  { numero = "6.3", titulo = "Despacho dinámico" },
+]
+
+[[secciones]]
+numero = 7
+nombre = "Proyectos"
+capitulos = [
+  { numero = "7.1", titulo = "Módulos" },
+  { numero = "7.2", titulo = "Crates y Cargo" },
+  { numero = "7.3", titulo = "Tests" },
+  { numero = "7.4", titulo = "Manejo de errores idiomático" },
+  { numero = "7.5", titulo = "Entrada y salida" },
+  { numero = "7.6", titulo = "Macros y atributos" },
+]
+
+[[secciones]]
+numero = 8
+nombre = "Concurrencia"
+capitulos = [
+  { numero = "8.1", titulo = "Hilos" },
+  { numero = "8.2", titulo = "Send y Sync" },
+  { numero = "8.3", titulo = "Estado compartido" },
+]
+
+[[secciones]]
+numero = 9
+nombre = "Async"
+capitulos = [
+  { numero = "9.1", titulo = "El problema" },
+  { numero = "9.2", titulo = "async, await y Future" },
+  { numero = "9.3", titulo = "El runtime" },
+  { numero = "9.4", titulo = "Send en las tareas" },
+  { numero = "9.5", titulo = "async o hilos" },
+  { numero = "9.6", titulo = "Un servidor mínimo" },
 ]

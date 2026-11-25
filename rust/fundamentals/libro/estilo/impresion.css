@@ -138,6 +138,8 @@ html, body { margin: 0; padding: 0; background: #ffffff; }
 .contenido .temas .n { color: #5f686a; }
 .contenido .temas a { color: #1d2224; }
 .contenido .pendiente { color: #9aa3a4; }
+.contenido .seccion-titulo a.pendiente { color: #9aa3a4; }
+.contenido .seccion { break-inside: avoid; }
 .contenido a.pag-ref::after, .apertura a.pag-ref::after { content: target-counter(attr(href), page); }
 
 /* ── Apertura de sección ────────────────────────────── */
