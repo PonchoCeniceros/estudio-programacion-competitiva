@@ -375,14 +375,20 @@ def a_gris(texto: str) -> str:
 
 
 def construir_pdf_gris():
-    """build/libro-gris.pdf: el mismo libro con todos los colores pasados a gris,
-    para ver cómo saldría impreso en blanco y negro. Parte de build/libro.html."""
+    """build/libro-gris.pdf: el interior en escala de grises, para ver cómo saldría
+    impreso en blanco y negro; portada y contraportada siguen a color. Parte de
+    build/libro.html."""
     destino = BUILD / "gris"
     if destino.exists():
         shutil.rmtree(destino)
     copiar_estilo(destino)
-    for archivo in list((destino / "estilo").rglob("*.css")) + list((destino / "estilo").rglob("*.svg")):
-        archivo.write_text(a_gris(archivo.read_text()))
+    # Portada y contraportada se quedan a color: sus reglas y los peces no se tocan.
+    def regla(m):
+        selector = m[0].split("{")[0]
+        return m[0] if "portada" in selector else a_gris(m[0])
+    for archivo in (destino / "estilo").glob("*.css"):
+        css = archivo.read_text()
+        archivo.write_text(re.sub(r"[^{}]+\{(?:[^{}]|\{[^{}]*\})*\}", regla, css))
     (destino / "libro.html").write_text(a_gris((BUILD / "libro.html").read_text()))
     subprocess.run(["pnpm", "exec", "vivliostyle", "build", "build/gris/libro.html",
                     "-o", "build/libro-gris.pdf"], cwd=RAIZ, check=True,
