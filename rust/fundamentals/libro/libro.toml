@@ -3,12 +3,20 @@
 
 titulo = "Rust"
 subtitulo = "Cuaderno de campo"
-etiqueta = "Cuaderno de apuntes"
 edicion = "2ª edición"
 autor = "Giovanny Alfonso Chávez Ceniceros"
-coautor = "con Claude"
 idioma = "es"
-creditos = "El hilo de las explicaciones sigue el del curso «Aprende Rust» (aprenderust.dev) de midudev."
+descripcion = """
+Rust promete programas rápidos y sin errores de memoria, y cobra esa promesa \
+con ideas que no existen en otros lenguajes: ownership, préstamos, lifetimes. \
+Este cuaderno las recorre en orden, de los tokens a un servidor asíncrono, sin \
+usar nada antes de explicarlo."""
+descripcion2 = """
+Cada capítulo sigue el mismo camino: el problema, las reglas, una figura, las \
+reglas una por una con los errores reales del compilador, y un ejemplo de \
+aplicación."""
+prefacio = "src/0-preliminares/prefacio.md"
+referencias = "src/0-preliminares/referencias.md"
 
 [[secciones]]
 numero = 1

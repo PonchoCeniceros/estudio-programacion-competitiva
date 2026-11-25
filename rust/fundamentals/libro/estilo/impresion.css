@@ -171,3 +171,8 @@ section.level1 {
   break-before: page;
   string-set: cornisa attr(data-cornisa);
 }
+
+/* ── Contraportada: descripción ─────────────────────── */
+.contraportada .descripcion { margin-top: 44px; max-width: 440px; }
+.contraportada .descripcion p { font: 17px/1.55 "Source Serif 4", serif; color: #dfe8e7; margin: 0 0 14px; }
+.contenido .seccion.suelto { margin-bottom: 14px; }

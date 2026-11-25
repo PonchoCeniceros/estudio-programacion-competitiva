@@ -267,11 +267,11 @@ def html_portada() -> str:
     e = html.escape
     return f"""<div class="portada">
 <img class="peces" src="estilo/img/portada-peces.svg" alt="">
-<div class="arriba"><span class="etiqueta">{e(LIBRO['etiqueta'])}</span><span class="chip">{e(LIBRO['edicion'])}</span></div>
+<div class="arriba"><span></span><span class="chip">{e(LIBRO['edicion'])}</span></div>
 <div class="titulo">{e(LIBRO['titulo'])}</div>
 <div class="subtitulo">{e(LIBRO['subtitulo'])}</div>
 <div class="abajo"><div class="linea"></div>
-<div class="autor">{e(LIBRO['autor'])}</div><div class="coautor">{e(LIBRO['coautor'])}</div></div>
+<div class="autor">{e(LIBRO['autor'])}</div></div>
 </div>"""
 
 
@@ -279,9 +279,11 @@ def html_contraportada() -> str:
     e = html.escape
     return f"""<div class="contraportada">
 <img class="peces" src="estilo/img/peces.svg" alt="">
+<div class="descripcion"><p>{e(LIBRO['descripcion'].strip())}</p>
+<p>{e(LIBRO['descripcion2'].strip())}</p></div>
 <div class="abajo"><div class="linea"></div>
 <div class="titulo-chico">{e(LIBRO['titulo'])} · <span>{e(LIBRO['subtitulo'])}</span></div>
-<div class="creditos">{e(LIBRO['creditos'])}</div></div>
+<div class="creditos">{e(LIBRO['autor'])}</div></div>
 </div>"""
 
 
@@ -300,6 +302,9 @@ def lista_temas(sec: dict) -> str:
 
 def html_contenido() -> str:
     partes = ['<div class="contenido">', '<div class="encabezado">Contenido</div>']
+    suelto = ('<div class="seccion suelto"><div class="seccion-titulo"><a href="#{0}">{1}</a>'
+              '<a class="pag pag-ref" href="#{0}"></a></div></div>')
+    partes.append(suelto.format("prefacio", "Prefacio"))
     for sec in LIBRO["secciones"]:
         href = f"#sec-{sec['numero']}"
         titulo = f'{sec["numero"]}. {html.escape(sec["nombre"])}'
@@ -309,8 +314,14 @@ def html_contenido() -> str:
             cabeza = f'<a class="pendiente">{titulo}</a>'
         partes.append(f'<div class="seccion"><div class="seccion-titulo">{cabeza}</div>'
                       f'<div class="temas">{lista_temas(sec)}</div></div>')
+    partes.append(suelto.format("referencias", "Referencias"))
     partes.append("</div>")
     return "\n".join(partes)
+
+
+def preliminar(clave: str) -> str:
+    """Prefacio y referencias: Markdown sin código, directo a Pandoc."""
+    return (RAIZ / LIBRO[clave]).read_text()
 
 
 def html_apertura(sec: dict) -> str:
@@ -323,7 +334,8 @@ def html_apertura(sec: dict) -> str:
 
 
 def construir_pdf():
-    cuerpo = [html_portada(), html_contenido()]
+    cuerpo = [html_portada(), html_contenido(),
+              pandoc(preliminar("prefacio"), "--to", "html5", "--section-divs")]
     for sec in LIBRO["secciones"]:
         if not any("archivo" in cap for cap in sec["capitulos"]):
             continue
@@ -331,6 +343,7 @@ def construir_pdf():
         for cap in sec["capitulos"]:
             if "archivo" in cap:
                 cuerpo.append(pandoc(preprocesar(sec, cap), "--to", "html5", "--section-divs"))
+    cuerpo.append(pandoc(preliminar("referencias"), "--to", "html5", "--section-divs"))
     cuerpo.append(html_contraportada())
     documento = f"""<!DOCTYPE html>
 <html lang="{LIBRO['idioma']}"><head><meta charset="utf-8">
@@ -364,11 +377,12 @@ def portada_png() -> pathlib.Path | None:
 
 
 def construir_epub():
-    entradas = []
+    entradas = [preliminar("prefacio")]
     for sec in LIBRO["secciones"]:
         for cap in sec["capitulos"]:
             if "archivo" in cap:
                 entradas.append(preprocesar(sec, cap))
+    entradas.append(preliminar("referencias"))
     md = BUILD / "tmp" / "libro.md"
     md.parent.mkdir(exist_ok=True)
     md.write_text("\n\n".join(entradas))
@@ -376,7 +390,7 @@ def construir_epub():
             "--metadata", f"title={LIBRO['titulo']} · {LIBRO['subtitulo']}",
             "--metadata", f"author={LIBRO['autor']}",
             "--metadata", f"lang={LIBRO['idioma']}",
-            "--metadata", f"rights={LIBRO['creditos']}",
+            "--metadata", f"rights={LIBRO['autor']}",
             "--css", str(RAIZ / "estilo" / "libro.css"),
             "--split-level=1", "--toc-depth=1",
             "-o", str(BUILD / "libro.epub")]
