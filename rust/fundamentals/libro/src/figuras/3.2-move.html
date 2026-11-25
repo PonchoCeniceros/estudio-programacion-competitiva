@@ -1,0 +1,16 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Mover un String</span><span class="pie">La asignación copia los tres datos del stack. El texto del heap no se duplica.</span></figcaption>
+<div class="mem">
+<div class="col">STACK</div><div></div><div class="col">HEAP</div>
+<div class="paso">1  let s1 = String::from("hola");</div>
+<div class="var"><span class="etq">s1 · dueña</span><div class="celdas stack"><span class="ptr">ptr</span><span>len 4</span><span>cap 4</span></div></div>
+<div class="flecha">→</div>
+<div class="heap-col"><div class="celdas heap"><span>h</span><span>o</span><span>l</span><span>a</span></div></div>
+<div class="paso">2  let s2 = s1;</div>
+<div class="var movida"><span class="etq">s1 · movida: ya no se puede usar</span><div class="celdas stack"><span>ptr</span><span>len 4</span><span>cap 4</span></div></div>
+<div></div><div></div>
+<div class="var"><span class="etq">s2 · dueña</span><div class="celdas stack"><span class="ptr">ptr</span><span>len 4</span><span>cap 4</span></div></div>
+<div class="flecha">→</div>
+<div class="heap-col"><div class="celdas heap"><span>h</span><span>o</span><span>l</span><span>a</span></div><span class="nota">el mismo buffer: no se copió</span></div>
+</div>
+</figure>

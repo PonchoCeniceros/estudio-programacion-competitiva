@@ -1,0 +1,171 @@
+/* Reglas de página: solo para el PDF (Vivliostyle). */
+
+@page {
+  size: 7in 10in;
+  margin: 0.8in;
+  @top-left, @top-right {
+    vertical-align: bottom;
+    padding-bottom: 6px;
+    margin-bottom: 18px;
+    border-bottom: 1.5px solid #13807f;
+    width: 50%;
+  }
+  @bottom-left, @bottom-right {
+    font: 13px "Source Serif 4", serif;
+    color: #5f686a;
+    vertical-align: top;
+    padding-top: 22px;
+  }
+}
+
+/* Impar (derecha): libro a la izquierda, capítulo a la derecha, folio a la derecha */
+@page :right {
+  @top-left {
+    content: "Rust · Cuaderno de campo";
+    font: italic 12px "Source Serif 4", serif;
+    color: #5f686a;
+    text-align: left;
+  }
+  @top-right {
+    content: string(cornisa);
+    font: 500 10px "JetBrains Mono", monospace;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #5f686a;
+    text-align: right;
+  }
+  @bottom-right { content: counter(page); }
+}
+
+/* Par (izquierda): espejo */
+@page :left {
+  @top-left {
+    content: string(cornisa);
+    font: 500 10px "JetBrains Mono", monospace;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #5f686a;
+    text-align: left;
+  }
+  @top-right {
+    content: "Rust · Cuaderno de campo";
+    font: italic 12px "Source Serif 4", serif;
+    color: #5f686a;
+    text-align: right;
+  }
+  @bottom-left { content: counter(page); }
+}
+
+/* Páginas sin cornisa ni folio */
+@page portada  { margin: 0; background: #122326;
+  @top-left { content: none; border: none; } @top-right { content: none; border: none; }
+  @bottom-left { content: none; } @bottom-right { content: none; } }
+@page contraportada { margin: 0; background: #122326;
+  @top-left { content: none; border: none; } @top-right { content: none; border: none; }
+  @bottom-left { content: none; } @bottom-right { content: none; } }
+@page contenido {
+  @top-left { content: none; border: none; } @top-right { content: none; border: none; }
+  @bottom-left { content: none; } @bottom-right { content: none; } }
+@page apertura { margin: 0;
+  @top-left { content: none; border: none; } @top-right { content: none; border: none; }
+  @bottom-left { content: none; } @bottom-right { content: none; } }
+
+html, body { margin: 0; padding: 0; background: #ffffff; }
+
+/* ── Portada ────────────────────────────────────────── */
+.portada {
+  page: portada;
+  break-after: page;
+  width: 7in;
+  height: 10in;
+  box-sizing: border-box;
+  padding: 72px 72px 64px;
+  background: #122326;
+  color: #eef3f2;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.portada > :not(.peces) { position: relative; z-index: 1; }
+.portada .peces { position: absolute; left: 0; top: 0; width: 7in; height: 10in; z-index: 0; }
+.portada .arriba { display: flex; justify-content: space-between; align-items: center; }
+.portada .etiqueta { font: 500 12px "JetBrains Mono", monospace; letter-spacing: .18em; color: #9fb2b1; text-transform: uppercase; }
+.portada .chip { font: 500 12px "JetBrains Mono", monospace; letter-spacing: .08em; background: #3fbfba; color: #122326; padding: 5px 10px; border-radius: 4px; }
+.portada .titulo { margin-top: 150px; font: 700 168px/.9 "Source Serif 4", serif; letter-spacing: -.03em; }
+.portada .subtitulo { font: 68px/1.1 "Yellowtail", cursive; color: #3fbfba; margin: 14px 0 0 6px; }
+.portada .abajo { margin-top: auto; display: flex; flex-direction: column; gap: 4px; }
+.portada .linea { height: 1px; background: #3fbfba; margin-bottom: 18px; }
+.portada .autor { font: 600 20px "Source Serif 4", serif; }
+.portada .coautor { font: italic 16px "Source Serif 4", serif; color: #9fb2b1; }
+
+/* ── Contraportada: siempre en página par, a la izquierda ── */
+.contraportada {
+  page: contraportada;
+  break-before: left;
+  width: 7in;
+  height: 10in;
+  box-sizing: border-box;
+  padding: 72px 72px 64px;
+  background: #122326;
+  color: #eef3f2;
+  display: flex;
+  flex-direction: column;
+}
+.contraportada .peces { width: 100%; margin-top: 60px; transform: scaleX(-1); }
+.contraportada .abajo { margin-top: auto; }
+.contraportada .linea { height: 1px; background: #3fbfba; margin-bottom: 18px; }
+.contraportada .titulo-chico { font: 700 22px "Source Serif 4", serif; }
+.contraportada .titulo-chico span { font: 30px "Yellowtail", cursive; color: #3fbfba; font-weight: 400; }
+.contraportada .creditos { font: italic 14px/1.5 "Source Serif 4", serif; color: #9fb2b1; margin-top: 8px; max-width: 420px; }
+
+/* ── Contenido ──────────────────────────────────────── */
+.contenido { page: contenido; break-after: page; padding-top: 4px; }
+.contenido .encabezado {
+  font: 56px/1 "Yellowtail", cursive; color: #13807f;
+  text-align: right; padding-right: 20px; margin-bottom: 40px;
+}
+.contenido .seccion { padding-left: 130px; margin-bottom: 22px; }
+.contenido .seccion-titulo {
+  display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;
+}
+.contenido .seccion-titulo a:first-child { font: 29px "Yellowtail", cursive; color: #13807f; }
+.contenido .seccion-titulo .pag { color: #1d2224; }
+.contenido .seccion-titulo .pag { font-weight: 700; font-size: 16px; }
+.contenido .temas {
+  display: grid; grid-template-columns: 40px 1fr auto;
+  padding-left: 20px; font-size: 15.5px; row-gap: 3px;
+}
+.contenido .temas .n { color: #5f686a; }
+.contenido .temas a { color: #1d2224; }
+.contenido .pendiente { color: #9aa3a4; }
+.contenido a.pag-ref::after, .apertura a.pag-ref::after { content: target-counter(attr(href), page); }
+
+/* ── Apertura de sección ────────────────────────────── */
+.apertura { page: apertura; break-after: page; width: 7in; height: 10in; position: relative; }
+.apertura .banda {
+  background: #e8f1f0;
+  padding: 110px 72px 56px;
+  border-bottom: 3px solid #13807f;
+}
+.apertura .rotulo { font: 500 12px "JetBrains Mono", monospace; letter-spacing: .18em; color: #5f686a; }
+.apertura .nombre { display: flex; align-items: baseline; gap: 22px; margin-top: 6px; }
+.apertura .nombre .num { font: 700 150px/.85 "Source Serif 4", serif; color: #13807f; }
+.apertura .nombre .txt { font: 76px/1 "Yellowtail", cursive; color: #1d2224; }
+.apertura .temas-titulo {
+  font: 500 12px "JetBrains Mono", monospace; letter-spacing: .14em; color: #5f686a;
+  padding: 52px 72px 0; margin-bottom: 18px;
+}
+.apertura .temas {
+  display: grid; grid-template-columns: 52px 1fr auto; row-gap: 12px;
+  font-size: 19px; align-items: baseline; padding: 0 72px;
+}
+.apertura .temas .n { font: 14px "JetBrains Mono", monospace; color: #13807f; }
+.apertura .temas a { color: #1d2224; }
+.apertura .temas .pag, .apertura .temas a.pag-ref { color: #5f686a; }
+.apertura .pendiente { color: #9aa3a4; }
+
+/* ── Capítulos ──────────────────────────────────────── */
+section.level1 {
+  break-before: page;
+  string-set: cornisa attr(data-cornisa);
+}

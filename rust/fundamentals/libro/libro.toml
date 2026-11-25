@@ -1,0 +1,23 @@
+# Manifiesto del libro: portada, secciones y capítulos.
+# Un capítulo sin `archivo` está pendiente: aparece en el índice, sin página.
+
+titulo = "Rust"
+subtitulo = "Cuaderno de campo"
+etiqueta = "Cuaderno de apuntes"
+edicion = "2ª edición"
+autor = "Giovanny Alfonso Chávez Ceniceros"
+coautor = "con Claude"
+idioma = "es"
+creditos = "El hilo de las explicaciones sigue el del curso «Aprende Rust» (aprenderust.dev) de midudev."
+
+[[secciones]]
+numero = 3
+nombre = "Memoria"
+capitulos = [
+  { numero = "3.1", titulo = "Stack y heap" },
+  { numero = "3.2", titulo = "Ownership", archivo = "src/3-memoria/3.2-ownership.md" },
+  { numero = "3.3", titulo = "Borrowing" },
+  { numero = "3.4", titulo = "Strings" },
+  { numero = "3.5", titulo = "impl y métodos" },
+  { numero = "3.6", titulo = "Lifetimes" },
+]

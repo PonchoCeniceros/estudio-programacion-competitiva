@@ -1,0 +1,8 @@
+{
+  "name": "cuaderno-libro",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@vivliostyle/cli": "^11.5.0"
+  }
+}

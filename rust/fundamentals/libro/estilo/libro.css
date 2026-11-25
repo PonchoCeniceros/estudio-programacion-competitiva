@@ -1,0 +1,275 @@
+/* Rust · Cuaderno de campo — tema 2a «Teal EDO».
+   Compartido por el EPUB y el PDF. Las reglas de página van en impresion.css.
+   Tokens y medidas: design_handoff_libro_rust/README.md. */
+
+@font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 200 900;
+  src: url("../fonts/SourceSerif4.ttf") format("truetype"); }
+@font-face { font-family: "Source Serif 4"; font-style: italic; font-weight: 200 900;
+  src: url("../fonts/SourceSerif4-Italic.ttf") format("truetype"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 100 800;
+  src: url("../fonts/JetBrainsMono.ttf") format("truetype"); }
+@font-face { font-family: "JetBrains Mono"; font-style: italic; font-weight: 100 800;
+  src: url("../fonts/JetBrainsMono-Italic.ttf") format("truetype"); }
+@font-face { font-family: "Yellowtail"; font-style: normal; font-weight: 400;
+  src: url("../fonts/Yellowtail.ttf") format("truetype"); }
+
+:root {
+  --ink: #1d2224;
+  --muted: #5f686a;
+  --accent: #13807f;
+  --accent-soft: #e8f1f0;
+  --rule: #d3dfdd;
+  --code-bg: #eef3f2;
+  --err: #b0443a;
+  --err-bg: #f8eeec;
+  --err-border: #e3c6c1;
+  --term-bg: #1d2224;
+  --serif: "Source Serif 4", Georgia, serif;
+  --mono: "JetBrains Mono", Menlo, monospace;
+  --script: "Yellowtail", cursive;
+}
+
+body {
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--ink);
+  text-wrap: pretty;
+  orphans: 3;
+  widows: 3;
+}
+p { margin: 0 0 12px; }
+a, .ref { color: var(--accent); text-decoration: none; }
+
+/* ── Título de capítulo ─────────────────────────────── */
+section.level1::before {
+  content: attr(data-seccion);
+  display: block;
+  font: 500 11px var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 28px;
+}
+h1 {
+  margin: 6px 0 28px;
+  padding-bottom: 18px;
+  border-bottom: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-weight: 700;
+  line-height: 1;
+}
+h1 .num { font-size: 76px; color: var(--accent); letter-spacing: -.02em; margin-right: 18px; }
+h1 .nombre { font-family: var(--script); font-weight: 400; font-size: 64px; color: var(--ink); }
+
+h2 {
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.1;
+  color: var(--accent);
+  margin: 30px 0 10px;
+}
+h3 { font-size: 18px; font-weight: 600; margin: 24px 0 8px; line-height: 1.35; }
+h3 .prefijo { color: var(--accent); }
+h3 code { font: 600 16px var(--mono); color: var(--accent); background: none; padding: 0; }
+h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+
+/* ── Código en línea ────────────────────────────────── */
+code {
+  font-family: var(--mono);
+  font-size: 13px;
+  background: var(--code-bg);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+strong code { font-weight: 600; background: none; padding: 0; }
+
+/* ── Bloques de código ──────────────────────────────── */
+pre { margin: 0; }
+.codigo {
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  margin: 14px 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.codigo pre, .no-compila pre.fuente {
+  font: 12.5px/1.65 var(--mono);
+  padding: 14px 18px;
+  white-space: pre-wrap;
+  background: none;
+}
+.codigo code, .no-compila code { background: none; padding: 0; font-size: inherit; }
+
+/* Sintaxis */
+.k  { color: #0f6f6e; font-weight: 500; }
+.f  { color: #2f5f8f; }
+.t  { color: #6c6224; }
+.s  { color: #9a5b2a; }
+.n  { color: #8a4f7d; }
+.c  { color: #80898a; font-style: italic; }
+.ce { color: var(--err); font-style: italic; }
+
+/* Bloque «NO COMPILA» */
+.no-compila {
+  border: 1px solid var(--err-border);
+  border-radius: 6px;
+  margin: 14px 0;
+  overflow: hidden;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.no-compila .cabecera {
+  font: 500 10.5px var(--mono);
+  letter-spacing: .12em;
+  color: var(--err);
+  background: var(--err-bg);
+  padding: 7px 18px;
+  border-bottom: 1px solid var(--err-border);
+}
+.no-compila pre.fuente { background: var(--code-bg); }
+
+/* Salida del compilador */
+pre.salida {
+  background: var(--term-bg);
+  color: #c9d2d3;
+  font: 11.5px/1.6 var(--mono);
+  padding: 14px 18px;
+  white-space: pre-wrap;
+}
+.salida .e  { color: #f08a80; font-weight: 700; }
+.salida .em { color: #eef3f2; font-weight: 700; }
+.salida .g  { color: #6fb3c9; }
+.salida .x  { color: #f08a80; }
+
+/* ── Definiciones ───────────────────────────────────── */
+dl {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 16px;
+  row-gap: 8px;
+  margin: 0 0 18px;
+}
+dt { font-weight: 700; }
+dd { margin: 0; }
+dd p { margin: 0; }
+
+/* ── Caja de reglas ─────────────────────────────────── */
+.reglas {
+  background: var(--accent-soft);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 0 0 14px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.reglas::before {
+  content: attr(data-titulo);
+  display: block;
+  font: 500 11px var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.reglas ol { margin: 0; padding-left: 28px; font-size: 16px; }
+.reglas li { margin: 4px 0; padding-left: 0; }
+.reglas li::marker { color: var(--accent); font-weight: 700; }
+
+/* ── Tabla ──────────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  line-height: 1.45;
+  margin: 0 0 12px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+thead tr { border-bottom: 1.5px solid var(--accent); }
+th { font-weight: 600; text-align: left; padding: 8px 10px; }
+td { padding: 8px 10px; vertical-align: top; }
+th:first-child, td:first-child { padding-left: 0; }
+th:last-child, td:last-child { padding-right: 0; }
+tbody tr { border-bottom: 1px solid var(--rule); }
+table code { font-size: 12px; background: none; padding: 0; }
+td:first-child > code:only-child { font-size: 12.5px; }
+
+/* ── Figura (diagrama stack / heap) ─────────────────── */
+figure.diagrama {
+  margin: 18px 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 18px 20px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+figure.diagrama figcaption { margin-bottom: 14px; }
+figure.diagrama .titulo { display: block; font-weight: 700; font-size: 15px; }
+figure.diagrama .pie { display: block; font-size: 13.5px; color: var(--muted); font-style: italic; }
+.mem {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) 40px minmax(0, 1fr);
+  row-gap: 10px;
+  align-items: center;
+  font: 12px var(--mono);
+}
+.mem .col { font-size: 10.5px; letter-spacing: .14em; color: var(--muted); }
+.mem .paso { grid-column: 1 / -1; color: var(--accent); font-weight: 500; margin-top: 4px; white-space: pre; }
+.mem .var { display: flex; flex-direction: column; gap: 4px; }
+.mem .etq { font-size: 11px; color: var(--muted); }
+.mem .celdas { display: flex; }
+.mem .celdas span { flex: 1; padding: 5px 6px; }
+.mem .stack span { border: 1px solid var(--accent); }
+.mem .stack span + span { border-left: 0; }
+.mem .stack .ptr { background: var(--accent-soft); }
+.mem .heap span { border: 1px solid #9a5b2a; text-align: center; padding: 5px 0; }
+.mem .heap span + span { border-left: 0; }
+.mem .flecha { text-align: center; color: var(--accent); font-size: 16px; padding-top: 16px; }
+.mem .heap-col { display: flex; flex-direction: column; gap: 4px; padding-top: 16px; }
+.mem .nota { font-size: 10.5px; color: var(--muted); font-style: italic; }
+.mem .movida { opacity: .45; }
+.mem .movida .etq { color: var(--err); }
+.mem .movida .celdas { text-decoration: line-through; }
+.mem .movida .stack span { border: 1px dashed var(--muted); }
+.mem .movida .stack span + span { border-left: 0; }
+
+/* ── Nota de advertencia ────────────────────────────── */
+.advertencia {
+  margin: 18px 0;
+  background: var(--err-bg);
+  border-radius: 6px;
+  padding: 14px 18px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.advertencia::before {
+  content: attr(data-titulo);
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--err);
+}
+.advertencia p { margin: 0; font-size: 13.5px; font-style: italic; color: #4a3b39; }
+.advertencia code { font-style: normal; font-size: 12px; background: rgba(255, 255, 255, .55); }
+
+/* ── Ver también ────────────────────────────────────── */
+.ver-tambien {
+  font-size: 14px;
+  border-top: 1.5px solid var(--accent);
+  padding-top: 12px;
+  margin-top: 28px;
+  color: #c9d6d5;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.ver-tambien::before {
+  content: "VER TAMBIÉN";
+  font: 500 11px var(--mono);
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-right: 10px;
+}
+.ver-tambien p { margin: 0; display: inline; }
