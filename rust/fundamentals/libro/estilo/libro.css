@@ -209,32 +209,48 @@ figure.diagrama {
 figure.diagrama figcaption { margin-bottom: 14px; }
 figure.diagrama .titulo { display: block; font-weight: 700; font-size: 15px; }
 figure.diagrama .pie { display: block; font-size: 13.5px; color: var(--muted); font-style: italic; }
-.mem {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) 40px minmax(0, 1fr);
-  row-gap: 10px;
-  align-items: center;
-  font: 12px var(--mono);
-}
-.mem .col { font-size: 10.5px; letter-spacing: .14em; color: var(--muted); }
-.mem .paso { grid-column: 1 / -1; color: var(--accent); font-weight: 500; margin-top: 4px; white-space: pre; }
-.mem .var { display: flex; flex-direction: column; gap: 4px; }
-.mem .etq { font-size: 11px; color: var(--muted); }
-.mem .celdas { display: flex; }
-.mem .celdas span { flex: 1; padding: 5px 6px; }
-.mem .stack span { border: 1px solid var(--accent); }
-.mem .stack span + span { border-left: 0; }
-.mem .stack .ptr { background: var(--accent-soft); }
-.mem .heap span { border: 1px solid #9a5b2a; text-align: center; padding: 5px 0; }
-.mem .heap span + span { border-left: 0; }
-.mem .flecha { text-align: center; color: var(--accent); font-size: 16px; padding-top: 16px; }
-.mem .heap-col { display: flex; flex-direction: column; gap: 4px; padding-top: 16px; }
-.mem .nota { font-size: 10.5px; color: var(--muted); font-style: italic; }
-.mem .movida { opacity: .45; }
-.mem .movida .etq { color: var(--err); }
-.mem .movida .celdas { text-decoration: line-through; }
-.mem .movida .stack span { border: 1px dashed var(--muted); }
-.mem .movida .stack span + span { border-left: 0; }
+/* Diagramas en SVG: cajas con relleno por rol, pasos numerados y flechas.
+   Roles: r-dueno (teal), r-heap (café), r-ref (azul), r-movido (gris), r-err (rojo). */
+svg.dg { display: block; width: 100%; height: auto; }
+.dg text { font-family: var(--mono); font-size: 12px; fill: var(--ink); }
+.dg .col { font-size: 10.5px; letter-spacing: .14em; fill: var(--muted); }
+.dg .cod { font-weight: 500; }
+.dg .val { text-anchor: middle; }
+.dg .tit { font-family: var(--serif); font-weight: 600; font-size: 12.5px; }
+.dg .nota { font-family: var(--serif); font-style: italic; font-size: 11.5px; fill: var(--muted); }
+.dg .num circle { fill: var(--accent); }
+.dg .num text { fill: #ffffff; font-weight: 700; font-size: 11px; text-anchor: middle; }
+.dg .caja { stroke-width: 1.5; }
+.dg .celda { fill: #ffffff; stroke-width: 1; }
+
+.dg .r-dueno .caja { fill: #e8f1f0; stroke: #13807f; }
+.dg .r-dueno .celda { stroke: #13807f; }
+.dg .r-dueno .tit { fill: #0f6f6e; }
+.dg .r-heap .caja { fill: #f7eee6; stroke: #9a5b2a; }
+.dg .r-heap .celda { stroke: #9a5b2a; }
+.dg .r-ref .caja { fill: #e9f0f7; stroke: #2f5f8f; }
+.dg .r-ref .celda { stroke: #2f5f8f; }
+.dg .r-ref .tit { fill: #2f5f8f; }
+.dg .r-err .caja { fill: #f8eeec; stroke: #b0443a; }
+.dg .r-err .val { fill: #b0443a; }
+.dg .r-movido .caja { fill: #f6f7f7; stroke: #9aa3a4; stroke-dasharray: 5 4; }
+.dg .r-movido .celda { stroke: #b9c0c1; stroke-dasharray: 3 3; }
+.dg .r-movido .tit { fill: var(--err); }
+.dg .r-movido .val { fill: #9aa3a4; text-decoration: line-through; }
+
+.dg [class^="fl-"] { fill: none; stroke-width: 1.75; }
+.dg .fl-dueno { stroke: #13807f; }
+.dg .fl-ref { stroke: #2f5f8f; }
+.dg .fl-err { stroke: #b0443a; }
+.dg .pt-dueno { fill: #13807f; }
+.dg .pt-ref { fill: #2f5f8f; }
+.dg .pt-err { fill: #b0443a; }
+
+.dg .panel { fill: none; stroke: var(--rule); stroke-width: 1.5; }
+.dg .p-mal .panel { fill: #fdf8f7; stroke: var(--err-border); }
+.dg .estado { font-weight: 500; font-size: 10.5px; letter-spacing: .12em; }
+.dg .estado.ok { fill: var(--accent); }
+.dg .estado.mal { fill: var(--err); }
 
 /* ── Nota de advertencia ────────────────────────────── */
 .advertencia {
@@ -262,6 +278,8 @@ figure.diagrama .pie { display: block; font-size: 13.5px; color: var(--muted); f
   padding-top: 12px;
   margin-top: 28px;
   color: #c9d6d5;
+  break-before: avoid;
+  page-break-before: avoid;
   break-inside: avoid;
   page-break-inside: avoid;
 }
