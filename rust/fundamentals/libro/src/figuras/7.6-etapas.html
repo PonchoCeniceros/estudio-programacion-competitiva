@@ -1,0 +1,52 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">La expansión ocurre antes de revisar</span><span class="pie">La revisión de tipos solo ve el código expandido, y ahí señala el error.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 226" role="img" aria-label="Cuatro etapas del compilador: tokens, expansión, revisión y ejecutable. Abajo, la invocación mi_vec con 1 y dos se expande en cuatro líneas con dos llamadas a push; la revisión de tipos marca el error E0308 en la línea expandida que empuja el texto dos.">
+
+<g class="r-neutro"><rect class="caja" x="0.75" y="10" width="117" height="48" rx="6"/>
+<text class="tit" x="28" y="30">Tokens</text>
+<text class="nota" x="10" y="49">texto en piezas</text></g>
+<g class="num"><circle cx="14" cy="26" r="9"/><text x="14" y="30">1</text></g>
+
+<g class="r-dueno"><rect class="caja" x="134.5" y="10" width="117" height="48" rx="6"/>
+<text class="tit" x="162" y="30">Expansión</text>
+<text class="nota" x="144" y="49">macros → código</text></g>
+<g class="num"><circle cx="148" cy="26" r="9"/><text x="148" y="30">2</text></g>
+
+<g class="r-neutro"><rect class="caja" x="268.25" y="10" width="117" height="48" rx="6"/>
+<text class="tit" x="296" y="30">Revisión</text>
+<text class="nota" x="278" y="49">tipos, préstamos</text></g>
+<g class="num"><circle cx="282" cy="26" r="9"/><text x="282" y="30">3</text></g>
+
+<g class="r-neutro"><rect class="caja" x="402" y="10" width="117" height="48" rx="6"/>
+<text class="tit" x="430" y="30">Ejecutable</text>
+<text class="nota" x="412" y="49">código máquina</text></g>
+<g class="num"><circle cx="416" cy="26" r="9"/><text x="416" y="30">4</text></g>
+
+<path class="fl-neutro" d="M118,34 H127"/><polygon class="pt-neutro" points="134,34 126,30 126,38"/>
+<path class="fl-neutro" d="M252,34 H261"/><polygon class="pt-neutro" points="268,34 260,30 260,38"/>
+<path class="fl-neutro" d="M386,34 H395"/><polygon class="pt-neutro" points="402,34 394,30 394,38"/>
+
+<text class="col" x="0" y="78">SE ESCRIBE</text>
+<text class="col" x="268" y="78">LLEGA A LA REVISIÓN</text>
+
+<g class="r-neutro"><rect class="caja" x="0.75" y="84" width="230" height="40" rx="6"/>
+<text class="cod" x="12" y="109">mi_vec![1, "dos"]</text></g>
+<text class="nota" x="0" y="142">una sola invocación</text>
+
+<path class="fl-dueno" d="M231,104 H260"/><polygon class="pt-dueno" points="268,104 260,100 260,108"/>
+
+<g class="r-dueno"><rect class="caja" x="268" y="84" width="251" height="92" rx="6"/></g>
+<g class="r-err"><rect class="caja" x="274" y="126" width="122" height="20" rx="3"/></g>
+<text class="cod" x="280" y="104">let mut v = Vec::new();</text>
+<text class="cod" x="280" y="122">v.push(1);</text>
+<text class="cod" x="280" y="140">v.push("dos");</text>
+<text class="cod" x="280" y="158">v</text>
+
+<path class="fl-err" d="M335,147 V182"/><polygon class="pt-err" points="335,190 331,182 339,182"/>
+
+<g class="r-err"><rect class="caja" x="268" y="190" width="251" height="30" rx="6"/>
+<text class="val" x="393.5" y="209">E0308 · expected integer</text></g>
+<text class="nota" x="0" y="198">el error señala una línea</text>
+<text class="nota" x="0" y="214">que no está en el archivo</text>
+</svg>
+</figure>

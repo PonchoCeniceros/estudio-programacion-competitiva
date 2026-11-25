@@ -1,0 +1,33 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Dos errores, un tipo</span><span class="pie">Cada ? convierte el error de su operación con el From que le corresponde. El error que la función construye ya tiene el tipo y no pasa por conversión.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 244" role="img" aria-label="Tres orígenes de error entran al enum ErrorPedido: el ? sobre el parse de u32 entra por From de ParseIntError a la variante Cantidad, el ? sobre el parse de f64 entra por From de ParseFloatError a la variante Precio, y el Err(CantidadCero) entra sin conversión. El enum es el tipo de error del Result que devuelve total.">
+<text class="col" x="24" y="12">LA OPERACIÓN</text>
+<text class="col" x="186" y="12">LA CONVERSIÓN</text>
+<text class="col" x="320" y="12">EL TIPO DE LA FUNCIÓN</text>
+
+<g class="num"><circle cx="10" cy="65" r="9"/><text x="10" y="69">1</text></g>
+<g class="r-neutro"><rect class="caja" x="24" y="50" width="146" height="30" rx="6"/><text class="cod" x="33" y="69">c.parse::&lt;u32&gt;()?</text></g>
+<g class="num"><circle cx="10" cy="105" r="9"/><text x="10" y="109">2</text></g>
+<g class="r-neutro"><rect class="caja" x="24" y="90" width="146" height="30" rx="6"/><text class="cod" x="33" y="109">p.parse::&lt;f64&gt;()?</text></g>
+<g class="num"><circle cx="10" cy="145" r="9"/><text x="10" y="149">3</text></g>
+<g class="r-neutro"><rect class="caja" x="24" y="130" width="146" height="30" rx="6"/><text class="cod" x="33" y="149">Err(CantidadCero)</text></g>
+
+<path class="fl-ref" d="M170,65 H319"/><polygon class="pt-ref" points="327,65 319,61 319,69"/>
+<text x="248" y="58" style="font-size: 10.5px; text-anchor: middle">From&lt;ParseIntError&gt;</text>
+<path class="fl-ref" d="M170,105 H319"/><polygon class="pt-ref" points="327,105 319,101 319,109"/>
+<text x="248" y="98" style="font-size: 10.5px; text-anchor: middle">From&lt;ParseFloatError&gt;</text>
+<path class="fl-neutro" d="M170,145 H319"/><polygon class="pt-neutro" points="327,145 319,141 319,149"/>
+<text class="nota" x="248" y="138" text-anchor="middle">sin conversión</text>
+
+<g class="r-dueno"><rect class="caja" x="320" y="22" width="199" height="150" rx="6"/>
+<text class="tit" x="420" y="40" text-anchor="middle">enum ErrorPedido</text>
+<rect class="celda" x="328" y="52" width="183" height="26" rx="3"/><text class="val" x="420" y="69">Cantidad(ParseIntError)</text>
+<rect class="celda" x="328" y="92" width="183" height="26" rx="3"/><text class="val" x="420" y="109">Precio(ParseFloatError)</text>
+<rect class="celda" x="328" y="132" width="183" height="26" rx="3"/><text class="val" x="420" y="149">CantidadCero</text></g>
+
+<path class="fl-dueno" d="M420,172 V193"/><polygon class="pt-dueno" points="420,200 416,192 424,192"/>
+<g class="r-neutro"><rect class="caja" x="320" y="201" width="199" height="30" rx="6"/><text class="val" x="420" y="220">Result&lt;f64, ErrorPedido&gt;</text></g>
+<text class="nota" x="24" y="206">Quien llama recibe un solo tipo de error</text>
+<text class="nota" x="24" y="222">y puede preguntar con match por cuál entró.</text>
+</svg>
+</figure>

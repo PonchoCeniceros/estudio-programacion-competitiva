@@ -1,0 +1,26 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">La coerción de deref, paso a paso</span><span class="pie">El compilador encadena llamadas a deref hasta que el tipo coincide con el que pide la firma.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 206" role="img" aria-label="imprimir(&amp;etiqueta) recibe un &amp;Etiqueta. El compilador lo convierte a &amp;String con el Deref de Etiqueta y luego a &amp;str con el Deref de String, que es lo que pide la firma.">
+<text class="col" x="0" y="39">SE ESCRIBE</text>
+<text class="cod" x="120" y="39">imprimir(</text>
+<g class="r-ref"><rect class="caja" x="189" y="22" width="84" height="26" rx="6"/><text class="val" x="231" y="39">&amp;etiqueta</text></g>
+<text class="cod" x="277" y="39">)</text>
+<path class="fl-ref" d="M231,48 V76"/><polygon class="pt-ref" points="231,83 227,75 235,75"/>
+<text class="col" x="0" y="103">SE CONVIERTE</text>
+<g class="r-ref"><rect class="caja" x="189" y="86" width="84" height="26" rx="6"/><text class="val" x="231" y="103">&amp;Etiqueta</text></g>
+<path class="fl-ref" d="M273,99 H325"/><polygon class="pt-ref" points="332,99 324,95 324,103"/>
+<text class="idx" x="302" y="92">deref</text>
+<g class="r-ref"><rect class="caja" x="335" y="86" width="70" height="26" rx="6"/><text class="val" x="370" y="103">&amp;String</text></g>
+<path class="fl-ref" d="M405,99 H449"/><polygon class="pt-ref" points="456,99 448,95 448,103"/>
+<text class="idx" x="430" y="92">deref</text>
+<g class="r-dueno"><rect class="caja" x="459" y="86" width="53" height="26" rx="6"/><text class="val" x="485.5" y="103">&amp;str</text></g>
+<text class="idx" x="302" y="128">Target = String</text>
+<text class="idx" x="432" y="128">Target = str</text>
+<text class="col" x="0" y="161">EQUIVALE A</text>
+<text class="cod" x="120" y="161">imprimir(&amp;**etiqueta)</text>
+<text class="nota" x="285" y="161">un * por cada paso</text>
+<text class="col" x="0" y="193">LA FIRMA</text>
+<text class="cod" x="120" y="193">fn imprimir(s: &amp;str)</text>
+<text class="nota" x="285" y="193">pide &amp;str: ahí se detiene</text>
+</svg>
+</figure>

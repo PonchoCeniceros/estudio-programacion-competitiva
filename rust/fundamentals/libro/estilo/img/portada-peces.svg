@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 960" width="672" height="960">
+  <title>Cardumen de la portada</title>
+  <defs>
+    <g id="pez" stroke-linecap="round" stroke-linejoin="round">
+      <!-- relleno: cuerpo y sombra del vientre -->
+      <path d="M22,26 C38,12 62,8 82,14 C90,17 95,21 97,24 C92,30 82,36 64,37 C46,38 32,34 22,26 Z" fill="#a33b2b"/>
+      <path d="M30,30 C44,36 62,38 78,33 C86,30 92,27 97,24 C92,30 82,36 64,37 C46,38 34,35 30,30 Z" fill="#6e241b"/>
+      <path d="M22,26 L7,15 C11,22 11,30 7,38 Z" fill="#a33b2b"/>
+      <!-- rayas -->
+      <g stroke="#ecc2b2" stroke-width="1.5" fill="none">
+        <path d="M45,15 C43,22 43,30 45,36"/>
+        <path d="M52,12 C50,20 50,30 52,37"/>
+        <path d="M59,11 C57,19 57,30 59,37"/>
+        <path d="M66,11 C64,19 64,29 66,36"/>
+        <path d="M73,12 C71,19 71,28 73,35"/>
+      </g>
+      <!-- contorno crema, desfasado del relleno como en una serigrafía -->
+      <g stroke="#ecdcc6" stroke-width="1.7" fill="none" transform="translate(-1.6 -1.8)">
+        <path d="M22,26 C38,12 62,8 82,14 C90,17 95,21 97,24 C92,30 82,36 64,37 C46,38 32,34 22,26 Z"/>
+        <path d="M22,26 L7,15 C11,22 11,30 7,38 Z"/>
+        <path d="M46,11 C47,2 62,0 69,11"/>
+        <path d="M56,37 C56,44 65,45 69,36"/>
+        <path d="M81,15 C78,21 78,29 81,34"/>
+      </g>
+      <circle cx="88" cy="20" r="1.5" fill="#ecdcc6"/>
+    </g>
+  </defs>
+  <use href="#pez" transform="translate(489.4 237.7) scale(0.918) rotate(-7 50 25)"/>
+  <use href="#pez" transform="translate(179.4 254.1) scale(0.476) rotate(3 50 25)"/>
+  <use href="#pez" transform="translate(313.9 309.9) scale(0.640) rotate(-4 50 25)"/>
+  <use href="#pez" transform="translate(533.6 375.5) scale(0.541) rotate(5 50 25)"/>
+  <use href="#pez" transform="translate(126.9 393.5) scale(0.377) rotate(-2 50 25)"/>
+  <use href="#pez" transform="translate(204.0 506.7) scale(0.328) rotate(4 50 25)"/>
+  <use href="#pez" transform="translate(541.8 536.2) scale(0.689) rotate(-3 50 25)"/>
+  <use href="#pez" transform="translate(327.0 592.0) scale(0.508) rotate(6 50 25)"/>
+  <use href="#pez" transform="translate(474.6 662.5) scale(0.426) rotate(-5 50 25)"/>
+  <use href="#pez" transform="translate(110.0 690.0) scale(1.700) rotate(-5 50 25)"/>
+</svg>

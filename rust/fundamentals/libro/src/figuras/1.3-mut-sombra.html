@@ -1,0 +1,19 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">mut frente a shadowing</span><span class="pie">Con mut hay un solo binding y su valor cambia. Con shadowing cada let crea un binding nuevo y el anterior queda oculto.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 264" role="img" aria-label="A la izquierda, let mut x = 5 y luego x = x * 2: la misma x pasa de 5 a 10. A la derecha, let x = 5 y luego let x = x * 2: aparece una segunda x con 10 y la primera, con 5, queda oculta.">
+<g class="p-ok"><rect class="panel" x="0.75" y="0.75" width="248.5" height="262.5" rx="6"/><text class="tit" x="125" y="22" text-anchor="middle">mut: un solo binding</text>
+<g class="num"><circle cx="24" cy="48" r="9"/><text x="24" y="52">1</text></g><text class="cod" x="40" y="52">let mut x = 5;</text>
+<g class="r-dueno"><rect class="caja" x="16" y="62" width="218" height="40" rx="6"/><text class="tit" x="30" y="86">x: i32</text><rect class="celda" x="150" y="69" width="70" height="26" rx="3"/><text class="val" x="185" y="86">5</text></g>
+<g class="num"><circle cx="24" cy="128" r="9"/><text x="24" y="132">2</text></g><text class="cod" x="40" y="132">x = x * 2;</text>
+<g class="r-dueno"><rect class="caja" x="16" y="142" width="218" height="40" rx="6"/><text class="tit" x="30" y="166">x: i32</text><rect class="celda" x="150" y="149" width="70" height="26" rx="3"/><text class="val" x="185" y="166">10</text></g>
+<text class="nota" x="125" y="214" text-anchor="middle">la misma x: cambió su valor</text>
+<text class="nota" x="125" y="232" text-anchor="middle">el tipo sigue siendo i32</text></g>
+<g class="p-ok"><rect class="panel" x="270.75" y="0.75" width="248.5" height="262.5" rx="6"/><text class="tit" x="395" y="22" text-anchor="middle">shadowing: un binding por let</text>
+<g class="num"><circle cx="294" cy="48" r="9"/><text x="294" y="52">1</text></g><text class="cod" x="310" y="52">let x = 5;</text>
+<g class="r-dueno"><rect class="caja" x="286" y="62" width="218" height="40" rx="6"/><text class="tit" x="300" y="86">x: i32</text><rect class="celda" x="420" y="69" width="70" height="26" rx="3"/><text class="val" x="455" y="86">5</text></g>
+<g class="num"><circle cx="294" cy="128" r="9"/><text x="294" y="132">2</text></g><text class="cod" x="310" y="132">let x = x * 2;</text>
+<g class="r-neutro"><rect class="caja" x="286" y="142" width="218" height="40" rx="6" stroke-dasharray="5 4"/><text class="tit" x="300" y="166" style="fill: #9aa3a4">x · oculta</text><rect class="celda" x="420" y="149" width="70" height="26" rx="3"/><text class="val gris" x="455" y="166">5</text></g>
+<g class="r-dueno"><rect class="caja" x="286" y="192" width="218" height="40" rx="6"/><text class="tit" x="300" y="216">x: i32 · nueva</text><rect class="celda" x="420" y="199" width="70" height="26" rx="3"/><text class="val" x="455" y="216">10</text></g>
+<text class="nota" x="395" y="252" text-anchor="middle">desde aquí, x es la nueva</text></g>
+</svg>
+</figure>

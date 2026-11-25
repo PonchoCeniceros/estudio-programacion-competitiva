@@ -1,0 +1,29 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">La referencia sobrevive a su dato</span><span class="pie">Cada barra cubre los renglones donde algo está vivo. La de r se sale de la de x.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 206" role="img" aria-label="El dato x vive del paso 1 al paso 3. La referencia r se crea en el paso 2 y se usa en el paso 4, cuando x ya se liberó.">
+<g transform="translate(0,-20)">
+<text class="cod" x="28" y="46" xml:space="preserve" style="white-space:pre">fn main() {</text>
+<text class="cod" x="28" y="70" xml:space="preserve" style="white-space:pre">    let r;</text>
+<text class="cod" x="28" y="94" xml:space="preserve" style="white-space:pre">    {</text>
+<g class="num"><circle cx="10" cy="114" r="9"/><text x="10" y="118">1</text></g>
+<text class="cod" x="28" y="118" xml:space="preserve" style="white-space:pre">        let x = 5;</text>
+<g class="num"><circle cx="10" cy="138" r="9"/><text x="10" y="142">2</text></g>
+<text class="cod" x="28" y="142" xml:space="preserve" style="white-space:pre">        r = &amp;x;</text>
+<g class="num"><circle cx="10" cy="162" r="9"/><text x="10" y="166">3</text></g>
+<text class="cod" x="28" y="166" xml:space="preserve" style="white-space:pre">    }</text>
+<g class="num"><circle cx="10" cy="186" r="9"/><text x="10" y="190">4</text></g>
+<text class="cod" x="28" y="190" xml:space="preserve" style="white-space:pre">    println!(&quot;{r}&quot;);</text>
+<text class="cod" x="28" y="214" xml:space="preserve" style="white-space:pre">}</text>
+<g class="r-dueno"><rect class="caja" x="240" y="105" width="44" height="66" rx="6"/></g>
+<text class="val" x="262" y="94">x</text>
+<g class="r-ref"><rect class="caja" x="304" y="129" width="44" height="42" rx="6"/></g>
+<text class="val" x="326" y="118">r</text>
+<g class="r-err"><rect class="caja" x="304" y="177" width="44" height="20" rx="6"/></g>
+<path d="M190,174 H516" style="fill:none;stroke:#b0443a;stroke-width:1.25;stroke-dasharray:4 3"/>
+<text class="nota" x="366" y="118">el dato existe</text>
+<text class="nota" x="366" y="142">r apunta a x</text>
+<text class="nota" x="366" y="164">aquí se libera x</text>
+<text class="nota" x="366" y="192" style="fill:#b0443a">r se usa sin dato</text>
+</g>
+</svg>
+</figure>

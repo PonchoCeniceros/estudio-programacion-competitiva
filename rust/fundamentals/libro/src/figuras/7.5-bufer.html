@@ -1,0 +1,25 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Sin búfer y con búfer</span><span class="pie">Sin búfer, cada lectura pequeña cruza al sistema operativo. Con BufReader, una llamada llena un bloque en memoria y las lecturas siguientes salen de ahí.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 236" role="img" aria-label="Arriba, el programa hace cuatro lecturas y cada una es una flecha desde el archivo del sistema operativo. Abajo, una sola flecha llena el búfer en memoria y de él salen cuatro lecturas hacia el programa.">
+<text class="col" x="0" y="12">PROGRAMA</text><text class="col" x="519" y="12" text-anchor="end">SISTEMA OPERATIVO</text>
+<g class="r-neutro"><rect class="caja" x="400.75" y="24" width="118.5" height="186" rx="6"/><text class="tit" x="460" y="112" text-anchor="middle">archivo</text><text class="nota" x="460" y="130" text-anchor="middle">en disco</text></g>
+<text class="col" x="0" y="42">SIN BÚFER</text>
+<g class="r-dueno"><rect class="caja" x="0.75" y="50" width="129.5" height="56" rx="6"/><text class="tit" x="65" y="74" text-anchor="middle">programa</text><text class="nota" x="65" y="92" text-anchor="middle">4 lecturas</text></g>
+<path class="fl-neutro" d="M400,58 H138"/><polygon class="pt-neutro" points="130,58 138,54 138,62"/>
+<path class="fl-neutro" d="M400,71 H138"/><polygon class="pt-neutro" points="130,71 138,67 138,75"/>
+<path class="fl-neutro" d="M400,84 H138"/><polygon class="pt-neutro" points="130,84 138,80 138,88"/>
+<path class="fl-neutro" d="M400,97 H138"/><polygon class="pt-neutro" points="130,97 138,93 138,101"/>
+<text class="nota" x="265" y="120" text-anchor="middle">4 llamadas al sistema</text>
+<text class="col" x="0" y="146">CON BUFREADER</text>
+<g class="r-dueno"><rect class="caja" x="0.75" y="154" width="129.5" height="56" rx="6"/><text class="tit" x="65" y="178" text-anchor="middle">programa</text><text class="nota" x="65" y="196" text-anchor="middle">4 lecturas</text></g>
+<g class="r-heap"><rect class="caja" x="200.75" y="154" width="129.5" height="56" rx="6"/><text class="tit" x="265" y="172" text-anchor="middle">búfer</text><rect class="celda" x="210" y="180" width="26" height="20" rx="3"/><rect class="celda" x="238" y="180" width="26" height="20" rx="3"/><rect class="celda" x="266" y="180" width="26" height="20" rx="3"/><rect class="celda" x="294" y="180" width="26" height="20" rx="3"/></g>
+<path class="fl-dueno" d="M400,182 H338"/><polygon class="pt-dueno" points="330,182 338,178 338,186"/>
+<path class="fl-neutro" d="M200,162 H138"/><polygon class="pt-neutro" points="130,162 138,158 138,166"/>
+<path class="fl-neutro" d="M200,175 H138"/><polygon class="pt-neutro" points="130,175 138,171 138,179"/>
+<path class="fl-neutro" d="M200,188 H138"/><polygon class="pt-neutro" points="130,188 138,184 138,192"/>
+<path class="fl-neutro" d="M200,201 H138"/><polygon class="pt-neutro" points="130,201 138,197 138,205"/>
+<text class="nota" x="365" y="174" text-anchor="middle">1 llamada</text>
+<text class="nota" x="165" y="226" text-anchor="middle">desde memoria</text>
+<text class="nota" x="365" y="226" text-anchor="middle">un bloque entero</text>
+</svg>
+</figure>

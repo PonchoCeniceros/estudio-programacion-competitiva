@@ -1,0 +1,28 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Quitar el primero: Vec frente a VecDeque</span><span class="pie">El Vec recorre todos los elementos para cerrar el hueco. El VecDeque solo avanza el índice de su frente.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 236" role="img" aria-label="En un Vec, remove(0) copia cada elemento un lugar a la izquierda. En un VecDeque, pop_front deja los elementos donde estaban y mueve el índice del frente al siguiente lugar.">
+<g class="num"><circle cx="10" cy="30" r="9"/><text x="10" y="34">1</text></g><text class="cod" x="28" y="34">let primero = v.remove(0);</text>
+<g class="r-heap"><rect class="caja" x="28" y="44" width="288" height="70" rx="6"/><g class="r-movido"><rect class="celda" x="40" y="78" width="40" height="26" rx="3"/><text class="val" x="60" y="95">10</text></g><rect class="celda" x="86" y="78" width="40" height="26" rx="3"/><text class="val" x="106" y="95">20</text><rect class="celda" x="132" y="78" width="40" height="26" rx="3"/><text class="val" x="152" y="95">30</text><rect class="celda" x="178" y="78" width="40" height="26" rx="3"/><text class="val" x="198" y="95">40</text><rect class="celda" x="224" y="78" width="40" height="26" rx="3"/><text class="val" x="244" y="95">50</text><rect class="celda" x="270" y="78" width="40" height="26" rx="3"/></g>
+<path class="fl-dueno" d="M100,78 Q83.0,52 66,77"/>
+<polygon class="pt-dueno" points="66.0,77.0 67.0,69.2 72.8,73.2"/>
+<path class="fl-dueno" d="M146,78 Q129.0,52 112,77"/>
+<polygon class="pt-dueno" points="112.0,77.0 113.0,69.2 118.8,73.2"/>
+<path class="fl-dueno" d="M192,78 Q175.0,52 158,77"/>
+<polygon class="pt-dueno" points="158.0,77.0 159.0,69.2 164.8,73.2"/>
+<path class="fl-dueno" d="M238,78 Q221.0,52 204,77"/>
+<polygon class="pt-dueno" points="204.0,77.0 205.0,69.2 210.8,73.2"/>
+<text class="tit" x="332" y="66">Vec</text>
+<text class="nota" x="332" y="84">el 10 sale y los otros cuatro se</text>
+<text class="nota" x="332" y="99">copian un lugar a la izquierda.</text>
+<text class="nota" x="332" y="114">Con n elementos, n − 1 copias.</text>
+<g class="num"><circle cx="10" cy="146" r="9"/><text x="10" y="150">2</text></g><text class="cod" x="28" y="150">let primero = cola.pop_front();</text>
+<g class="r-heap"><rect class="caja" x="28" y="160" width="288" height="72" rx="6"/><g class="r-movido"><rect class="celda" x="40" y="170" width="40" height="26" rx="3"/><text class="val" x="60" y="187">10</text></g><rect class="celda" x="86" y="170" width="40" height="26" rx="3"/><text class="val" x="106" y="187">20</text><rect class="celda" x="132" y="170" width="40" height="26" rx="3"/><text class="val" x="152" y="187">30</text><rect class="celda" x="178" y="170" width="40" height="26" rx="3"/><text class="val" x="198" y="187">40</text><rect class="celda" x="224" y="170" width="40" height="26" rx="3"/><text class="val" x="244" y="187">50</text><rect class="celda" x="270" y="170" width="40" height="26" rx="3"/></g>
+<polygon class="pt-neutro" points="60,201 55,209 65,209"/><text class="idx" x="60" y="222">antes</text>
+<polygon class="pt-dueno" points="106,201 101,209 111,209"/><text class="idx" x="106" y="222" style="fill:#13807f">frente</text>
+<path class="fl-dueno" d="M70,206 H90"/><polygon class="pt-dueno" points="97,206 89,202 89,210"/>
+<text class="tit" x="332" y="182">VecDeque</text>
+<text class="nota" x="332" y="200">nada se mueve: el índice del</text>
+<text class="nota" x="332" y="215">frente avanza un lugar. El costo</text>
+<text class="nota" x="332" y="230">no depende de n.</text>
+</svg>
+</figure>

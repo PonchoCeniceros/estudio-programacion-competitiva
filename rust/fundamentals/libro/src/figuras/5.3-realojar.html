@@ -1,0 +1,23 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">push puede mover los elementos</span><span class="pie">Sin capacidad libre, push reserva un bloque mayor, copia los elementos y libera el viejo. Una referencia al bloque viejo quedaría colgando.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 386" role="img" aria-label="Antes del push, v tiene len 3 y cap 3 y primero apunta a su primera celda. Después, v apunta a un bloque nuevo con cap 6, el viejo está liberado y primero apuntaría a él.">
+<text class="col" x="28" y="12">STACK</text><text class="col" x="240" y="12">HEAP</text>
+<g class="num"><circle cx="10" cy="30" r="9"/><text x="10" y="34">1</text></g><text class="cod" x="28" y="34">let mut v = vec![1, 2, 3];  let primero = &amp;v[0];</text>
+<g class="r-dueno"><rect class="caja" x="28" y="44" width="190" height="62" rx="6"/><text class="tit" x="40" y="62">v · dueño</text><rect class="celda" x="40" y="70" width="54" height="26" rx="3"/><text class="val" x="67" y="87">ptr</text><rect class="celda" x="98" y="70" width="54" height="26" rx="3"/><text class="val" x="125" y="87">len 3</text><rect class="celda" x="156" y="70" width="54" height="26" rx="3"/><text class="val" x="183" y="87">cap 3</text></g>
+<g class="r-heap"><rect class="caja" x="232" y="52" width="93.0" height="46" rx="6"/><rect class="celda" x="240.0" y="62" width="26" height="26" rx="3"/><text class="val" x="253.0" y="79">1</text><rect class="celda" x="267.5" y="62" width="26" height="26" rx="3"/><text class="val" x="280.5" y="79">2</text><rect class="celda" x="295.0" y="62" width="26" height="26" rx="3"/><text class="val" x="308.0" y="79">3</text></g>
+<path class="fl-dueno" d="M218,75 H225"/><polygon class="pt-dueno" points="232,75 224,71 224,79"/>
+<text class="nota" x="335.0" y="79">lleno: len = cap</text>
+<g class="r-ref"><rect class="caja" x="28" y="116" width="190" height="62" rx="6"/><text class="tit" x="40" y="134">primero · &amp;v[0]</text><rect class="celda" x="40" y="142" width="54" height="26" rx="3"/><text class="val" x="67" y="159">ptr</text></g>
+<path class="fl-ref" d="M218,147 H253 V106"/><polygon class="pt-ref" points="253,98 249,106 257,106"/>
+<g class="num"><circle cx="10" cy="212" r="9"/><text x="10" y="216">2</text></g><text class="cod" x="28" y="216">v.push(4);   // no cabe: hace falta otro bloque</text>
+<g class="r-dueno"><rect class="caja" x="28" y="226" width="190" height="62" rx="6"/><text class="tit" x="40" y="244">v · dueño</text><rect class="celda" x="40" y="252" width="54" height="26" rx="3"/><text class="val" x="67" y="269">ptr</text><rect class="celda" x="98" y="252" width="54" height="26" rx="3"/><text class="val" x="125" y="269">len 4</text><rect class="celda" x="156" y="252" width="54" height="26" rx="3"/><text class="val" x="183" y="269">cap 6</text></g>
+<g class="r-heap"><rect class="caja" x="232" y="234" width="175.5" height="46" rx="6"/><rect class="celda" x="240.0" y="244" width="26" height="26" rx="3"/><text class="val" x="253.0" y="261">1</text><rect class="celda" x="267.5" y="244" width="26" height="26" rx="3"/><text class="val" x="280.5" y="261">2</text><rect class="celda" x="295.0" y="244" width="26" height="26" rx="3"/><text class="val" x="308.0" y="261">3</text><rect class="celda" x="322.5" y="244" width="26" height="26" rx="3"/><text class="val" x="335.5" y="261">4</text><rect class="celda" x="350.0" y="244" width="26" height="26" rx="3" style="stroke-dasharray: 3 3"/><rect class="celda" x="377.5" y="244" width="26" height="26" rx="3" style="stroke-dasharray: 3 3"/></g>
+<path class="fl-dueno" d="M218,257 H225"/><polygon class="pt-dueno" points="232,257 224,253 224,261"/>
+<text class="nota" x="417.5" y="261">bloque nuevo</text>
+<g class="r-movido"><rect class="caja" x="232" y="304" width="93.0" height="46" rx="6"/><rect class="celda" x="240.0" y="314" width="26" height="26" rx="3"/><text class="val" x="253.0" y="331">1</text><rect class="celda" x="267.5" y="314" width="26" height="26" rx="3"/><text class="val" x="280.5" y="331">2</text><rect class="celda" x="295.0" y="314" width="26" height="26" rx="3"/><text class="val" x="308.0" y="331">3</text></g>
+<text class="nota" x="335.0" y="331">bloque viejo: liberado</text>
+<g class="r-err"><rect class="caja" x="28" y="296" width="190" height="62" rx="6"/><text class="tit" x="40" y="314">primero · colgaría</text><rect class="celda" x="40" y="322" width="54" height="26" rx="3"/><text class="val" x="67" y="339">ptr</text></g>
+<path class="fl-err" d="M218,327 H225"/><polygon class="pt-err" points="232,327 224,323 224,331"/>
+<text class="nota" x="232" y="374">primero apuntaría a memoria ya devuelta</text>
+</svg>
+</figure>

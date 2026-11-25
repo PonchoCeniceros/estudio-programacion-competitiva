@@ -1,0 +1,18 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Qué queda en opt después del match</span><span class="pie">Sobre opt, el patrón mueve el String a s. Sobre &amp;opt, s es un préstamo y opt sigue completa.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 250" role="img" aria-label="A la izquierda, match opt mueve el String a s y opt queda movida en parte. A la derecha, match &amp;opt liga s como referencia al String, que sigue dentro de opt.">
+<text class="col" x="28" y="12">MATCH OPT</text><text class="col" x="280" y="12">MATCH &amp;OPT</text>
+<text class="cod" x="28" y="36">Some(s) =&gt; …</text><text class="nota" x="130" y="36">s: String</text>
+<text class="cod" x="280" y="36">Some(s) =&gt; …</text><text class="nota" x="382" y="36">s: &amp;String</text>
+<g class="r-movido"><rect class="caja" x="28" y="50" width="212" height="62" rx="6"/><text class="tit" x="40" y="68">opt · movida en parte</text><rect class="celda" x="40" y="76" width="188" height="26" rx="3"/><text class="val" x="134" y="93">Some("hola")</text></g>
+<path class="fl-dueno" d="M134,112 V136"/><polygon class="pt-dueno" points="134,143 130,135 138,135"/>
+<text class="nota" x="144" y="131">se mueve</text>
+<g class="r-dueno"><rect class="caja" x="28" y="144" width="212" height="62" rx="6"/><text class="tit" x="40" y="162">s · dueña del String</text><rect class="celda" x="40" y="170" width="188" height="26" rx="3"/><text class="val" x="134" y="187">"hola"</text></g>
+<g class="r-dueno"><rect class="caja" x="280" y="50" width="212" height="62" rx="6"/><text class="tit" x="292" y="68">opt · intacta</text><rect class="celda" x="292" y="76" width="188" height="26" rx="3"/><text class="val" x="386" y="93">Some("hola")</text></g>
+<g class="r-ref"><rect class="caja" x="280" y="144" width="212" height="62" rx="6"/><text class="tit" x="292" y="162">s · préstamo</text><rect class="celda" x="292" y="170" width="60" height="26" rx="3"/><text class="val" x="322" y="187">ptr</text></g>
+<path class="fl-ref" d="M322,144 V112"/><polygon class="pt-ref" points="322,105 318,113 326,113"/>
+<text class="nota" x="332" y="131">apunta al String de opt</text>
+<text class="estado mal" x="28" y="228">✗ OPT YA NO SE PUEDE USAR</text>
+<text class="estado ok" x="280" y="228">✓ OPT SIGUE VALIENDO</text>
+</svg>
+</figure>

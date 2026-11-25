@@ -1,0 +1,27 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Caso inválido: una entrada muere antes</span><span class="pie">L(t) termina en el paso 4 y arrastra a 'a. El uso de r en el paso 5 queda fuera.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 276" role="img" aria-label="L(s) llega al final de main, L(t) termina en el paso 4 y &#x27;a con ella. L(r) va del paso 3 al paso 5 y se sale de &#x27;a.">
+<text class="cod" x="28" y="46" xml:space="preserve" style="white-space:pre">fn main() {</text>
+<g class="num"><circle cx="10" cy="66" r="9"/><text x="10" y="70">1</text></g>
+<text class="cod" x="28" y="70" xml:space="preserve" style="white-space:pre">    let s = String::from(&quot;hello world&quot;);</text>
+<text class="cod" x="28" y="94" xml:space="preserve" style="white-space:pre">    let r;</text>
+<text class="cod" x="28" y="118" xml:space="preserve" style="white-space:pre">    {</text>
+<g class="num"><circle cx="10" cy="138" r="9"/><text x="10" y="142">2</text></g>
+<text class="cod" x="28" y="142" xml:space="preserve" style="white-space:pre">        let t = String::from(&quot;hola&quot;);</text>
+<g class="num"><circle cx="10" cy="162" r="9"/><text x="10" y="166">3</text></g>
+<text class="cod" x="28" y="166" xml:space="preserve" style="white-space:pre">        r = mas_larga(&amp;s, &amp;t);</text>
+<g class="num"><circle cx="10" cy="186" r="9"/><text x="10" y="190">4</text></g>
+<text class="cod" x="28" y="190" xml:space="preserve" style="white-space:pre">    }</text>
+<g class="num"><circle cx="10" cy="210" r="9"/><text x="10" y="214">5</text></g>
+<text class="cod" x="28" y="214" xml:space="preserve" style="white-space:pre">    println!(&quot;{r}&quot;);</text>
+<text class="cod" x="28" y="238" xml:space="preserve" style="white-space:pre">}</text>
+<g class="r-dueno"><rect class="caja" x="322" y="58" width="38" height="184" rx="6"/></g><text class="val" x="341.0" y="18">L(s)</text>
+<g class="r-dueno"><rect class="caja" x="372" y="130" width="38" height="64" rx="6"/></g><text class="val" x="391.0" y="18">L(t)</text>
+<g class="r-dueno"><rect class="caja" x="422" y="130" width="38" height="64" rx="6" style="fill:#ffffff;stroke-dasharray:5 3"/></g><text class="val" x="441.0" y="18">&#x27;a</text>
+<g class="r-ref"><rect class="caja" x="472" y="154" width="38" height="41" rx="6"/></g><text class="val" x="491.0" y="18">L(r)</text>
+<g class="r-err"><rect class="caja" x="472" y="201" width="38" height="20" rx="6"/></g>
+<path d="M80,198 H516" style="fill:none;stroke:#b0443a;stroke-width:1.25;stroke-dasharray:4 3"/>
+<text class="nota" x="92" y="190">se libera t: aquí termina 'a</text>
+<text class="estado mal" x="260" y="268" text-anchor="middle">✗ max(L(r)) = 5 QUEDA FUERA DE 'a</text>
+</svg>
+</figure>

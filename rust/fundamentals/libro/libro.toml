@@ -1,0 +1,120 @@
+# Manifiesto del libro: portada, secciones y capítulos.
+# Un capítulo sin `archivo` está pendiente: aparece en el índice, sin página.
+
+titulo = "Rust"
+subtitulo = "Cuaderno de campo"
+edicion = "2ª edición"
+autor = "Giovanny Alfonso Chávez Ceniceros"
+idioma = "es"
+descripcion = """
+Rust promete programas rápidos y sin errores de memoria, y cobra esa promesa \
+con ideas que no existen en otros lenguajes: ownership, préstamos, lifetimes. \
+Este cuaderno las recorre en orden, de los tokens a un servidor asíncrono, sin \
+usar nada antes de explicarlo."""
+descripcion2 = """
+Cada capítulo sigue el mismo camino: el problema, las reglas, una figura, las \
+reglas una por una con los errores reales del compilador, y un ejemplo de \
+aplicación."""
+prefacio = "src/0-preliminares/prefacio.md"
+agradecimientos = "src/0-preliminares/agradecimientos.md"
+referencias = "src/0-preliminares/referencias.md"
+
+[[secciones]]
+numero = 1
+nombre = "Fundamentos"
+capitulos = [
+  { numero = "1.1", titulo = "Tokens", archivo = "src/1-fundamentos/1.1-tokens.md" },
+  { numero = "1.2", titulo = "Tipos escalares", archivo = "src/1-fundamentos/1.2-tipos-escalares.md" },
+  { numero = "1.3", titulo = "Variables", archivo = "src/1-fundamentos/1.3-variables.md" },
+  { numero = "1.4", titulo = "Todo es una expresión", archivo = "src/1-fundamentos/1.4-expresiones.md" },
+  { numero = "1.5", titulo = "Funciones", archivo = "src/1-fundamentos/1.5-funciones.md" },
+  { numero = "1.6", titulo = "Control de flujo", archivo = "src/1-fundamentos/1.6-control-flujo.md" },
+]
+
+[[secciones]]
+numero = 2
+nombre = "Tipos compuestos"
+capitulos = [
+  { numero = "2.1", titulo = "Tuplas y arreglos", archivo = "src/2-tipos-compuestos/2.1-tuplas-arreglos.md" },
+  { numero = "2.2", titulo = "Structs", archivo = "src/2-tipos-compuestos/2.2-structs.md" },
+  { numero = "2.3", titulo = "Enums", archivo = "src/2-tipos-compuestos/2.3-enums.md" },
+  { numero = "2.4", titulo = "Patrones", archivo = "src/2-tipos-compuestos/2.4-patrones.md" },
+]
+
+[[secciones]]
+numero = 3
+nombre = "Memoria"
+capitulos = [
+  { numero = "3.1", titulo = "Stack y heap", archivo = "src/3-memoria/3.1-stack-heap.md" },
+  { numero = "3.2", titulo = "Ownership", archivo = "src/3-memoria/3.2-ownership.md" },
+  { numero = "3.3", titulo = "Borrowing", archivo = "src/3-memoria/3.3-borrowing.md" },
+  { numero = "3.4", titulo = "Strings", archivo = "src/3-memoria/3.4-strings.md" },
+  { numero = "3.5", titulo = "impl y métodos", archivo = "src/3-memoria/3.5-impl-metodos.md" },
+  { numero = "3.6", titulo = "Lifetimes", archivo = "src/3-memoria/3.6-lifetimes.md" },
+]
+
+[[secciones]]
+numero = 4
+nombre = "Abstracciones de costo cero"
+capitulos = [
+  { numero = "4.1", titulo = "Traits", archivo = "src/4-abstracciones/4.1-traits.md" },
+  { numero = "4.2", titulo = "Generics", archivo = "src/4-abstracciones/4.2-generics.md" },
+  { numero = "4.3", titulo = "Closures", archivo = "src/4-abstracciones/4.3-closures.md" },
+  { numero = "4.4", titulo = "Traits de la stdlib", archivo = "src/4-abstracciones/4.4-traits-stdlib.md" },
+  { numero = "4.5", titulo = "Operadores y conversiones", archivo = "src/4-abstracciones/4.5-operadores.md" },
+]
+
+[[secciones]]
+numero = 5
+nombre = "Vocabulario stdlib"
+capitulos = [
+  { numero = "5.1", titulo = "Option", archivo = "src/5-stdlib/5.1-option.md" },
+  { numero = "5.2", titulo = "Result", archivo = "src/5-stdlib/5.2-result.md" },
+  { numero = "5.3", titulo = "Vec", archivo = "src/5-stdlib/5.3-vec.md" },
+  { numero = "5.4", titulo = "HashMap y HashSet", archivo = "src/5-stdlib/5.4-hashmap-hashset.md" },
+  { numero = "5.5", titulo = "Otras colecciones", archivo = "src/5-stdlib/5.5-otras-colecciones.md" },
+  { numero = "5.6", titulo = "Iteradores", archivo = "src/5-stdlib/5.6-iteradores.md" },
+  { numero = "5.7", titulo = "Iteradores a fondo", archivo = "src/5-stdlib/5.7-iteradores-a-fondo.md" },
+]
+
+[[secciones]]
+numero = 6
+nombre = "Indirección"
+capitulos = [
+  { numero = "6.1", titulo = "Box y listas enlazadas", archivo = "src/6-indireccion/6.1-box-listas.md" },
+  { numero = "6.2", titulo = "Rc, RefCell y árboles", archivo = "src/6-indireccion/6.2-rc-refcell-arboles.md" },
+  { numero = "6.3", titulo = "Despacho dinámico", archivo = "src/6-indireccion/6.3-dyn.md" },
+]
+
+[[secciones]]
+numero = 7
+nombre = "Proyectos"
+capitulos = [
+  { numero = "7.1", titulo = "Módulos", archivo = "src/7-proyectos/7.1-modulos.md" },
+  { numero = "7.2", titulo = "Crates y Cargo", archivo = "src/7-proyectos/7.2-crates-cargo.md" },
+  { numero = "7.3", titulo = "Tests", archivo = "src/7-proyectos/7.3-tests.md" },
+  { numero = "7.4", titulo = "Manejo de errores idiomático", archivo = "src/7-proyectos/7.4-errores-idiomaticos.md" },
+  { numero = "7.5", titulo = "Entrada y salida", archivo = "src/7-proyectos/7.5-entrada-salida.md" },
+  { numero = "7.6", titulo = "Macros y atributos", archivo = "src/7-proyectos/7.6-macros-atributos.md" },
+]
+
+[[secciones]]
+numero = 8
+nombre = "Concurrencia"
+capitulos = [
+  { numero = "8.1", titulo = "Hilos", archivo = "src/8-concurrencia/8.1-hilos.md" },
+  { numero = "8.2", titulo = "Send y Sync", archivo = "src/8-concurrencia/8.2-send-sync.md" },
+  { numero = "8.3", titulo = "Estado compartido", archivo = "src/8-concurrencia/8.3-estado-compartido.md" },
+]
+
+[[secciones]]
+numero = 9
+nombre = "Async"
+capitulos = [
+  { numero = "9.1", titulo = "El problema", archivo = "src/9-async/9.1-el-problema.md" },
+  { numero = "9.2", titulo = "async, await y Future", archivo = "src/9-async/9.2-async-await.md" },
+  { numero = "9.3", titulo = "El runtime", archivo = "src/9-async/9.3-runtime.md" },
+  { numero = "9.4", titulo = "Send en las tareas", archivo = "src/9-async/9.4-send-en-tareas.md" },
+  { numero = "9.5", titulo = "async o hilos", archivo = "src/9-async/9.5-async-o-hilos.md" },
+  { numero = "9.6", titulo = "Un servidor mínimo", archivo = "src/9-async/9.6-un-servidor-minimo.md" },
+]

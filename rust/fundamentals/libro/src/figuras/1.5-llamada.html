@@ -1,0 +1,19 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Entrada y salida de una llamada</span><span class="pie">El argumento entra por el parámetro. El cuerpo calcula, y su último valor sale por el retorno y ocupa el lugar de la llamada.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 176" role="img" aria-label="En doble(21), el argumento 21 entra al parámetro n de la función doble; el cuerpo calcula n * 2 y el valor 42 sale por el retorno.">
+<text class="col" x="0" y="12">ARGUMENTO</text><text class="col" x="144" y="12">LA FUNCIÓN</text><text class="col" x="454" y="12">RETORNO</text>
+<rect class="celda" x="10" y="60" width="56" height="26" rx="3" stroke="#9aa3a4"/><text class="val" x="38" y="77">21</text>
+<path class="fl-dueno" d="M66,73 H136"/><polygon class="pt-dueno" points="143,73 135,69 135,77"/>
+<g class="r-dueno"><rect class="caja" x="144" y="24" width="232" height="92" rx="6"/><text class="tit" x="156" y="44">fn doble(n: i32) -&gt; i32</text>
+<rect class="celda" x="156" y="60" width="64" height="26" rx="3"/><text class="val" x="188" y="77">n = 21</text>
+<text class="val" x="272" y="77">n * 2</text>
+<rect class="celda" x="322" y="60" width="42" height="26" rx="3"/><text class="val" x="343" y="77">42</text>
+<text class="idx" x="188" y="104">parámetro</text><text class="idx" x="272" y="104">cuerpo</text><text class="idx" x="343" y="104">resultado</text></g>
+<path class="fl-neutro" d="M220,73 H238"/><polygon class="pt-neutro" points="244,73 237,69.5 237,76.5"/>
+<path class="fl-neutro" d="M300,73 H314"/><polygon class="pt-neutro" points="320,73 313,69.5 313,76.5"/>
+<path class="fl-dueno" d="M376,73 H446"/><polygon class="pt-dueno" points="453,73 445,69 445,77"/>
+<g class="r-dueno"><rect class="caja" x="454" y="60" width="56" height="26" rx="6"/><text class="val" x="482" y="77">42</text></g>
+<text class="cod" x="0" y="156">let r = doble(21);</text>
+<text class="nota" x="190" y="156">la llamada es una expresión: vale 42, y r lo guarda</text>
+</svg>
+</figure>

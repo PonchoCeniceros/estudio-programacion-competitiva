@@ -1,0 +1,15 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Una tupla y un arreglo, casilla por casilla</span><span class="pie">La tupla tiene un tipo por posición y se lee con un número fijo. El arreglo repite un tipo y se lee con un índice.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 230" role="img" aria-label="La tupla t tiene tres casillas de tipos i32, char y bool, leídas con t.0, t.1 y t.2. El arreglo a tiene cinco casillas i32 iguales, leídas con a[0] a a[4].">
+<text class="cod" x="0" y="14">let t = (42, 'z', true);</text>
+<g class="r-dueno"><rect class="caja" x="0" y="24" width="236" height="80" rx="6"/><text class="tit" x="12" y="42">t · (i32, char, bool)</text><rect class="celda" x="12" y="52" width="72" height="26" rx="3"/><text class="val" x="48" y="69">42</text><rect class="celda" x="90" y="52" width="56" height="26" rx="3"/><text class="val" x="118" y="69">'z'</text><rect class="celda" x="152" y="52" width="72" height="26" rx="3"/><text class="val" x="188" y="69">true</text><text class="idx" x="48" y="94">t.0 · i32</text><text class="idx" x="118" y="94">t.1 · char</text><text class="idx" x="188" y="94">t.2 · bool</text></g>
+<text class="nota" x="290" y="58">tipos distintos</text>
+<text class="nota" x="290" y="74">posición escrita en el código</text>
+<text class="nota" x="290" y="90">t.3 no compila</text>
+<text class="cod" x="0" y="136">let a = [3, 1, 4, 1, 5];</text>
+<g class="r-dueno"><rect class="caja" x="0" y="146" width="278" height="80" rx="6"/><text class="tit" x="12" y="164">a · [i32; 5]</text><rect class="celda" x="12" y="174" width="46" height="26" rx="3"/><text class="val" x="35" y="191">3</text><rect class="celda" x="64" y="174" width="46" height="26" rx="3"/><text class="val" x="87" y="191">1</text><rect class="celda" x="116" y="174" width="46" height="26" rx="3"/><text class="val" x="139" y="191">4</text><rect class="celda" x="168" y="174" width="46" height="26" rx="3"/><text class="val" x="191" y="191">1</text><rect class="celda" x="220" y="174" width="46" height="26" rx="3"/><text class="val" x="243" y="191">5</text><text class="idx" x="35" y="216">a[0]</text><text class="idx" x="87" y="216">a[1]</text><text class="idx" x="139" y="216">a[2]</text><text class="idx" x="191" y="216">a[3]</text><text class="idx" x="243" y="216">a[4]</text></g>
+<text class="nota" x="290" y="180">un solo tipo, casillas contiguas</text>
+<text class="nota" x="290" y="196">índice calculable al ejecutar</text>
+<text class="nota" x="290" y="212">a[5] hace panic</text>
+</svg>
+</figure>

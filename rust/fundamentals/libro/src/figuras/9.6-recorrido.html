@@ -1,0 +1,55 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">El recorrido de una petición</span><span class="pie">Cinco pasos entre la conexión y la respuesta. A la derecha, los capítulos que explican cada uno. Cada conexión recorre el mismo camino en su propia tarea.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 354" role="img" aria-label="Cinco cajas en columna unidas por flechas: la conexión llega al TcpListener, el runtime le da una tarea, el enrutador elige el manejador, el manejador toma el candado del contador y la respuesta sale como JSON. Cada caja lleva a la derecha los números de los capítulos que la explican. A la izquierda de la cuarta caja, el contador compartido Arc Mutex u64 aparece como el único dato común a todas las tareas.">
+<text class="col" x="24" y="12">EL PASO</text>
+<text class="col" x="509" y="12" text-anchor="end">LO EXPLICA</text>
+
+<g class="num"><circle cx="10" cy="45" r="9"/><text x="10" y="49">1</text></g>
+<g class="r-neutro"><rect class="caja" x="24" y="22" width="495" height="46" rx="6"/>
+<text class="tit" x="36" y="40">La conexión llega</text>
+<text class="cod" x="36" y="58">TcpListener::bind(…).await?</text></g>
+<text x="509" y="40" style="font-size: 10.5px; text-anchor: end; fill: #0f6f6e">9.2 async, await y Future</text>
+<text x="509" y="57" style="font-size: 10.5px; text-anchor: end; fill: #0f6f6e">7.4 Manejo de errores idiomático</text>
+
+<path class="fl-neutro" d="M150,68 V79"/><polygon class="pt-neutro" points="150,86 146,78 154,78"/>
+
+<g class="num"><circle cx="10" cy="109" r="9"/><text x="10" y="113">2</text></g>
+<g class="r-dueno"><rect class="caja" x="24" y="86" width="495" height="46" rx="6"/>
+<text class="tit" x="36" y="104">El runtime le da una tarea</text>
+<text class="cod" x="36" y="122">axum::serve(escucha, app).await?</text></g>
+<text x="509" y="104" style="font-size: 10.5px; text-anchor: end; fill: #0f6f6e">9.3 El runtime</text>
+<text x="509" y="121" style="font-size: 10.5px; text-anchor: end; fill: #0f6f6e">9.4 Send en las tareas</text>
+
+<path class="fl-dueno" d="M150,132 V143"/><polygon class="pt-dueno" points="150,150 146,142 154,142"/>
+
+<g class="num"><circle cx="10" cy="173" r="9"/><text x="10" y="177">3</text></g>
+<g class="r-neutro"><rect class="caja" x="24" y="150" width="495" height="46" rx="6"/>
+<text class="tit" x="36" y="168">El enrutador elige el manejador</text>
+<text class="cod" x="36" y="186">.route("/visitas", get(visitas))</text></g>
+<text x="509" y="168" style="font-size: 10.5px; text-anchor: end; fill: #0f6f6e">4.1 Traits</text>
+<text x="509" y="185" style="font-size: 10.5px; text-anchor: end; fill: #0f6f6e">4.3 Closures</text>
+
+<path class="fl-neutro" d="M150,196 V207"/><polygon class="pt-neutro" points="150,214 146,206 154,206"/>
+
+<g class="num"><circle cx="10" cy="237" r="9"/><text x="10" y="241">4</text></g>
+<g class="r-heap"><rect class="caja" x="24" y="214" width="495" height="46" rx="6"/>
+<text class="tit" x="36" y="232" style="fill: #9a5b2a">El manejador toma el candado</text>
+<text class="cod" x="36" y="250">c.lock().unwrap()</text>
+<rect class="celda" x="222" y="222" width="140" height="30" rx="3"/>
+<text class="val" x="292" y="241">Arc&lt;Mutex&lt;u64&gt;&gt;</text></g>
+<path class="fl-neutro" d="M166,246 H213"/><polygon class="pt-neutro" points="221,246 213,242 213,250"/>
+<text x="509" y="232" style="font-size: 10.5px; text-anchor: end; fill: #0f6f6e">8.3 Estado compartido</text>
+<text x="509" y="249" style="font-size: 10.5px; text-anchor: end; fill: #0f6f6e">8.2 Send y Sync</text>
+
+<path class="fl-neutro" d="M150,260 V271"/><polygon class="pt-neutro" points="150,278 146,270 154,270"/>
+
+<g class="num"><circle cx="10" cy="301" r="9"/><text x="10" y="305">5</text></g>
+<g class="r-neutro"><rect class="caja" x="24" y="278" width="495" height="46" rx="6"/>
+<text class="tit" x="36" y="296">La respuesta sale</text>
+<text class="cod" x="36" y="314">Json(json!({ "visitas": n }))</text></g>
+<text x="509" y="296" style="font-size: 10.5px; text-anchor: end; fill: #0f6f6e">7.6 Macros y atributos</text>
+<text x="509" y="313" style="font-size: 10.5px; text-anchor: end; fill: #0f6f6e">4.1 Traits</text>
+
+<text class="nota" x="24" y="346">El contador es lo único que las tareas comparten. El candado se suelta antes del paso 5.</text>
+</svg>
+</figure>

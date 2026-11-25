@@ -1,0 +1,34 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Quitar el primer nodo con dos take()</span><span class="pie">Cada take() deja un None donde estaba el valor. Los nodos no se mueven en el heap: cambia quién es su dueño.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400" role="img" aria-label="Al entrar, lista posee los tres nodos. Tras el primer take, lista vale None y primero posee la cadena. Tras el segundo, lista posee los nodos 2 y 3, y primero posee solo el nodo 1.">
+<text class="col" x="28" y="12">STACK</text><text class="col" x="222" y="12">HEAP</text>
+<g class="num"><circle cx="10" cy="34" r="9"/><text x="10" y="38">1</text></g><text class="cod" x="28" y="38">quitar_primero(&amp;mut lista)</text><text class="nota" x="250" y="38">al entrar</text>
+<g class="r-dueno"><rect class="caja" x="28" y="48" width="152" height="46" rx="6"/><text class="tit" x="40" y="76">lista</text><rect class="celda" x="104" y="58" width="64" height="26" rx="3"/><text class="val" x="136" y="75">Some</text></g>
+<g class="r-heap"><rect class="caja" x="222" y="48" width="82" height="46" rx="6"/><rect class="celda" x="230" y="58" width="24" height="26" rx="3"/><text class="val" x="242" y="75">1</text><rect class="celda" x="258" y="58" width="38" height="26" rx="3"/><text class="val" x="277" y="75">Some</text></g>
+<g class="r-heap"><rect class="caja" x="326" y="48" width="82" height="46" rx="6"/><rect class="celda" x="334" y="58" width="24" height="26" rx="3"/><text class="val" x="346" y="75">2</text><rect class="celda" x="362" y="58" width="38" height="26" rx="3"/><text class="val" x="381" y="75">Some</text></g>
+<g class="r-heap"><rect class="caja" x="430" y="48" width="82" height="46" rx="6"/><rect class="celda" x="438" y="58" width="24" height="26" rx="3"/><text class="val" x="450" y="75">3</text><rect class="celda" x="466" y="58" width="38" height="26" rx="3"/><text class="val" x="485" y="75">None</text></g>
+<path class="fl-dueno" d="M180,71 H212"/><polygon class="pt-dueno" points="219,71 211,67 211,75"/>
+<path class="fl-dueno" d="M304,71 H316"/><polygon class="pt-dueno" points="323,71 315,67 315,75"/>
+<path class="fl-dueno" d="M408,71 H420"/><polygon class="pt-dueno" points="427,71 419,67 419,75"/>
+<g class="num"><circle cx="10" cy="126" r="9"/><text x="10" y="130">2</text></g><text class="cod" x="28" y="130">lista.take()</text><text class="nota" x="128" y="130">lista queda en None, sin hueco</text>
+<g class="r-dueno"><rect class="caja" x="28" y="140" width="152" height="46" rx="6"/><text class="tit" x="40" y="168">lista</text><rect class="celda" x="104" y="150" width="64" height="26" rx="3"/><text class="val" x="136" y="167">None</text></g>
+<text class="nota" x="222" y="167">no apunta a nada, pero es un Option completo</text>
+<g class="r-dueno"><rect class="caja" x="28" y="194" width="152" height="46" rx="6"/><text class="tit" x="40" y="222">primero</text><rect class="celda" x="104" y="204" width="64" height="26" rx="3"/><text class="val" x="136" y="221">Some</text></g>
+<g class="r-heap"><rect class="caja" x="222" y="194" width="82" height="46" rx="6"/><rect class="celda" x="230" y="204" width="24" height="26" rx="3"/><text class="val" x="242" y="221">1</text><rect class="celda" x="258" y="204" width="38" height="26" rx="3"/><text class="val" x="277" y="221">Some</text></g>
+<g class="r-heap"><rect class="caja" x="326" y="194" width="82" height="46" rx="6"/><rect class="celda" x="334" y="204" width="24" height="26" rx="3"/><text class="val" x="346" y="221">2</text><rect class="celda" x="362" y="204" width="38" height="26" rx="3"/><text class="val" x="381" y="221">Some</text></g>
+<g class="r-heap"><rect class="caja" x="430" y="194" width="82" height="46" rx="6"/><rect class="celda" x="438" y="204" width="24" height="26" rx="3"/><text class="val" x="450" y="221">3</text><rect class="celda" x="466" y="204" width="38" height="26" rx="3"/><text class="val" x="485" y="221">None</text></g>
+<path class="fl-dueno" d="M180,217 H212"/><polygon class="pt-dueno" points="219,217 211,213 211,221"/>
+<path class="fl-dueno" d="M304,217 H316"/><polygon class="pt-dueno" points="323,217 315,213 315,221"/>
+<path class="fl-dueno" d="M408,217 H420"/><polygon class="pt-dueno" points="427,217 419,213 419,221"/>
+<g class="num"><circle cx="10" cy="272" r="9"/><text x="10" y="276">3</text></g><text class="cod" x="28" y="276">*lista = primero.siguiente.take()</text><text class="nota" x="280" y="276">el resto vuelve</text>
+<g class="r-dueno"><rect class="caja" x="28" y="286" width="152" height="46" rx="6"/><text class="tit" x="40" y="314">lista</text><rect class="celda" x="104" y="296" width="64" height="26" rx="3"/><text class="val" x="136" y="313">Some</text></g>
+<g class="r-heap"><rect class="caja" x="326" y="286" width="82" height="46" rx="6"/><rect class="celda" x="334" y="296" width="24" height="26" rx="3"/><text class="val" x="346" y="313">2</text><rect class="celda" x="362" y="296" width="38" height="26" rx="3"/><text class="val" x="381" y="313">Some</text></g>
+<g class="r-heap"><rect class="caja" x="430" y="286" width="82" height="46" rx="6"/><rect class="celda" x="438" y="296" width="24" height="26" rx="3"/><text class="val" x="450" y="313">3</text><rect class="celda" x="466" y="296" width="38" height="26" rx="3"/><text class="val" x="485" y="313">None</text></g>
+<path class="fl-dueno" d="M180,309 H316"/><polygon class="pt-dueno" points="323,309 315,305 315,313"/>
+<path class="fl-dueno" d="M408,309 H420"/><polygon class="pt-dueno" points="427,309 419,305 419,313"/>
+<g class="r-dueno"><rect class="caja" x="28" y="340" width="152" height="46" rx="6"/><text class="tit" x="40" y="368">primero</text><rect class="celda" x="104" y="350" width="64" height="26" rx="3"/><text class="val" x="136" y="367">Some</text></g>
+<g class="r-heap"><rect class="caja" x="222" y="340" width="82" height="46" rx="6"/><rect class="celda" x="230" y="350" width="24" height="26" rx="3"/><text class="val" x="242" y="367">1</text><rect class="celda" x="258" y="350" width="38" height="26" rx="3"/><text class="val" x="277" y="367">None</text></g>
+<path class="fl-dueno" d="M180,363 H212"/><polygon class="pt-dueno" points="219,363 211,359 211,367"/>
+<text class="nota" x="326" y="367">suelto: ya no es dueño del resto</text>
+</svg>
+</figure>

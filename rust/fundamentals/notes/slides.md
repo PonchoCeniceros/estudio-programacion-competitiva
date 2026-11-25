@@ -66,22 +66,22 @@ layout: center
   </div>
 
   <div>
-    <a href="/125" data-sec="4"><b class="cp-toc-title">4 · Abstracciones de costo cero</b></a>
+    <a href="/133" data-sec="4"><b class="cp-toc-title">4 · Abstracciones de costo cero</b></a>
     <div class="cp-muted">traits · generics · closures · traits de la stdlib · operadores</div>
   </div>
 
   <div>
-    <a href="/159" data-sec="5"><b class="cp-toc-title">5 · Vocabulario de la stdlib</b></a>
+    <a href="/167" data-sec="5"><b class="cp-toc-title">5 · Vocabulario de la stdlib</b></a>
     <div class="cp-muted">Option · Result · Vec · HashMap · otras colecciones · iteradores</div>
   </div>
 
   <div>
-    <a href="/209" data-sec="6"><b class="cp-toc-title">6 · Indirección</b></a>
+    <a href="/217" data-sec="6"><b class="cp-toc-title">6 · Indirección</b></a>
     <div class="cp-muted">Box y listas · Rc, RefCell y árboles · despacho dinámico · el mapa de la sección</div>
   </div>
 
   <div>
-    <a href="/245" data-sec="7"><b class="cp-toc-title">7 · Proyectos</b></a>
+    <a href="/253" data-sec="7"><b class="cp-toc-title">7 · Proyectos</b></a>
     <div class="cp-muted">módulos · crates y Cargo · tests · errores idiomáticos</div>
   </div>
 
@@ -90,12 +90,12 @@ layout: center
   </div>
 
   <div>
-    <a href="/285" data-sec="8"><b class="cp-toc-title">8 · Concurrencia</b></a>
+    <a href="/293" data-sec="8"><b class="cp-toc-title">8 · Concurrencia</b></a>
     <div class="cp-muted">la sección 6 entre hilos · hilos · Send y Sync · Arc y Mutex</div>
   </div>
 
   <div>
-    <a href="/302" data-sec="9"><b class="cp-toc-title">9 · Async</b></a>
+    <a href="/310" data-sec="9"><b class="cp-toc-title">9 · Async</b></a>
     <div class="cp-muted">async y await · Future · el runtime · Send en las tareas · un servidor mínimo</div>
   </div>
 

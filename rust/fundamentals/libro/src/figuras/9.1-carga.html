@@ -1,0 +1,34 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">La misma carga, dos veces</span><span class="pie">Tres peticiones que casi todo el tiempo esperan. Arriba, cada espera ocupa un hilo. Abajo, un solo hilo atiende los tramos activos de las tres.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-label="Arriba, tres hilos: cada uno atiende una petición y pasa casi toda su barra esperando. Abajo, un solo hilo ejecuta uno tras otro los tramos activos de tres tareas; mientras esperan, las tareas quedan apartadas y el hilo queda libre.">
+<text class="col" x="0" y="12">UN HILO POR PETICIÓN</text>
+<text class="tit" x="0" y="37">hilo 1</text>
+<g class="r-movido"><rect class="caja" x="100" y="22" width="270" height="22" rx="6"/><text class="nota" x="235" y="37" text-anchor="middle">esperando: no calcula nada</text></g>
+<g class="r-dueno"><rect class="caja" x="70" y="22" width="30" height="22" rx="6"/><text class="val" x="85" y="37">A</text><rect class="caja" x="370" y="22" width="30" height="22" rx="6"/><text class="val" x="385" y="37">A</text></g>
+<text class="tit" x="0" y="65">hilo 2</text>
+<g class="r-movido"><rect class="caja" x="130" y="50" width="270" height="22" rx="6"/><text class="nota" x="265" y="65" text-anchor="middle">esperando: no calcula nada</text></g>
+<g class="r-ref"><rect class="caja" x="100" y="50" width="30" height="22" rx="6"/><text class="val" x="115" y="65">B</text><rect class="caja" x="400" y="50" width="30" height="22" rx="6"/><text class="val" x="415" y="65">B</text></g>
+<text class="tit" x="0" y="93">hilo 3</text>
+<g class="r-movido"><rect class="caja" x="160" y="78" width="270" height="22" rx="6"/><text class="nota" x="295" y="93" text-anchor="middle">esperando: no calcula nada</text></g>
+<g class="r-heap"><rect class="caja" x="130" y="78" width="30" height="22" rx="6"/><text class="val" x="145" y="93">C</text><rect class="caja" x="430" y="78" width="30" height="22" rx="6"/><text class="val" x="445" y="93">C</text></g>
+<text class="nota" x="265" y="122" text-anchor="middle">tres stacks reservados; el sistema operativo alterna entre los tres hilos</text>
+<text class="col" x="0" y="154">UN HILO, TRES TAREAS</text>
+<text class="tit" x="0" y="179">hilo 1</text>
+<g class="r-neutro"><rect class="caja" x="160" y="164" width="210" height="22" rx="6" style="stroke-dasharray: 5 4; stroke: #9aa3a4"/><text class="nota" x="265" y="179" text-anchor="middle">libre para otras tareas</text></g>
+<g class="r-dueno"><rect class="caja" x="70" y="164" width="30" height="22" rx="6"/><text class="val" x="85" y="179">A</text><rect class="caja" x="370" y="164" width="30" height="22" rx="6"/><text class="val" x="385" y="179">A</text></g>
+<g class="r-ref"><rect class="caja" x="100" y="164" width="30" height="22" rx="6"/><text class="val" x="115" y="179">B</text><rect class="caja" x="400" y="164" width="30" height="22" rx="6"/><text class="val" x="415" y="179">B</text></g>
+<g class="r-heap"><rect class="caja" x="130" y="164" width="30" height="22" rx="6"/><text class="val" x="145" y="179">C</text><rect class="caja" x="430" y="164" width="30" height="22" rx="6"/><text class="val" x="445" y="179">C</text></g>
+<text class="nota" x="0" y="209">tarea A</text>
+<path class="fl-neutro" d="M100,205 H370" style="stroke-dasharray: 3 4; stroke-width: 1.25"/>
+<g class="r-dueno"><rect class="caja" x="70" y="198" width="30" height="14" rx="4"/><rect class="caja" x="370" y="198" width="30" height="14" rx="4"/></g>
+<text class="nota" x="0" y="229">tarea B</text>
+<path class="fl-neutro" d="M130,225 H400" style="stroke-dasharray: 3 4; stroke-width: 1.25"/>
+<g class="r-ref"><rect class="caja" x="100" y="218" width="30" height="14" rx="4"/><rect class="caja" x="400" y="218" width="30" height="14" rx="4"/></g>
+<text class="nota" x="0" y="249">tarea C</text>
+<path class="fl-neutro" d="M160,245 H430" style="stroke-dasharray: 3 4; stroke-width: 1.25"/>
+<g class="r-heap"><rect class="caja" x="130" y="238" width="30" height="14" rx="4"/><rect class="caja" x="430" y="238" width="30" height="14" rx="4"/></g>
+<text class="nota" x="265" y="272" text-anchor="middle">línea punteada: la tarea espera apartada, sin ocupar el hilo</text>
+<text class="col" x="0" y="294">TIEMPO</text>
+<path class="fl-neutro" d="M70,290 H452"/><polygon class="pt-neutro" points="460,290 452,286 452,294"/>
+</svg>
+</figure>

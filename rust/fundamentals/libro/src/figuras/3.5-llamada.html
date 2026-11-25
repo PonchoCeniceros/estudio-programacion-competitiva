@@ -1,0 +1,21 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">La llamada, desplegada</span><span class="pie">Lo que está antes del punto pasa como primer argumento, con el préstamo que pide la firma.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 176" role="img" aria-label="caja.cambiar(10) equivale a Caja::cambiar(&amp;mut caja, 10): caja pasa como primer argumento, prestada con &amp;mut, y 10 pasa como segundo.">
+<text class="col" x="0" y="39">SE ESCRIBE</text>
+<g class="r-dueno"><rect class="caja" x="241" y="22" width="52" height="26" rx="6"/><text class="val" x="267" y="39">caja</text></g>
+<text class="cod" x="297" y="39">.cambiar(</text>
+<rect class="celda" x="366" y="22" width="34" height="26" rx="3" stroke="#9aa3a4"/><text class="val" x="383" y="39">10</text>
+<text class="cod" x="404" y="39">)</text>
+<path class="fl-ref" d="M267,48 V90"/><polygon class="pt-ref" points="267,97 263,89 271,89"/>
+<path class="fl-val" stroke="#9aa3a4" d="M383,48 V72 H357 V90"/><polygon points="357,97 353,89 361,89" fill="#9aa3a4"/>
+<text class="col" x="0" y="117">EQUIVALE A</text>
+<text class="cod" x="120" y="117">Caja::cambiar(</text>
+<g class="r-ref"><rect class="caja" x="225" y="100" width="84" height="26" rx="6"/><text class="val" x="267" y="117">&amp;mut caja</text></g>
+<text class="cod" x="313" y="117">,</text>
+<rect class="celda" x="340" y="100" width="34" height="26" rx="3" stroke="#9aa3a4"/><text class="val" x="357" y="117">10</text>
+<text class="cod" x="378" y="117">)</text>
+<text class="col" x="0" y="161">LA FIRMA</text>
+<text class="cod" x="120" y="161">fn cambiar(&amp;mut self, n: i32)</text>
+<text class="nota" x="345" y="161">de aquí sale el &amp;mut</text>
+</svg>
+</figure>

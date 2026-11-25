@@ -1,0 +1,26 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Una tarea que cambia de hilo</span><span class="pie">En el .await la tarea cede. Lo que sigue vivo queda guardado en el futuro, y el futuro entero pasa al hilo que la retoma.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 232" role="img" aria-label="La tarea corre en el hilo A hasta un .await; el futuro, con su estado y un Rc como campos, pasa al hilo B, que la retoma. El campo Rc está marcado como error porque no es Send.">
+<text class="col" x="0" y="42">HILO A</text>
+<path class="fl-neutro" d="M62,38 H520" style="stroke-width:1"/>
+<g class="r-dueno"><rect class="caja" x="70" y="22" width="170" height="32" rx="6"/><text class="val" x="155" y="42">let n = Rc::new(5);</text></g>
+<g class="r-neutro"><rect class="caja" x="252" y="22" width="118" height="32" rx="6"/><text class="val" x="311" y="42">pausa().await</text></g>
+<text class="nota" x="380" y="30">la tarea cede</text>
+
+<path class="fl-neutro" d="M311,54 V76"/><polygon class="pt-neutro" points="311,84 307,76 315,76"/>
+<text class="nota" x="110" y="72">guarda lo que sigue vivo</text>
+
+<g class="r-neutro"><rect class="caja" x="150" y="86" width="230" height="68" rx="6"/><text class="tit" x="162" y="104">el futuro de tarea()</text><rect class="celda" x="160" y="114" width="118" height="28" rx="3"/><text class="val" x="219" y="132">estado: .await</text></g>
+<g class="r-err"><rect class="caja" x="286" y="114" width="84" height="28" rx="3"/><text class="val" x="328" y="132">n: Rc&lt;i32&gt;</text></g>
+<text class="estado mal" x="392" y="124">✗ Rc NO ES SEND</text>
+<text class="nota" x="392" y="140">el futuro tampoco</text>
+
+<path class="fl-err" d="M311,154 V176"/><polygon class="pt-err" points="311,184 307,176 315,176"/>
+<text class="nota" x="322" y="172">el futuro viaja al otro hilo</text>
+
+<text class="col" x="0" y="208">HILO B</text>
+<path class="fl-neutro" d="M62,204 H520" style="stroke-width:1"/>
+<g class="r-dueno"><rect class="caja" x="252" y="188" width="170" height="32" rx="6"/><text class="val" x="337" y="208">println!("{n}");</text></g>
+<text class="nota" x="432" y="196">la retoma</text>
+</svg>
+</figure>

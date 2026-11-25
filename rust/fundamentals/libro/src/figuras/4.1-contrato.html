@@ -1,0 +1,20 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">El trait como contrato</span><span class="pie">Dos tipos implementan el trait y la función los acepta. El tercero no lo implementa, y su llamada no compila.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 220" role="img" aria-label="Punto y Usuario implementan el trait Descriptible, y la función mostrar, que pide &amp;impl Descriptible, acepta a los dos. Factura no implementa el trait y la llamada con ella da el error E0277.">
+<g class="r-dueno"><rect class="caja" x="1" y="1" width="150" height="30" rx="6"/><text class="val" x="76" y="20">struct Punto</text></g>
+<g class="r-dueno"><rect class="caja" x="170" y="1" width="150" height="30" rx="6"/><text class="val" x="245" y="20">struct Usuario</text></g>
+<g class="r-neutro"><rect class="caja" x="369" y="1" width="150" height="30" rx="6"/><text class="val" x="444" y="20">struct Factura</text></g>
+<path class="fl-dueno" d="M76,31 V71"/><polygon class="pt-dueno" points="76,78 72,70 80,70"/>
+<path class="fl-dueno" d="M245,31 V71"/><polygon class="pt-dueno" points="245,78 241,70 249,70"/>
+<text class="nota" x="160.5" y="58" text-anchor="middle">implementan el trait</text>
+<g class="r-neutro"><rect class="caja" x="1" y="80" width="319" height="62" rx="6"/><text class="tit" x="13" y="99">trait Descriptible</text>
+<rect class="celda" x="13" y="107" width="295" height="26" rx="3"/><text class="val" x="160.5" y="124">fn describir(&amp;self) -> String;</text></g>
+<path class="fl-dueno" d="M160.5,142 V176"/><polygon class="pt-dueno" points="160.5,183 156.5,175 164.5,175"/>
+<text class="nota" x="172" y="165">la función los acepta</text>
+<g class="r-ref"><rect class="caja" x="1" y="184" width="319" height="34" rx="6"/><text class="val" x="160.5" y="205">fn mostrar(item: &amp;impl Descriptible)</text></g>
+<path class="fl-err" d="M444,31 V201 H336"/><polygon class="pt-err" points="328,201 336,197 336,205"/>
+<text class="estado mal" x="384" y="150" text-anchor="middle">E0277</text>
+<text class="nota" x="384" y="168" text-anchor="middle">no implementa</text>
+<text class="nota" x="384" y="183" text-anchor="middle">el trait</text>
+</svg>
+</figure>

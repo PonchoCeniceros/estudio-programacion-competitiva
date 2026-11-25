@@ -1,0 +1,42 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">El futuro de <code>total()</code> como máquina de estados</span><span class="pie">Cada <code>poll</code> corre el código hasta el siguiente <code>.await</code>. Si el futuro esperado responde <code>Pending</code>, el estado no cambia; si responde <code>Ready</code>, el código sigue.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 252" role="img" aria-label="Tres estados en fila: Inicio, que no guarda nada; Espera 1, que guarda el futuro de leer(1); y Espera 2, que guarda la variable a y el futuro de leer(2). Un poll lleva de Inicio a Espera 1. En cada espera, Pending vuelve al mismo estado y Ready avanza al siguiente. De Espera 2, Ready lleva a Terminado, que entrega Ready(a + b).">
+<text class="col" x="0" y="12">ESTADOS</text>
+
+<path class="fl-neutro" d="M238,64 C238,28 282,28 282,56"/><polygon class="pt-neutro" points="282,64 278,56 286,56"/>
+<text class="val" x="260" y="28">Pending</text>
+<path class="fl-neutro" d="M431,64 C431,28 475,28 475,56"/><polygon class="pt-neutro" points="475,64 471,56 479,56"/>
+<text class="val" x="453" y="28">Pending</text>
+
+<g class="r-neutro"><rect class="caja" x="1" y="64" width="132" height="104" rx="6"/>
+<text class="tit" x="11" y="82">Inicio</text>
+<text class="nota" x="11" y="100">sin empezar</text>
+<text class="val gris" x="67" y="127">no guarda nada</text></g>
+
+<g class="r-dueno"><rect class="caja" x="194" y="64" width="132" height="104" rx="6"/>
+<text class="tit" x="204" y="82">Espera 1</text>
+<text class="nota" x="204" y="100">en el primer .await</text>
+<rect class="celda" x="202" y="110" width="116" height="24" rx="3"/><text class="val" x="260" y="126">futuro leer(1)</text></g>
+
+<g class="r-dueno"><rect class="caja" x="387" y="64" width="132" height="104" rx="6"/>
+<text class="tit" x="397" y="82">Espera 2</text>
+<text class="nota" x="397" y="100">en el segundo .await</text>
+<rect class="celda" x="395" y="110" width="116" height="24" rx="3"/><text class="val" x="453" y="126">a: u32</text>
+<rect class="celda" x="395" y="138" width="116" height="24" rx="3"/><text class="val" x="453" y="154">futuro leer(2)</text></g>
+
+<path class="fl-dueno" d="M133,116 H186"/><polygon class="pt-dueno" points="194,116 186,112 186,120"/>
+<text class="idx" x="163" y="108">poll</text>
+<path class="fl-dueno" d="M326,116 H379"/><polygon class="pt-dueno" points="387,116 379,112 379,120"/>
+<text class="idx" x="356" y="108">Ready(a)</text>
+
+<path class="fl-dueno" d="M453,168 V202"/><polygon class="pt-dueno" points="453,210 449,202 457,202"/>
+<text class="idx" x="482" y="190">Ready(b)</text>
+<g class="r-neutro"><rect class="caja" x="387" y="210" width="132" height="40" rx="6"/>
+<text class="tit" x="397" y="226">Terminado</text>
+<text class="cod" x="397" y="243">Ready(a + b)</text></g>
+
+<text class="nota" x="0" y="212">Pending: total() también responde Pending y espera otro poll.</text>
+<text class="nota" x="0" y="230">Ready: el valor se liga, el futuro esperado se destruye</text>
+<text class="nota" x="0" y="246">y el código corre hasta el siguiente .await.</text>
+</svg>
+</figure>

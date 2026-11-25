@@ -1,0 +1,28 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Cómo se prueba un match</span><span class="pie">Las ramas se prueban en orden. Un valor en el patrón filtra; un nombre liga lo que encuentre.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 282" role="img" aria-label="El valor Punto x 0, y 7 se prueba contra cuatro ramas. La primera no encaja porque y no es 0. La segunda encaja y liga y a 7. La tercera y la cuarta no se prueban.">
+<text class="col" x="28" y="12">VALOR</text><text class="col" x="316" y="12">RESULTADO</text>
+<g class="r-dueno"><rect class="caja" x="28" y="20" width="272" height="30" rx="6"/><text class="val" x="164" y="40">Punto { x: 0, y: 7 }</text></g>
+<text class="nota" x="316" y="39">entra al match</text>
+<path class="fl-dueno" d="M164,50 V59"/><polygon class="pt-dueno" points="164,66 160,58 168,58"/>
+<g class="num"><circle cx="10" cy="82" r="9"/><text x="10" y="86">1</text></g>
+<g class="r-err"><rect class="caja" x="28" y="66" width="272" height="32" rx="6"/></g>
+<text class="val" x="164" y="87">Punto { x: <tspan fill="#9a5b2a" font-weight="700">0</tspan>, y: <tspan fill="#9a5b2a" font-weight="700">0</tspan> }</text>
+<text class="estado mal" x="316" y="79">✗ NO ENCAJA</text><text class="nota" x="316" y="94">y vale 7, no 0</text>
+<path class="fl-dueno" d="M164,98 V109"/><polygon class="pt-dueno" points="164,116 160,108 168,108"/>
+<g class="num"><circle cx="10" cy="132" r="9"/><text x="10" y="136">2</text></g>
+<g class="r-dueno"><rect class="caja" x="28" y="116" width="272" height="32" rx="6"/></g>
+<text class="val" x="164" y="137">Punto { x: <tspan fill="#9a5b2a" font-weight="700">0</tspan>, <tspan fill="#2f5f8f" font-weight="700">y</tspan> }</text>
+<text class="estado ok" x="316" y="129">✓ ENCAJA</text><text class="nota" x="316" y="144">x: 0 filtra · y liga el 7</text>
+<g class="num"><circle cx="10" cy="182" r="9"/><text x="10" y="186">3</text></g>
+<g class="r-movido"><rect class="caja" x="28" y="166" width="272" height="32" rx="6"/></g>
+<text class="val" x="164" y="187" style="fill:#9aa3a4">Punto { x, y: 0 }</text>
+<text class="nota" x="316" y="187">no se prueba</text>
+<g class="num"><circle cx="10" cy="232" r="9"/><text x="10" y="236">4</text></g>
+<g class="r-movido"><rect class="caja" x="28" y="216" width="272" height="32" rx="6"/></g>
+<text class="val" x="164" y="237" style="fill:#9aa3a4">Punto { x, y }</text>
+<text class="nota" x="316" y="237">no se prueba</text>
+<rect x="28" y="262" width="10" height="10" rx="2" fill="#9a5b2a"/><text class="nota" x="44" y="271">valor: filtra</text>
+<rect x="140" y="262" width="10" height="10" rx="2" fill="#2f5f8f"/><text class="nota" x="156" y="271">nombre: liga</text>
+</svg>
+</figure>
