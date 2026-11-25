@@ -118,7 +118,7 @@ def resaltar_salida(texto: str) -> str:
 
 # ── Preprocesado del Markdown ─────────────────────────────────────────────────
 
-BLOQUE = re.compile(r"^```([\w,]*)\n(.*?)^```\n", re.M | re.S)
+BLOQUE = re.compile(r"^```([^\n`]*)\n(.*?)^```\n", re.M | re.S)
 
 
 def capitulos():
@@ -148,6 +148,8 @@ def preprocesar(sec: dict, cap: dict) -> str:
     # agrupa con la salida del compilador que lo sigue, si la hay.
     def bloque_html(m_codigo, m_salida=None):
         info, codigo = m_codigo[1], m_codigo[2].rstrip("\n")
+        if info.startswith("{"):          # ```{=html} y similares: pasan tal cual a Pandoc
+            return m_codigo[0]
         if info.startswith("rust"):
             cuerpo = resaltar_rust(codigo)
         else:

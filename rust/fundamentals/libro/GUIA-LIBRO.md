@@ -59,7 +59,18 @@ Siempre en este orden, con estos títulos:
    lectura. Cada punto abre con una frase en negrita que termina en punto.
 7. **`::: ver-tambien`** con tres a cinco referencias.
 
-Largo: 1,000 a 1,700 palabras de prosa, 8 a 12 páginas en el PDF.
+Largo: 1,000 a 1,700 palabras de prosa, 8 a 12 páginas en el PDF. Un capítulo
+denso puede llegar a 15 o 16; más que eso, se recorta.
+
+Como los bloques de código, las figuras y las cajas no se parten entre páginas, un
+bloque que no cabe salta entero y deja un hueco. Para no inflar el paginado:
+
+- La prosa que presenta un bloque va antes del bloque, no después.
+- Cuando un ejemplo repite una declaración ya mostrada, la repetición puede ir en
+  una línea (`struct Caja { valor: i32 }`, `enum Dir { Norte, Sur }`). La primera
+  aparición va expandida, como la deja rustfmt.
+- Un error secundario se cuenta en prosa, citando su código y su mensaje real, sin
+  bloque propio. El bloque completo se reserva para el error que el apartado enseña.
 
 ## Orden topológico
 
@@ -72,6 +83,24 @@ Casos que ya salieron: en la sección 3 no hay `Option` (5.1), ni `Vec` (5.3), n
 adaptadores de iterador (5.6). Sí se puede recorrer con `for` y usar `matches!`
 (2.4). Si un ejercicio del curso usa algo posterior, se reescribe con lo disponible
 o se mueve a su capítulo.
+
+## Vocabulario
+
+Un término, una traducción, en todo el libro:
+
+| Inglés | En el libro |
+| :--- | :--- |
+| *match* (verbo) | encajar: «la rama encaja» |
+| *bind*, *binding* | ligar; el binding |
+| *guard* | *guard*, en itálica |
+| *borrow* | prestar, préstamo |
+| *move* | mover; el move |
+| *owner*, *ownership* | dueño; ownership |
+| *scope* | scope |
+| *slice* | slice |
+| *trait*, *struct*, *enum* | sin traducir |
+| *array* | arreglo |
+| *statement* / *expression* | enunciado / expresión |
 
 ## Tono
 
@@ -123,14 +152,21 @@ Dueño
 | ` ```rust ` | programa correcto | que compile |
 | ` ```rust,compile_fail ` | no compila | que falle al compilar |
 | ` ```rust,should_panic ` | compila y truena | que compile y falle al ejecutar |
-| ` ```salida ` | salida de `rustc` o de un panic | nada |
+| ` ```salida ` | salida de `rustc`, de un panic o del programa | nada |
 
 Un bloque `compile_fail` o `should_panic` seguido de un bloque `salida` se dibuja
-como una sola pieza: cabecera roja, código y panel oscuro. Todo bloque `rust` es un
-programa completo con `fn main()`.
+como una sola pieza: cabecera roja, código y panel oscuro. Un bloque `salida`
+después de un programa correcto se dibuja como panel oscuro suelto: sirve para un
+aviso del compilador (el build compila con los avisos apagados, así que un programa
+que solo avisa cuenta como correcto) o para lo que el programa imprime. Si la
+salida cabe en un comentario al margen, se prefiere el comentario.
 
-**Ancho del código: 62 columnas como máximo.** Más ancho parte la línea en el PDF.
-Los comentarios al margen se acortan antes que partir.
+Todo bloque `rust` es un programa completo con `fn main()`. Un bloque en otro
+lenguaje (` ```c `) sale como código plano, sin verificar.
+
+**Ancho: 62 columnas como máximo, en el código y en los bloques `salida`.** Más
+ancho parte la línea en el PDF. Los comentarios al margen se acortan antes que
+partir. La fuente dibuja con ligaduras `->`, `=>`, `>=`, `==` y `::`; es esperado.
 
 **Comentarios de error.** Un comentario que contiene un código como `E0382` sale en
 rojo. Se usa cuando el bloque no lleva `salida` aparte.
@@ -157,6 +193,10 @@ Los mensajes son reales. Para cada bloque que no compila:
 3. Partir a mano las líneas largas para que quepan en 62 columnas, alineando la
    continuación.
 
+En la salida de un panic se quita el identificador del hilo (`thread 'main'
+(12345)` queda `thread 'main'`), el archivo se escribe `src/main.rs` y se quita la
+nota de `RUST_BACKTRACE`.
+
 No se inventan ni se traducen mensajes. Si `rustc` cambia la redacción, se
 actualiza.
 
@@ -180,16 +220,21 @@ Cada figura es un archivo HTML con esta forma:
 
 - **`viewBox` de 520 de ancho.** Es el ancho útil de la página, así que una unidad
   es casi un pixel y el texto de 12 sale del tamaño del código.
-- **Roles**, como clase del grupo `<g>`: `r-dueno` (teal, quien posee), `r-heap`
-  (café, memoria del heap), `r-ref` (azul, préstamos), `r-movido` (gris punteado y
-  tachado), `r-err` (rojo, lo que no compila).
+- **Roles**, como clase del grupo `<g>`: `r-dueno` (teal, quien posee o el valor
+  principal), `r-heap` (café, memoria del heap), `r-ref` (azul, préstamos),
+  `r-movido` (gris punteado y tachado: lo que dejó de valer), `r-err` (rojo, lo que
+  no compila), `r-neutro` (blanco con borde gris: una definición, un molde, un
+  valor de paso).
+- Texto gris sin tachar, para lo que no se evalúa o no participa: `class="gris"`
+  en el `<text>`. Un atributo `fill` no sirve en un `<text>`: la hoja de estilos
+  le gana; se usa una clase o `style="fill: ..."`.
 - **Piezas**: `caja` (rectángulo de un rol, `rx="6"`), `celda` (rectángulo blanco
   dentro de una caja, `rx="3"`), `tit` (rótulo de la caja, serif), `val` (texto
   centrado, mono), `cod` (línea de código de un paso), `col` (rótulo de columna en
   versalitas), `nota` (itálica gris), `idx` (índices pequeños), `num` (círculo con
   el número del paso).
 - **Flechas**: un `<path class="fl-ROL">` para el trazo y un `<polygon
-  class="pt-ROL">` para la punta. **No usar `<marker>`**: Vivliostyle no los
+  class="pt-ROL">` para la punta (roles `dueno`, `ref`, `err`, `neutro`). **No usar `<marker>`**: Vivliostyle no los
   resuelve y la flecha sale sin punta.
 - El `<svg>` va en línea, no como `<img>`: así usa las fuentes del libro.
 - El `aria-label` describe la figura en una frase.
@@ -212,6 +257,26 @@ Un capítulo no está terminado hasta que:
 
 Los huecos al pie de página son esperados: el diseño no parte bloques de código,
 figuras ni cajas entre páginas.
+
+## Trabajo en paralelo
+
+Cuando varios agentes escriben capítulos a la vez en esta carpeta:
+
+- Cada uno crea y edita **solo** su capítulo y sus figuras
+  (`src/figuras/N.M-*.html`). Nadie más toca `libro.toml`, `build.py`, `estilo/`,
+  esta guía, ni capítulos o figuras ajenos. Si una figura necesita un estilo que no
+  existe, va en línea dentro del propio SVG y se reporta.
+- Archivos temporales, solo bajo `/tmp/libro-N.M/`.
+- Se construye con `python3 build.py --solo src/.../N.M-nombre.md`, que deja
+  `build-cap/N.M/libro.pdf`. **Nunca `python3 build.py` a secas**: reconstruye el
+  libro entero.
+- El PDF se revisa con la herramienta Read, página por página (con el parámetro
+  `pages` si pasa de 10).
+- Sin commits ni cambios de rama.
+- El reporte final dice: qué cubre cada sección; cuántas páginas quedó; qué figuras
+  se hicieron; qué se cambió en los ejercicios del autor; qué se verificó
+  ejecutando código y qué no; qué estilos en línea se usaron; qué supone de otros
+  capítulos aún no escritos; y las dudas que deba decidir el autor.
 
 ## Diseño
 

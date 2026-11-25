@@ -101,7 +101,7 @@ pre { margin: 0; }
   white-space: pre-wrap;
   background: none;
 }
-.codigo code, .no-compila code { background: none; padding: 0; font-size: inherit; }
+.codigo code, .no-compila code, pre.salida code { background: none; padding: 0; font-size: inherit; }
 
 /* Sintaxis */
 .k  { color: #0f6f6e; font-weight: 500; }
@@ -138,7 +138,13 @@ pre.salida {
   font: 11.5px/1.6 var(--mono);
   padding: 14px 18px;
   white-space: pre-wrap;
+  /* suelta, tras un programa correcto: avisos del compilador o salida del programa */
+  margin: 14px 0;
+  border-radius: 6px;
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
+.no-compila pre.salida { margin: 0; border-radius: 0; }
 .salida .e  { color: #f08a80; font-weight: 700; }
 .salida .em { color: #eef3f2; font-weight: 700; }
 .salida .g  { color: #6fb3c9; }
@@ -240,6 +246,13 @@ svg.dg { display: block; width: 100%; height: auto; }
 .dg .r-movido .tit { fill: var(--err); }
 .dg .r-movido .val { fill: #9aa3a4; text-decoration: line-through; }
 
+/* r-neutro: algo que no guarda valores (una definición, un molde, un valor de paso) */
+.dg .r-neutro .caja { fill: #ffffff; stroke: #5f686a; }
+.dg .r-neutro .celda { stroke: #9aa3a4; }
+.dg .r-neutro .tit { fill: #5f686a; }
+/* texto gris sin tachar: lo que no se evalúa o no participa */
+.dg text.gris { fill: #9aa3a4; }
+
 .dg [class^="fl-"] { fill: none; stroke-width: 1.75; }
 .dg .fl-dueno { stroke: #13807f; }
 .dg .fl-ref { stroke: #2f5f8f; }
@@ -247,6 +260,8 @@ svg.dg { display: block; width: 100%; height: auto; }
 .dg .pt-dueno { fill: #13807f; }
 .dg .pt-ref { fill: #2f5f8f; }
 .dg .pt-err { fill: #b0443a; }
+.dg .fl-neutro { stroke: #9aa3a4; }
+.dg .pt-neutro { fill: #9aa3a4; }
 
 .dg .panel { fill: none; stroke: var(--rule); stroke-width: 1.5; }
 .dg .p-mal .panel { fill: #fdf8f7; stroke: var(--err-border); }

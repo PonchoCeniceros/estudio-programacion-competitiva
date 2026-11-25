@@ -26,22 +26,22 @@ capitulos = [
 numero = 2
 nombre = "Tipos compuestos"
 capitulos = [
-  { numero = "2.1", titulo = "Tuplas y arreglos" },
-  { numero = "2.2", titulo = "Structs" },
-  { numero = "2.3", titulo = "Enums" },
-  { numero = "2.4", titulo = "Patrones" },
+  { numero = "2.1", titulo = "Tuplas y arreglos", archivo = "src/2-tipos-compuestos/2.1-tuplas-arreglos.md" },
+  { numero = "2.2", titulo = "Structs", archivo = "src/2-tipos-compuestos/2.2-structs.md" },
+  { numero = "2.3", titulo = "Enums", archivo = "src/2-tipos-compuestos/2.3-enums.md" },
+  { numero = "2.4", titulo = "Patrones", archivo = "src/2-tipos-compuestos/2.4-patrones.md" },
 ]
 
 [[secciones]]
 numero = 3
 nombre = "Memoria"
 capitulos = [
-  { numero = "3.1", titulo = "Stack y heap" },
+  { numero = "3.1", titulo = "Stack y heap", archivo = "src/3-memoria/3.1-stack-heap.md" },
   { numero = "3.2", titulo = "Ownership", archivo = "src/3-memoria/3.2-ownership.md" },
   { numero = "3.3", titulo = "Borrowing", archivo = "src/3-memoria/3.3-borrowing.md" },
   { numero = "3.4", titulo = "Strings", archivo = "src/3-memoria/3.4-strings.md" },
-  { numero = "3.5", titulo = "impl y métodos" },
-  { numero = "3.6", titulo = "Lifetimes" },
+  { numero = "3.5", titulo = "impl y métodos", archivo = "src/3-memoria/3.5-impl-metodos.md" },
+  { numero = "3.6", titulo = "Lifetimes", archivo = "src/3-memoria/3.6-lifetimes.md" },
 ]
 
 [[secciones]]

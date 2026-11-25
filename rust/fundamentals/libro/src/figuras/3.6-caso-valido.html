@@ -1,0 +1,22 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Caso válido: las regiones, renglón por renglón</span><span class="pie">Las dos entradas llegan al final de main. El último uso de r queda dentro de 'a.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 184" role="img" aria-label="L(s) y L(t) llegan al final de main, &#x27;a es la que termina primero de las dos, y L(r) termina antes en el paso 4.">
+<g transform="translate(0,-10)">
+<text class="cod" x="28" y="46" xml:space="preserve" style="white-space:pre">fn main() {</text>
+<g class="num"><circle cx="10" cy="66" r="9"/><text x="10" y="70">1</text></g>
+<text class="cod" x="28" y="70" xml:space="preserve" style="white-space:pre">    let s = String::from(&quot;hello&quot;);</text>
+<g class="num"><circle cx="10" cy="90" r="9"/><text x="10" y="94">2</text></g>
+<text class="cod" x="28" y="94" xml:space="preserve" style="white-space:pre">    let t = String::from(&quot;hola&quot;);</text>
+<g class="num"><circle cx="10" cy="114" r="9"/><text x="10" y="118">3</text></g>
+<text class="cod" x="28" y="118" xml:space="preserve" style="white-space:pre">    let r = mas_larga(&amp;s, &amp;t);</text>
+<g class="num"><circle cx="10" cy="138" r="9"/><text x="10" y="142">4</text></g>
+<text class="cod" x="28" y="142" xml:space="preserve" style="white-space:pre">    println!(&quot;{r}&quot;);</text>
+<text class="cod" x="28" y="166" xml:space="preserve" style="white-space:pre">}</text>
+<g class="r-dueno"><rect class="caja" x="318" y="58" width="38" height="112" rx="6"/></g><text class="val" x="337.0" y="18">L(s)</text>
+<g class="r-dueno"><rect class="caja" x="368" y="82" width="38" height="88" rx="6"/></g><text class="val" x="387.0" y="18">L(t)</text>
+<g class="r-dueno"><rect class="caja" x="418" y="82" width="38" height="88" rx="6" style="fill:#ffffff;stroke-dasharray:5 3"/></g><text class="val" x="437.0" y="18">&#x27;a</text>
+<g class="r-ref"><rect class="caja" x="468" y="106" width="38" height="40" rx="6"/></g><text class="val" x="487.0" y="18">L(r)</text>
+<text class="estado ok" x="260" y="188" text-anchor="middle">✓ max(L(r)) = 4 CAE DENTRO DE 'a</text>
+</g>
+</svg>
+</figure>
