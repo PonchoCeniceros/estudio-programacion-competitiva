@@ -281,9 +281,6 @@ def html_contraportada() -> str:
 <img class="peces" src="estilo/img/peces.svg" alt="">
 <div class="descripcion"><p>{e(LIBRO['descripcion'].strip())}</p>
 <p>{e(LIBRO['descripcion2'].strip())}</p></div>
-<div class="abajo"><div class="linea"></div>
-<div class="titulo-chico">{e(LIBRO['titulo'])} · <span>{e(LIBRO['subtitulo'])}</span></div>
-<div class="creditos">{e(LIBRO['autor'])}</div></div>
 </div>"""
 
 

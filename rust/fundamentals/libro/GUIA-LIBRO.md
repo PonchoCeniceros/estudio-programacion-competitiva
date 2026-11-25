@@ -177,6 +177,18 @@ junto a un `fn main()`), va como bloque `rust` normal. `Cargo.toml` va en un blo
 Si el archivo no compila, `rust,ignore,compile_fail` le pone la cabecera roja y lo
 une a su `salida`, sin que el build intente compilarlo.
 
+**Convenciones fijas.**
+
+- Los comandos de terminal van en un bloque ` ```salida ` y cada línea que se
+  escribe lleva el prompt `$ `; lo que responde la terminal va sin prompt.
+- Números en la prosa, estilo mexicano: coma para los miles desde cuatro cifras
+  (`1,000`, `10,000`) y punto para los decimales (`0.8 s`). Los años van sin coma
+  (2026). Un número que se cita tal como lo imprime un programa va como código
+  (`8000`).
+- Una función se puede escribir en una sola línea solo si es un ayudante trivial
+  o repite algo ya explicado. El código que el capítulo enseña va con el formato
+  de rustfmt.
+
 **Ancho: 62 columnas como máximo, en el código y en los bloques `salida`.** Más
 ancho parte la línea en el PDF. Los comentarios al margen se acortan antes que
 partir. La fuente dibuja con ligaduras `->`, `=>`, `>=`, `==` y `::`; es esperado.
