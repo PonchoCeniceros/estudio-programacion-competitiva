@@ -122,6 +122,26 @@ and `pnpm export:nav` produces the whole deck as one navigable PDF.
 The deck's TOC links to slide numbers, so **run `python3 sync-indice.py` after
 adding, removing or reordering any page** or the links go stale. Also available as the `rust-notes` config in `.claude/launch.json`.
 
+### Book (in progress)
+
+`rust/fundamentals/libro/` is the same notebook rewritten as a book: one Markdown
+file per chapter, built into a print PDF (7 × 10 in) and an EPUB.
+
+```bash
+python3 rust/fundamentals/libro/build.py
+```
+
+It compiles every Rust block in the chapters with `rustc`, then builds
+`build/libro.pdf` (Pandoc + Vivliostyle) and `build/libro.epub`. It needs `pandoc`,
+`rustc`, and `pnpm install` run once inside `libro/`.
+
+**Read `rust/fundamentals/libro/GUIA-LIBRO.md` before writing or editing a
+chapter.** It fixes the chapter structure, the component syntax, the 62-column code
+limit, the diagram style and the verification steps. Chapters 3.2–3.4 are the
+reference. `libro/notas/curso-aprende-rust.md` summarizes the course the
+explanations follow, and `notes/FUSION-CURSO.md` maps its exercises to chapters.
+The deck stays the complete version until the book covers it.
+
 ### Learning line (topological)
 
 Sections are ordered so that nothing is used before it is explained:
