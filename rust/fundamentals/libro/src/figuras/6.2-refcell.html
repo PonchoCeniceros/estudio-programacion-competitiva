@@ -1,0 +1,30 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">La bandera de un RefCell</span><span class="pie">La celda guarda el valor y la cuenta de guards vivos. Cada préstamo la consulta al ejecutar.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 214" role="img" aria-label="Un RefCell con su bandera en tres casos: dos lectores a la vez corren, un solo escritor corre, y un escritor pedido mientras hay un lector provoca un panic.">
+<g class="p-ok"><rect class="panel" x="0.75" y="0.75" width="158.5" height="212.5" rx="6"/>
+<text class="tit" x="80" y="22" text-anchor="middle">Varios borrow()</text>
+<g class="r-ref"><rect class="caja" x="13.0" y="36" width="62" height="24" rx="5"/><text class="val" x="44.0" y="52">Ref</text></g>
+<path class="fl-ref" d="M44.0,60 V94"/><polygon class="pt-ref" points="44.0,102 40.0,94 48.0,94"/>
+<g class="r-ref"><rect class="caja" x="85.0" y="36" width="62" height="24" rx="5"/><text class="val" x="116.0" y="52">Ref</text></g>
+<path class="fl-ref" d="M116.0,60 V94"/><polygon class="pt-ref" points="116.0,102 112.0,94 120.0,94"/>
+<g class="r-dueno"><rect class="caja" x="14" y="104" width="132" height="64" rx="6"/><rect class="celda" x="22" y="111" width="116" height="22" rx="3"/><text class="val" x="80" y="126">2 lectores</text><rect class="celda" x="22" y="138" width="116" height="22" rx="3"/><text class="val" x="80" y="153">valor: 5</text></g>
+<text class="estado ok" x="80" y="188" text-anchor="middle">✓ CORRE</text>
+<text class="nota" x="80" y="204" text-anchor="middle">cuenta los lectores</text></g>
+<g class="p-ok"><rect class="panel" x="180.75" y="0.75" width="158.5" height="212.5" rx="6"/>
+<text class="tit" x="260" y="22" text-anchor="middle">Un borrow_mut()</text>
+<g class="r-ref"><rect class="caja" x="229.0" y="36" width="62" height="24" rx="5"/><text class="val" x="260.0" y="52">RefMut</text></g>
+<path class="fl-ref" d="M260.0,60 V94"/><polygon class="pt-ref" points="260.0,102 256.0,94 264.0,94"/>
+<g class="r-dueno"><rect class="caja" x="194" y="104" width="132" height="64" rx="6"/><rect class="celda" x="202" y="111" width="116" height="22" rx="3"/><text class="val" x="260" y="126">1 escritor</text><rect class="celda" x="202" y="138" width="116" height="22" rx="3"/><text class="val" x="260" y="153">valor: 5</text></g>
+<text class="estado ok" x="260" y="188" text-anchor="middle">✓ CORRE</text>
+<text class="nota" x="260" y="204" text-anchor="middle">marca al escritor</text></g>
+<g class="p-mal"><rect class="panel" x="360.75" y="0.75" width="158.5" height="212.5" rx="6"/>
+<text class="tit" x="440" y="22" text-anchor="middle">Los dos a la vez</text>
+<g class="r-ref"><rect class="caja" x="373.0" y="36" width="62" height="24" rx="5"/><text class="val" x="404.0" y="52">Ref</text></g>
+<path class="fl-ref" d="M404.0,60 V94"/><polygon class="pt-ref" points="404.0,102 400.0,94 408.0,94"/>
+<g class="r-err"><rect class="caja" x="445.0" y="36" width="62" height="24" rx="5"/><text class="val" x="476.0" y="52">RefMut</text></g>
+<path class="fl-err" d="M476.0,60 V94"/><polygon class="pt-err" points="476.0,102 472.0,94 480.0,94"/>
+<g class="r-dueno"><rect class="caja" x="374" y="104" width="132" height="64" rx="6"/><rect class="celda" x="382" y="111" width="116" height="22" rx="3"/><text class="val" x="440" y="126">1 lector</text><rect class="celda" x="382" y="138" width="116" height="22" rx="3"/><text class="val" x="440" y="153">valor: 5</text></g>
+<text class="estado mal" x="440" y="188" text-anchor="middle">✗ PANIC</text>
+<text class="nota" x="440" y="204" text-anchor="middle">rechaza al segundo</text></g>
+</svg>
+</figure>

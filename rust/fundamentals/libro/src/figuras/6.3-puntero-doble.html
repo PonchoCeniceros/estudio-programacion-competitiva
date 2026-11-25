@@ -1,0 +1,44 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Un <code>Box&lt;dyn Figura&gt;</code> por dentro</span><span class="pie">Cada elemento del <code>Vec</code> son dos direcciones: la del dato y la de la tabla de métodos de su tipo. Los dos elementos miden lo mismo y solo cambia a dónde apuntan.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 236" role="img" aria-label="Dos elementos de un Vec de Box dyn Figura. Cada uno guarda dos punteros. El primero apunta a un Circulo en el heap y a la tabla de métodos de Circulo. El segundo apunta a un Rectangulo en el heap y a la tabla de métodos de Rectangulo.">
+<text class="col" x="0" y="12">ELEMENTOS DEL VEC</text>
+<text class="col" x="190" y="12">HEAP: EL DATO</text>
+<text class="col" x="380" y="12">EJECUTABLE</text>
+
+<g class="r-dueno"><rect class="caja" x="0.75" y="24" width="150" height="86" rx="6"/>
+<text class="tit" x="10" y="42">[0] · Box&lt;dyn Figura&gt;</text>
+<rect class="celda" x="10" y="50" width="131" height="24" rx="3"/><text class="val" x="75.5" y="66">dato</text>
+<rect class="celda" x="10" y="78" width="131" height="24" rx="3"/><text class="val" x="75.5" y="94">tabla</text></g>
+
+<g class="r-heap"><rect class="caja" x="190" y="26" width="164" height="54" rx="6"/>
+<text class="tit" x="200" y="44">Circulo</text><text class="nota" x="344" y="44" text-anchor="end">8 bytes</text>
+<rect class="celda" x="200" y="50" width="72" height="22" rx="3"/><text class="val" x="236" y="65">radio 1.0</text></g>
+
+<g class="r-neutro"><rect class="caja" x="380" y="66" width="139" height="48" rx="6"/>
+<text class="tit" x="390" y="84">tabla de Circulo</text>
+<text class="cod" x="390" y="103">Circulo::area</text></g>
+
+<path class="fl-dueno" d="M151,62 H182"/><polygon class="pt-dueno" points="190,62 182,58 182,66"/>
+<path class="fl-neutro" d="M151,90 H372"/><polygon class="pt-neutro" points="380,90 372,86 372,94"/>
+
+<g class="r-dueno"><rect class="caja" x="0.75" y="126" width="150" height="86" rx="6"/>
+<text class="tit" x="10" y="144">[1] · Box&lt;dyn Figura&gt;</text>
+<rect class="celda" x="10" y="152" width="131" height="24" rx="3"/><text class="val" x="75.5" y="168">dato</text>
+<rect class="celda" x="10" y="180" width="131" height="24" rx="3"/><text class="val" x="75.5" y="196">tabla</text></g>
+
+<g class="r-heap"><rect class="caja" x="190" y="128" width="164" height="54" rx="6"/>
+<text class="tit" x="200" y="146">Rectangulo</text><text class="nota" x="344" y="146" text-anchor="end">16 bytes</text>
+<rect class="celda" x="200" y="152" width="72" height="22" rx="3"/><text class="val" x="236" y="167">ancho 2.0</text>
+<rect class="celda" x="275" y="152" width="72" height="22" rx="3"/><text class="val" x="311" y="167">alto 3.0</text></g>
+
+<g class="r-neutro"><rect class="caja" x="380" y="168" width="139" height="48" rx="6"/>
+<text class="tit" x="390" y="186">tabla de Rectangulo</text>
+<text class="cod" x="390" y="205">Rectangulo::area</text></g>
+
+<path class="fl-dueno" d="M151,164 H182"/><polygon class="pt-dueno" points="190,164 182,160 182,168"/>
+<path class="fl-neutro" d="M151,192 H372"/><polygon class="pt-neutro" points="380,192 372,188 372,196"/>
+
+<text class="nota" x="0" y="231">16 bytes cada elemento</text>
+<text class="nota" x="519" y="231" text-anchor="end">una tabla por tipo, no por valor</text>
+</svg>
+</figure>

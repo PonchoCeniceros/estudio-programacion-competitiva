@@ -1,0 +1,29 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">fold paso a paso</span><span class="pie">El acumulador arranca en 0. En cada paso entra un dígito, la closure calcula acum * 10 + d y el resultado pasa al paso siguiente.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 176" role="img" aria-label="Cinco cajas en fila con los valores del acumulador: 0, 1, 19, 198 y 1984. Entre cada par de cajas entra desde arriba uno de los dígitos 1, 9, 8 y 4.">
+<text class="col" x="0" y="12">ELEMENTOS: [1, 9, 8, 4]</text>
+<g class="r-neutro"><rect class="celda" x="72" y="26" width="28" height="28"/><text class="val" x="86" y="45">1</text></g>
+<path class="fl-neutro" d="M86,54 V88"/><polygon class="pt-neutro" points="86,96 82,88 90,88"/>
+<path class="fl-dueno" d="M56,104 H109"/><polygon class="pt-dueno" points="116,104 108,100 108,108"/>
+<g class="r-neutro"><rect class="celda" x="188" y="26" width="28" height="28"/><text class="val" x="202" y="45">9</text></g>
+<path class="fl-neutro" d="M202,54 V88"/><polygon class="pt-neutro" points="202,96 198,88 206,88"/>
+<path class="fl-dueno" d="M172,104 H225"/><polygon class="pt-dueno" points="232,104 224,100 224,108"/>
+<g class="r-neutro"><rect class="celda" x="304" y="26" width="28" height="28"/><text class="val" x="318" y="45">8</text></g>
+<path class="fl-neutro" d="M318,54 V88"/><polygon class="pt-neutro" points="318,96 314,88 322,88"/>
+<path class="fl-dueno" d="M288,104 H341"/><polygon class="pt-dueno" points="348,104 340,100 340,108"/>
+<g class="r-neutro"><rect class="celda" x="420" y="26" width="28" height="28"/><text class="val" x="434" y="45">4</text></g>
+<path class="fl-neutro" d="M434,54 V88"/><polygon class="pt-neutro" points="434,96 430,88 438,88"/>
+<path class="fl-dueno" d="M404,104 H457"/><polygon class="pt-dueno" points="464,104 456,100 456,108"/>
+<g class="r-dueno"><rect class="caja" x="0.75" y="86" width="54.5" height="36" rx="6"/><text class="val" x="28.0" y="108">0</text></g>
+<text class="idx" x="28.0" y="138">inicial</text>
+<g class="r-dueno"><rect class="caja" x="116.75" y="86" width="54.5" height="36" rx="6"/><text class="val" x="144.0" y="108">1</text></g>
+<text class="idx" x="144.0" y="138">tras el 1</text>
+<g class="r-dueno"><rect class="caja" x="232.75" y="86" width="54.5" height="36" rx="6"/><text class="val" x="260.0" y="108">19</text></g>
+<text class="idx" x="260.0" y="138">tras el 9</text>
+<g class="r-dueno"><rect class="caja" x="348.75" y="86" width="54.5" height="36" rx="6"/><text class="val" x="376.0" y="108">198</text></g>
+<text class="idx" x="376.0" y="138">tras el 8</text>
+<g class="r-dueno"><rect class="caja" x="464.75" y="86" width="54.5" height="36" rx="6"/><text class="val" x="492.0" y="108">1984</text></g>
+<text class="idx" x="492.0" y="138">tras el 4</text>
+<text class="nota" x="260" y="168" text-anchor="middle">cada flecha: acum * 10 + d · el último acumulador es lo que devuelve fold</text>
+</svg>
+</figure>
