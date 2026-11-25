@@ -5,6 +5,7 @@
     python3 build.py --solo-pdf
     python3 build.py --sin-verificar
     python3 build.py --solo src/3-memoria/3.5-impl-metodos.md
+    python3 build.py --gris       # build/libro-gris.pdf, a partir del último build
 
 `--solo` verifica y construye un único capítulo en build-cap/<número>/libro.pdf, sin
 tocar build/ ni exigir que el capítulo esté dado de alta en libro.toml. Sirve para
@@ -359,6 +360,36 @@ def construir_pdf():
     print("build/libro.pdf", file=sys.stderr)
 
 
+# ── PDF en escala de grises ───────────────────────────────────────────────────
+
+def a_gris(texto: str) -> str:
+    """Cambia cada color #rgb / #rrggbb por su gris de igual luminancia."""
+    def gris(m):
+        h = m[1]
+        if len(h) == 3:
+            h = "".join(c * 2 for c in h)
+        r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
+        y = round(0.299 * r + 0.587 * g + 0.114 * b)
+        return f"#{y:02x}{y:02x}{y:02x}"
+    return re.sub(r"#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b", gris, texto)
+
+
+def construir_pdf_gris():
+    """build/libro-gris.pdf: el mismo libro con todos los colores pasados a gris,
+    para ver cómo saldría impreso en blanco y negro. Parte de build/libro.html."""
+    destino = BUILD / "gris"
+    if destino.exists():
+        shutil.rmtree(destino)
+    copiar_estilo(destino)
+    for archivo in list((destino / "estilo").rglob("*.css")) + list((destino / "estilo").rglob("*.svg")):
+        archivo.write_text(a_gris(archivo.read_text()))
+    (destino / "libro.html").write_text(a_gris((BUILD / "libro.html").read_text()))
+    subprocess.run(["pnpm", "exec", "vivliostyle", "build", "build/gris/libro.html",
+                    "-o", "build/libro-gris.pdf"], cwd=RAIZ, check=True,
+                   stdout=subprocess.DEVNULL)
+    print("build/libro-gris.pdf", file=sys.stderr)
+
+
 # ── EPUB ──────────────────────────────────────────────────────────────────────
 
 def portada_png() -> pathlib.Path | None:
@@ -482,13 +513,16 @@ def construir_solo(archivo: str):
     print(relativo / "libro.pdf", file=sys.stderr)
 
 
-OPCIONES = {"--solo", "--solo-pdf", "--sin-verificar"}
+OPCIONES = {"--solo", "--solo-pdf", "--sin-verificar", "--gris"}
 
 
 def main():
     desconocidas = [a for a in sys.argv[1:] if a.startswith("-") and a not in OPCIONES]
     if desconocidas:
         sys.exit(__doc__)
+    if "--gris" in sys.argv:
+        construir_pdf_gris()
+        return
     if "--solo" in sys.argv:
         construir_solo(sys.argv[sys.argv.index("--solo") + 1])
         return
