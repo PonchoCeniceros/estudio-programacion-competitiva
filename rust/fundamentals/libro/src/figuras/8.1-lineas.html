@@ -1,0 +1,32 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Cuánto vive un hilo</span><span class="pie">El tiempo corre hacia la derecha. Con spawn, cada hilo es dueño de lo que usa. Con scope, el préstamo queda dentro del bloque.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 226" role="img" aria-label="Dos líneas de tiempo. A la izquierda, main lanza dos hilos con spawn, cada uno dueño de sus datos, y los espera con join. A la derecha, main conserva los datos y dos hilos los toman prestados dentro del bloque de scope, que no cierra hasta que ambos terminan.">
+<g class="p-ok"><rect class="panel" x="0.75" y="0.75" width="248.5" height="224.5" rx="6"/>
+<text class="tit" x="125" y="22" text-anchor="middle">thread::spawn</text>
+<text class="col" x="10" y="66">HILO 1</text><text class="col" x="10" y="116">MAIN</text><text class="col" x="10" y="166">HILO 2</text>
+<g class="r-neutro"><rect class="caja" x="62" y="100" width="178" height="24" rx="6"/><text class="val" x="88" y="116">spawn</text><text class="val" x="212" y="116">join</text></g>
+<g class="r-dueno"><rect class="caja" x="104" y="50" width="84" height="24" rx="6"/><text class="val" x="146" y="66">dueño</text></g>
+<g class="r-dueno"><rect class="caja" x="116" y="150" width="60" height="24" rx="6"/><text class="val" x="146" y="166">dueño</text></g>
+<path class="fl-dueno" d="M80,100 V62 H96"/><polygon class="pt-dueno" points="104,62 96,58 96,66"/>
+<path class="fl-dueno" d="M96,124 V162 H108"/><polygon class="pt-dueno" points="116,162 108,158 108,166"/>
+<path class="fl-neutro" d="M188,62 H204 V92"/><polygon class="pt-neutro" points="204,100 200,92 208,92"/>
+<path class="fl-neutro" d="M176,162 H220 V132"/><polygon class="pt-neutro" points="220,124 216,132 224,132"/>
+<text class="nota" x="125" y="198" text-anchor="middle">move: el dato viaja con el hilo</text>
+<text class="nota" x="125" y="213" text-anchor="middle">sin join, main no espera a nadie</text>
+</g>
+<g class="p-ok"><rect class="panel" x="270.75" y="0.75" width="248.5" height="224.5" rx="6"/>
+<text class="tit" x="395" y="22" text-anchor="middle">thread::scope</text>
+<text class="col" x="280" y="66">HILO 1</text><text class="col" x="280" y="116">MAIN</text><text class="col" x="280" y="166">HILO 2</text>
+<rect x="346" y="38" width="144" height="148" rx="6" style="fill: #f4f7fb; stroke: #2f5f8f; stroke-width: 1.2; stroke-dasharray: 4 3;"/>
+<g class="r-dueno"><rect class="caja" x="332" y="100" width="178" height="24" rx="6"/><text class="val" x="421" y="116">dueño: espera</text></g>
+<g class="r-ref"><rect class="caja" x="378" y="50" width="78" height="24" rx="6"/><text class="val" x="417" y="66">&amp;datos</text></g>
+<g class="r-ref"><rect class="caja" x="390" y="150" width="54" height="24" rx="6"/><text class="val" x="417" y="166">&amp;datos</text></g>
+<path class="fl-ref" d="M360,100 V62 H370"/><polygon class="pt-ref" points="378,62 370,58 370,66"/>
+<path class="fl-ref" d="M360,124 V162 H382"/><polygon class="pt-ref" points="390,162 382,158 382,166"/>
+<path class="fl-neutro" d="M456,62 H476 V92"/><polygon class="pt-neutro" points="476,100 472,92 480,92"/>
+<path class="fl-neutro" d="M444,162 H476 V132"/><polygon class="pt-neutro" points="476,124 472,132 480,132"/>
+<text class="nota" x="395" y="198" text-anchor="middle">el bloque no cierra hasta que terminan</text>
+<text class="nota" x="395" y="213" text-anchor="middle">los hilos: el dato vive más que ellos</text>
+</g>
+</svg>
+</figure>

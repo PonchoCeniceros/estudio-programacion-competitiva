@@ -1,0 +1,42 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Un hilo del runtime, dos veces</span><span class="pie">Arriba, cada tarea cede el hilo mientras espera y las tres esperas corren a la vez. Abajo, b no cede: ocupa el hilo 300 ms y las otras dos quedan detenidas.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 290" role="img" aria-label="Dos líneas de tiempo de un mismo hilo con tres tareas. En la primera, las tres tareas ocupan el hilo solo un instante al empezar y al terminar, y esperan fuera de él: a y c terminan a los 100 ms y b a los 300. En la segunda, b ocupa el hilo de 0 a 300 ms; a termina a los 300 y c, que no había empezado, a los 400.">
+<text class="col" x="0" y="12">LAS TRES CEDEN EN SU ESPERA</text>
+<text class="tit" x="0" y="37">tarea a</text>
+<g class="r-dueno"><rect class="caja" x="60" y="24" width="6" height="18" rx="2"/></g>
+<path class="fl-neutro" style="stroke-dasharray: 3 3" d="M66,33 H155"/>
+<g class="r-dueno"><rect class="caja" x="155" y="24" width="6" height="18" rx="2"/></g>
+<text x="167" y="37">100 ms</text>
+<text class="tit" x="0" y="61">tarea b</text>
+<g class="r-dueno"><rect class="caja" x="67" y="48" width="6" height="18" rx="2"/></g>
+<path class="fl-neutro" style="stroke-dasharray: 3 3" d="M73,57 H345"/>
+<g class="r-dueno"><rect class="caja" x="345" y="48" width="6" height="18" rx="2"/></g>
+<text x="357" y="61">300 ms</text>
+<text class="tit" x="0" y="85">tarea c</text>
+<g class="r-dueno"><rect class="caja" x="74" y="72" width="6" height="18" rx="2"/></g>
+<path class="fl-neutro" style="stroke-dasharray: 3 3" d="M80,81 H162"/>
+<g class="r-dueno"><rect class="caja" x="162" y="72" width="6" height="18" rx="2"/></g>
+<text x="174" y="85">100 ms</text>
+<path class="fl-neutro" style="stroke-width: 1" d="M60,98 H470"/><path class="fl-neutro" style="stroke-width: 1" d="M60.0,98 V102"/><text class="idx" x="60.0" y="113">0</text><path class="fl-neutro" style="stroke-width: 1" d="M155.0,98 V102"/><text class="idx" x="155.0" y="113">100</text><path class="fl-neutro" style="stroke-width: 1" d="M250.0,98 V102"/><text class="idx" x="250.0" y="113">200</text><path class="fl-neutro" style="stroke-width: 1" d="M345.0,98 V102"/><text class="idx" x="345.0" y="113">300</text><path class="fl-neutro" style="stroke-width: 1" d="M440.0,98 V102"/><text class="idx" x="440.0" y="113">400 ms</text>
+<text class="col" x="0" y="140">LA TAREA B BLOQUEA</text>
+<text class="tit" x="0" y="165">tarea a</text>
+<g class="r-dueno"><rect class="caja" x="60" y="152" width="6" height="18" rx="2"/></g>
+<path class="fl-neutro" style="stroke-dasharray: 3 3" d="M66,161 H155"/>
+<g class="r-movido"><rect class="caja" x="155.75" y="152.75" width="189" height="16.5" rx="4"/><text class="nota" x="250" y="165" text-anchor="middle">lista, sin hilo</text></g>
+<g class="r-dueno"><rect class="caja" x="346" y="152" width="6" height="18" rx="2"/></g>
+<text x="358" y="165">300 ms</text>
+<text class="tit" x="0" y="189">tarea b</text>
+<g class="r-err"><rect class="caja" x="67.75" y="176.75" width="277" height="16.5" rx="4"/><text class="val" x="206" y="189">std::thread::sleep: no cede</text></g>
+<text x="358" y="189">300 ms</text>
+<text class="tit" x="0" y="213">tarea c</text>
+<g class="r-movido"><rect class="caja" x="60.75" y="200.75" width="291" height="16.5" rx="4"/><text class="nota" x="206" y="213" text-anchor="middle">sin empezar</text></g>
+<g class="r-dueno"><rect class="caja" x="353" y="200" width="6" height="18" rx="2"/></g>
+<path class="fl-neutro" style="stroke-dasharray: 3 3" d="M359,209 H440"/>
+<g class="r-dueno"><rect class="caja" x="440" y="200" width="6" height="18" rx="2"/></g>
+<text x="452" y="213">400 ms</text>
+<path class="fl-neutro" style="stroke-width: 1" d="M60,226 H470"/><path class="fl-neutro" style="stroke-width: 1" d="M60.0,226 V230"/><text class="idx" x="60.0" y="241">0</text><path class="fl-neutro" style="stroke-width: 1" d="M155.0,226 V230"/><text class="idx" x="155.0" y="241">100</text><path class="fl-neutro" style="stroke-width: 1" d="M250.0,226 V230"/><text class="idx" x="250.0" y="241">200</text><path class="fl-neutro" style="stroke-width: 1" d="M345.0,226 V230"/><text class="idx" x="345.0" y="241">300</text><path class="fl-neutro" style="stroke-width: 1" d="M440.0,226 V230"/><text class="idx" x="440.0" y="241">400 ms</text>
+<g class="r-dueno"><rect class="caja" x="0.75" y="262" width="6" height="14" rx="2"/></g><text class="nota" x="14" y="273">en el hilo</text>
+<path class="fl-neutro" style="stroke-dasharray: 3 3" d="M100,269 H130"/><text class="nota" x="137" y="273">espera fuera del hilo</text>
+<g class="r-movido"><rect class="caja" x="280.75" y="262" width="30" height="14" rx="4"/></g><text class="nota" x="318" y="273">detenida: el hilo está ocupado</text>
+</svg>
+</figure>

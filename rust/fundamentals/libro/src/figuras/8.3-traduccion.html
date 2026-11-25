@@ -1,0 +1,23 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">El mismo dibujo, entre hilos</span><span class="pie">Cada pieza de 6.2 tiene su par. Cambia lo que pasa cuando el dato está ocupado.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 248" role="img" aria-label="A la izquierda, dos Rc de un mismo hilo apuntan a un bloque del heap con contador, bandera de préstamos y valor: pedir el dato ocupado es un panic. A la derecha, dos Arc en dos hilos apuntan a un bloque con contador atómico, candado y valor: pedir el dato ocupado es esperar.">
+<g class="p-ok"><rect class="panel" x="0.75" y="0.75" width="248.5" height="246.5" rx="6"/>
+<text class="tit" x="125.0" y="22" text-anchor="middle">Un hilo: Rc&lt;RefCell&lt;T&gt;&gt;</text>
+<g class="r-dueno"><rect class="caja" x="9.0" y="36" width="108" height="26" rx="5"/><text class="val" x="63.0" y="53">ana: Rc</text></g>
+<path class="fl-dueno" d="M63.0,62 V80 H95.0 V96"/><polygon class="pt-dueno" points="95.0,104 91.0,96 99.0,96"/>
+<g class="r-dueno"><rect class="caja" x="133.0" y="36" width="108" height="26" rx="5"/><text class="val" x="187.0" y="53">luis: Rc</text></g>
+<path class="fl-dueno" d="M187.0,62 V80 H155.0 V96"/><polygon class="pt-dueno" points="155.0,104 151.0,96 159.0,96"/>
+<g class="r-heap"><rect class="caja" x="41.0" y="106" width="168" height="90" rx="6"/><rect class="celda" x="49.0" y="113" width="152" height="22" rx="3"/><text class="val" x="125.0" y="128">dueños: 2</text><rect class="celda" x="49.0" y="140" width="152" height="22" rx="3"/><text class="val" x="125.0" y="155">bandera: libre</text><rect class="celda" x="49.0" y="167" width="152" height="22" rx="3"/><text class="val" x="125.0" y="182">valor: 0</text></g>
+<text class="estado mal" x="125.0" y="218" text-anchor="middle">OCUPADO: PANIC</text>
+<text class="nota" x="125.0" y="236" text-anchor="middle">borrow_mut() rechaza al segundo</text></g>
+<g class="p-ok"><rect class="panel" x="270.75" y="0.75" width="248.5" height="246.5" rx="6"/>
+<text class="tit" x="395.0" y="22" text-anchor="middle">Dos hilos: Arc&lt;Mutex&lt;T&gt;&gt;</text>
+<g class="r-dueno"><rect class="caja" x="279.0" y="36" width="108" height="26" rx="5"/><text class="val" x="333.0" y="53">hilo 1: Arc</text></g>
+<path class="fl-dueno" d="M333.0,62 V80 H365.0 V96"/><polygon class="pt-dueno" points="365.0,104 361.0,96 369.0,96"/>
+<g class="r-dueno"><rect class="caja" x="403.0" y="36" width="108" height="26" rx="5"/><text class="val" x="457.0" y="53">hilo 2: Arc</text></g>
+<path class="fl-dueno" d="M457.0,62 V80 H425.0 V96"/><polygon class="pt-dueno" points="425.0,104 421.0,96 429.0,96"/>
+<g class="r-heap"><rect class="caja" x="311.0" y="106" width="168" height="90" rx="6"/><rect class="celda" x="319.0" y="113" width="152" height="22" rx="3"/><text class="val" x="395.0" y="128">dueños: 2 (atómico)</text><rect class="celda" x="319.0" y="140" width="152" height="22" rx="3"/><text class="val" x="395.0" y="155">candado: libre</text><rect class="celda" x="319.0" y="167" width="152" height="22" rx="3"/><text class="val" x="395.0" y="182">valor: 0</text></g>
+<text class="estado ok" x="395.0" y="218" text-anchor="middle">OCUPADO: ESPERA</text>
+<text class="nota" x="395.0" y="236" text-anchor="middle">lock() detiene al segundo</text></g>
+</svg>
+</figure>

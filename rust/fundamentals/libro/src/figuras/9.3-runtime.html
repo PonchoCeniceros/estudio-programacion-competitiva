@@ -1,0 +1,51 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">El runtime por dentro</span><span class="pie">Una tarea está lista, en ejecución o estacionada. El ejecutor mueve las dos primeras; el reactor regresa la tercera a la cola.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 232" role="img" aria-label="A la izquierda, la cola de tareas listas. Al centro, el ejecutor con dos hilos trabajadores que toman una tarea cada uno y le llaman poll. Si la tarea devuelve Ready, termina; si devuelve Pending, baja a la zona de tareas estacionadas. A la derecha abajo, el reactor avisa cuando una espera terminó y la tarea vuelve a la cola de listas.">
+
+<text class="col" x="0" y="12">COLA DE LISTAS</text>
+<text class="col" x="190" y="12">EJECUTOR</text>
+<text class="col" x="519" y="12" text-anchor="end">RESULTADO</text>
+
+<g class="r-neutro"><rect class="caja" x="0.75" y="22" width="139" height="72" rx="6"/>
+<text class="tit" x="12" y="42">tareas listas</text>
+<rect class="celda" x="12" y="54" width="36" height="26" rx="3"/><text class="val" x="30" y="71">t1</text>
+<rect class="celda" x="52" y="54" width="36" height="26" rx="3"/><text class="val" x="70" y="71">t4</text>
+<rect class="celda" x="92" y="54" width="36" height="26" rx="3"/><text class="val" x="110" y="71">t5</text></g>
+
+<g class="r-dueno"><rect class="caja" x="190" y="22" width="150" height="72" rx="6"/>
+<rect class="celda" x="198" y="30" width="134" height="26" rx="3"/><text class="val" x="265" y="47">hilo 1: poll(t2)</text>
+<rect class="celda" x="198" y="60" width="134" height="26" rx="3"/><text class="val" x="265" y="77">hilo 2: poll(t3)</text></g>
+
+<g class="r-neutro"><rect class="caja" x="400" y="34" width="119" height="48" rx="6"/>
+<text class="tit" x="459.5" y="54" text-anchor="middle">la tarea termina</text>
+<text class="nota" x="459.5" y="71" text-anchor="middle">su valor va al handle</text></g>
+
+<path class="fl-dueno" d="M140,58 H182"/><polygon class="pt-dueno" points="190,58 182,54 182,62"/>
+<g class="num"><circle cx="164" cy="42" r="9"/><text x="164" y="46">1</text></g>
+
+<path class="fl-neutro" d="M340,58 H392"/><polygon class="pt-neutro" points="400,58 392,54 392,62"/>
+<text class="nota" x="370" y="50" text-anchor="middle">Ready</text>
+
+<path class="fl-dueno" d="M265,94 V140"/><polygon class="pt-dueno" points="265,148 261,140 269,140"/>
+<g class="num"><circle cx="246" cy="120" r="9"/><text x="246" y="124">2</text></g>
+<text class="nota" x="276" y="124">Pending</text>
+
+<g class="r-heap"><rect class="caja" x="190" y="148" width="150" height="68" rx="6"/>
+<text class="tit" x="202" y="168">estacionadas</text>
+<rect class="celda" x="202" y="178" width="36" height="26" rx="3"/><text class="val" x="220" y="195">t6</text>
+<rect class="celda" x="242" y="178" width="36" height="26" rx="3"/><text class="val" x="260" y="195">t7</text></g>
+
+<g class="r-ref"><rect class="caja" x="400" y="148" width="119" height="68" rx="6"/>
+<text class="tit" x="459.5" y="170" text-anchor="middle">reactor</text>
+<text class="nota" x="459.5" y="188" text-anchor="middle">sistema operativo</text>
+<text class="nota" x="459.5" y="203" text-anchor="middle">y temporizadores</text></g>
+
+<path class="fl-ref" d="M400,182 H348"/><polygon class="pt-ref" points="340,182 348,178 348,186"/>
+<g class="num"><circle cx="370" cy="164" r="9"/><text x="370" y="168">3</text></g>
+<text class="nota" x="370" y="204" text-anchor="middle">despierta</text>
+
+<path class="fl-ref" d="M190,182 H70 V102"/><polygon class="pt-ref" points="70,94 66,102 74,102"/>
+<g class="num"><circle cx="130" cy="164" r="9"/><text x="130" y="168">4</text></g>
+<text class="nota" x="130" y="204" text-anchor="middle">vuelve a la cola</text>
+</svg>
+</figure>

@@ -31,7 +31,7 @@ rust/
 │       └── src/
 │           ├── lib.rs      # `mod macros;`
 │           ├── macros.rs   # exports the `s!` macro
-│           └── bin/{ID}_{name}.rs   # one binary per problem (34)
+│           └── bin/{ID}_{name}.rs   # one binary per problem (38)
 └── building/               # Applied Cargo projects — planned. No separate
                              # slide deck; concepts live in fundamentals/notes
                              # (prefix F) — only per-project crate details
@@ -122,7 +122,7 @@ and `pnpm export:nav` produces the whole deck as one navigable PDF.
 The deck's TOC links to slide numbers, so **run `python3 sync-indice.py` after
 adding, removing or reordering any page** or the links go stale. Also available as the `rust-notes` config in `.claude/launch.json`.
 
-### Book (in progress)
+### Book
 
 `rust/fundamentals/libro/` is the same notebook rewritten as a book: one Markdown
 file per chapter, built into a print PDF (7 × 10 in) and an EPUB.
@@ -140,7 +140,10 @@ chapter.** It fixes the chapter structure, the component syntax, the 62-column c
 limit, the diagram style and the verification steps. Chapters 3.2–3.4 are the
 reference. `libro/notas/curso-aprende-rust.md` summarizes the course the
 explanations follow, and `notes/FUSION-CURSO.md` maps its exercises to chapters.
-The deck stays the complete version until the book covers it.
+All 46 chapters (sections 1–9) are written, plus a preface and references in
+`src/0-preliminares/`; a final end-to-end review pass is still pending. Blocks marked
+`rust,ignore` (Cargo projects, external crates) are not compiled by the build: they
+were verified by hand, so re-check them when touching sections 7–9.
 
 ### Learning line (topological)
 

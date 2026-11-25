@@ -1,0 +1,27 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">El candado en el tiempo</span><span class="pie">Mientras vive el guard de A, el lock() de B no regresa. El relevo ocurre al morir el guard.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 252" role="img" aria-label="Línea de tiempo con dos hilos y un mutex. El hilo A toma el candado y lo conserva mientras vive su guard. El hilo B llama a lock y espera. Cuando el guard de A muere, B recibe el candado, y al morir el guard de B el mutex queda libre.">
+<text class="col" x="0" y="58">HILO A</text><text class="col" x="0" y="108">MUTEX</text><text class="col" x="0" y="158">HILO B</text>
+<g class="num"><circle cx="96" cy="14" r="9"/><text x="96" y="18">1</text></g>
+<g class="num"><circle cx="196" cy="14" r="9"/><text x="196" y="18">2</text></g>
+<g class="num"><circle cx="316" cy="14" r="9"/><text x="316" y="18">3</text></g>
+<g class="num"><circle cx="436" cy="14" r="9"/><text x="436" y="18">4</text></g>
+<path class="fl-neutro" style="stroke-dasharray: 4 3" d="M196,24 V140"/>
+<path class="fl-neutro" style="stroke-dasharray: 4 3" d="M436,24 V44 M436,70 V90"/>
+<path class="fl-neutro" style="stroke-dasharray: 4 3" d="M316,24 V40"/>
+<g class="r-dueno"><rect class="caja" x="96" y="40" width="220" height="28" rx="6"/><text class="val" x="206" y="58">guard de A</text></g>
+<text class="nota" x="326" y="58">A sigue, ya sin el candado</text>
+<g class="r-heap"><rect class="caja" x="96" y="90" width="216" height="28" rx="6"/><text class="val" x="204" y="108">tomado por A</text></g>
+<g class="r-heap"><rect class="caja" x="320" y="90" width="116" height="28" rx="6"/><text class="val" x="378" y="108">tomado por B</text></g>
+<g class="r-neutro"><rect class="caja" x="440" y="90" width="72" height="28" rx="6"/><text class="val" x="476" y="108">libre</text></g>
+<g class="r-neutro"><rect class="caja" style="stroke-dasharray: 4 3" x="196" y="140" width="116" height="28" rx="6"/><text class="val" x="254" y="158">lock() espera</text></g>
+<g class="r-dueno"><rect class="caja" x="320" y="140" width="116" height="28" rx="6"/><text class="val" x="378" y="158">guard de B</text></g>
+<path class="fl-dueno" d="M316,68 V130"/><polygon class="pt-dueno" points="316,138 312,130 320,130"/>
+<path class="fl-neutro" d="M96,184 H502"/><polygon class="pt-neutro" points="510,184 502,180 502,188"/>
+<text class="col" x="96" y="198">TIEMPO</text>
+<g class="num"><circle cx="10" cy="218" r="9"/><text x="10" y="222">1</text></g><text class="cod" x="26" y="222">A llama lock(): lo toma</text>
+<g class="num"><circle cx="270" cy="218" r="9"/><text x="270" y="222">2</text></g><text class="cod" x="286" y="222">B llama lock(): se detiene</text>
+<g class="num"><circle cx="10" cy="240" r="9"/><text x="10" y="244">3</text></g><text class="cod" x="26" y="244">muere el guard de A: relevo</text>
+<g class="num"><circle cx="270" cy="240" r="9"/><text x="270" y="244">4</text></g><text class="cod" x="286" y="244">muere el guard de B</text>
+</svg>
+</figure>

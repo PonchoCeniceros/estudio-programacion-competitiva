@@ -101,19 +101,19 @@ capitulos = [
 numero = 8
 nombre = "Concurrencia"
 capitulos = [
-  { numero = "8.1", titulo = "Hilos" },
-  { numero = "8.2", titulo = "Send y Sync" },
-  { numero = "8.3", titulo = "Estado compartido" },
+  { numero = "8.1", titulo = "Hilos", archivo = "src/8-concurrencia/8.1-hilos.md" },
+  { numero = "8.2", titulo = "Send y Sync", archivo = "src/8-concurrencia/8.2-send-sync.md" },
+  { numero = "8.3", titulo = "Estado compartido", archivo = "src/8-concurrencia/8.3-estado-compartido.md" },
 ]
 
 [[secciones]]
 numero = 9
 nombre = "Async"
 capitulos = [
-  { numero = "9.1", titulo = "El problema" },
-  { numero = "9.2", titulo = "async, await y Future" },
-  { numero = "9.3", titulo = "El runtime" },
-  { numero = "9.4", titulo = "Send en las tareas" },
-  { numero = "9.5", titulo = "async o hilos" },
-  { numero = "9.6", titulo = "Un servidor mínimo" },
+  { numero = "9.1", titulo = "El problema", archivo = "src/9-async/9.1-el-problema.md" },
+  { numero = "9.2", titulo = "async, await y Future", archivo = "src/9-async/9.2-async-await.md" },
+  { numero = "9.3", titulo = "El runtime", archivo = "src/9-async/9.3-runtime.md" },
+  { numero = "9.4", titulo = "Send en las tareas", archivo = "src/9-async/9.4-send-en-tareas.md" },
+  { numero = "9.5", titulo = "async o hilos", archivo = "src/9-async/9.5-async-o-hilos.md" },
+  { numero = "9.6", titulo = "Un servidor mínimo", archivo = "src/9-async/9.6-un-servidor-minimo.md" },
 ]
