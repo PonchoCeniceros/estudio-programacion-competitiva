@@ -318,3 +318,4 @@ svg.dg { display: block; width: 100%; height: auto; }
 .bibliografia p { padding-left: 1.6em; text-indent: -1.6em; margin: 0 0 .7em; }
 .bibliografia a { white-space: nowrap; }
 .pagina-nueva { break-before: page; }
+img.dg-img { display: block; width: 100%; height: auto; }

@@ -378,12 +378,50 @@ def portada_png() -> pathlib.Path | None:
     return None
 
 
+def estilo_diagramas() -> str:
+    """Las reglas `.dg` de libro.css, con las variables resueltas: un SVG suelto no
+    hereda ni las variables ni la hoja del libro."""
+    css = (RAIZ / "estilo" / "libro.css").read_text()
+    variables = dict(re.findall(r"(--[\w-]+):\s*([^;]+);", css))
+    reglas = [r.strip() for r in re.findall(r"[^{}]+\{[^{}]*\}", css)
+              if ".dg" in r.split("{")[0]]
+    texto = "\n".join(reglas)
+    return re.sub(r"var\((--[\w-]+)\)", lambda m: variables[m[1]].strip(), texto)
+
+
+def diagramas_como_imagen(texto: str, contador: list) -> str:
+    """En el EPUB cada diagrama va como imagen SVG con fondo blanco. Un lector en modo
+    oscuro aclara el texto del documento, también el de un SVG en línea, pero no toca
+    una imagen: así el diagrama se ve igual con cualquier tema."""
+    estilo = estilo_diagramas()
+
+    def a_imagen(m):
+        contador[0] += 1
+        svg = m[0]
+        apertura = re.match(r"<svg[^>]*>", svg)[0]
+        alto = re.search(r'viewBox="[\d.]+ [\d.]+ ([\d.]+) ([\d.]+)"', apertura)
+        fondo = (f'<rect x="-8" y="-8" width="{float(alto[1]) + 16}" '
+                 f'height="{float(alto[2]) + 16}" rx="6" fill="#ffffff"/>')
+        vb = re.sub(r'viewBox="([\d.]+) ([\d.]+) ([\d.]+) ([\d.]+)"',
+                    lambda v: f'viewBox="-8 -8 {float(v[3]) + 16} {float(v[4]) + 16}"', apertura)
+        cuerpo = svg[len(apertura):]
+        archivo = BUILD / "tmp" / f"figura-{contador[0]:02d}.svg"
+        archivo.write_text(f"{vb}<style>{estilo}</style>{fondo}{cuerpo}")
+        etiqueta = re.search(r'aria-label="([^"]*)"', apertura)
+        alt = etiqueta[1] if etiqueta else ""
+        return f'<img class="dg-img" src="{archivo}" alt="{alt}" />'
+
+    return re.sub(r'<svg class="dg"[\s\S]*?</svg>', a_imagen, texto)
+
+
 def construir_epub():
+    (BUILD / "tmp").mkdir(exist_ok=True)
+    contador = [0]
     entradas = [preliminar("prefacio"), preliminar("agradecimientos")]
     for sec in LIBRO["secciones"]:
         for cap in sec["capitulos"]:
             if "archivo" in cap:
-                entradas.append(preprocesar(sec, cap))
+                entradas.append(diagramas_como_imagen(preprocesar(sec, cap), contador))
     entradas.append(preliminar("referencias"))
     md = BUILD / "tmp" / "libro.md"
     md.parent.mkdir(exist_ok=True)
