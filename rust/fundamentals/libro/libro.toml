@@ -16,6 +16,7 @@ Cada capítulo sigue el mismo camino: el problema, las reglas, una figura, las \
 reglas una por una con los errores reales del compilador, y un ejemplo de \
 aplicación."""
 prefacio = "src/0-preliminares/prefacio.md"
+agradecimientos = "src/0-preliminares/agradecimientos.md"
 referencias = "src/0-preliminares/referencias.md"
 
 [[secciones]]

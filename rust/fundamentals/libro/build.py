@@ -305,6 +305,7 @@ def html_contenido() -> str:
     suelto = ('<div class="seccion suelto"><div class="seccion-titulo"><a href="#{0}">{1}</a>'
               '<a class="pag pag-ref" href="#{0}"></a></div></div>')
     partes.append(suelto.format("prefacio", "Prefacio"))
+    partes.append(suelto.format("agradecimientos", "Agradecimientos"))
     for sec in LIBRO["secciones"]:
         href = f"#sec-{sec['numero']}"
         titulo = f'{sec["numero"]}. {html.escape(sec["nombre"])}'
@@ -335,7 +336,8 @@ def html_apertura(sec: dict) -> str:
 
 def construir_pdf():
     cuerpo = [html_portada(), html_contenido(),
-              pandoc(preliminar("prefacio"), "--to", "html5", "--section-divs")]
+              pandoc(preliminar("prefacio"), "--to", "html5", "--section-divs"),
+              pandoc(preliminar("agradecimientos"), "--to", "html5", "--section-divs")]
     for sec in LIBRO["secciones"]:
         if not any("archivo" in cap for cap in sec["capitulos"]):
             continue
@@ -377,7 +379,7 @@ def portada_png() -> pathlib.Path | None:
 
 
 def construir_epub():
-    entradas = [preliminar("prefacio")]
+    entradas = [preliminar("prefacio"), preliminar("agradecimientos")]
     for sec in LIBRO["secciones"]:
         for cap in sec["capitulos"]:
             if "archivo" in cap:
