@@ -153,6 +153,7 @@ Dueño
 | ` ```rust ` | programa correcto | que compile |
 | ` ```rust,compile_fail ` | no compila | que falle al compilar |
 | ` ```rust,should_panic ` | compila y truena | que compile y falle al ejecutar |
+| ` ```rust,ignore ` | archivo de un proyecto de Cargo | nada: se verifica a mano |
 | ` ```salida ` | salida de `rustc`, de un panic o del programa | nada |
 
 Un bloque `compile_fail` o `should_panic` seguido de un bloque `salida` se dibuja
@@ -164,6 +165,15 @@ salida cabe en un comentario al margen, se prefiere el comentario.
 
 Todo bloque `rust` es un programa completo con `fn main()`. Un bloque en otro
 lenguaje (` ```c `) sale como código plano, sin verificar.
+
+`rust,ignore` es solo para código que `rustc` no puede compilar como archivo
+suelto: un archivo de un proyecto con varios módulos, un test de integración, o
+código que usa un crate externo. La primera línea es un comentario con la ruta
+(`// src/lib.rs`). Quien lo escribe arma el proyecto real con `cargo` en una
+carpeta temporal fuera del repo, lo compila y lo ejecuta, y lo dice en su reporte.
+Si el ejemplo cabe en un solo archivo (módulos en línea con `mod x { ... }`, tests
+junto a un `fn main()`), va como bloque `rust` normal. `Cargo.toml` va en un bloque
+` ```toml `, y los comandos y su salida en ` ```salida `.
 
 **Ancho: 62 columnas como máximo, en el código y en los bloques `salida`.** Más
 ancho parte la línea en el PDF. Los comentarios al margen se acortan antes que

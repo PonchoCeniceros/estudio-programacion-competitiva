@@ -13,7 +13,8 @@ escribir varios capítulos a la vez.
 Pasos:
   1. Verifica los bloques ```rust de cada capítulo con rustc: los normales deben
      compilar, los ```rust,compile_fail deben fallar al compilar y los
-     ```rust,should_panic deben compilar y fallar al ejecutar.
+     ```rust,should_panic deben compilar y fallar al ejecutar. Un ```rust,ignore
+     se resalta y no se verifica (archivos de un proyecto de Cargo).
   2. Preprocesa el Markdown: resalta el código con los colores del tema, agrupa
      cada bloque que no compila con su ```salida, inserta las figuras y resuelve
      las referencias [3.3 Borrowing]{.ref}.
@@ -224,7 +225,7 @@ def verificar(archivos=None) -> bool:
             cap = {"archivo": archivo}
             texto = (RAIZ / archivo).read_text()
             for n, m in enumerate(BLOQUE.finditer(texto), 1):
-                if not m[1].startswith("rust"):
+                if not m[1].startswith("rust") or "ignore" in m[1]:
                     continue
                 debe_fallar = "compile_fail" in m[1]
                 fuente = pathlib.Path(tmp) / f"b{n}.rs"
