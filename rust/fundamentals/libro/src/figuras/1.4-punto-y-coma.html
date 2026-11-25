@@ -1,0 +1,25 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">El mismo bloque, con y sin punto y coma final</span><span class="pie">Sin punto y coma, el bloque vale su última expresión. Con él, vale ().</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 156" role="img" aria-label="A la izquierda, el bloque que termina en x + 1 sin punto y coma vale 4, de tipo i32. A la derecha, el bloque que termina en x + 1 con punto y coma descarta ese valor y vale unit, de tipo unit.">
+<g class="p-ok"><rect class="panel" x="0.75" y="0.75" width="248.5" height="154.5" rx="6"/>
+<text class="tit" x="125" y="18" text-anchor="middle">Sin ; final</text>
+<text class="cod" x="24" y="40">let y = {</text>
+<text class="cod" x="53" y="58">let x = 3;</text>
+<g class="r-dueno"><rect class="caja" x="45" y="64" width="88" height="23" rx="6"/></g>
+<text class="cod" x="53" y="80">x + 1</text>
+<text class="nota" x="142" y="80">es el valor</text>
+<text class="cod" x="24" y="102">};</text>
+<path class="fl-dueno" d="M125,108 V117"/><polygon class="pt-dueno" points="125,123 121,115 129,115"/>
+<g class="r-dueno"><rect class="caja" x="65" y="124" width="120" height="25" rx="6"/><text class="val" x="125" y="141">y = 4 : i32</text></g></g>
+<g class="p-ok"><rect class="panel" x="270.75" y="0.75" width="248.5" height="154.5" rx="6"/>
+<text class="tit" x="395" y="18" text-anchor="middle">Con ; final</text>
+<text class="cod" x="294" y="40">let y = {</text>
+<text class="cod" x="323" y="58">let x = 3;</text>
+<g class="r-movido"><rect class="caja" x="315" y="64" width="88" height="23" rx="6"/></g>
+<text class="cod" x="323" y="80" style="fill: #9aa3a4">x + 1;</text>
+<text class="nota" x="412" y="80">se descarta</text>
+<text class="cod" x="294" y="102">};</text>
+<path class="fl-neutro" d="M395,108 V117"/><polygon class="pt-neutro" points="395,123 391,115 399,115"/>
+<g class="r-neutro"><rect class="caja" x="335" y="124" width="120" height="25" rx="6"/><text class="val" x="395" y="141">y = () : ()</text></g></g>
+</svg>
+</figure>

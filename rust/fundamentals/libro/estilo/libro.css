@@ -251,7 +251,7 @@ svg.dg { display: block; width: 100%; height: auto; }
 .dg .r-neutro .celda { stroke: #9aa3a4; }
 .dg .r-neutro .tit { fill: #5f686a; }
 /* texto gris sin tachar: lo que no se evalúa o no participa */
-.dg text.gris { fill: #9aa3a4; }
+.dg text.gris, .dg [class^="r-"] text.gris { fill: #9aa3a4; }
 
 .dg [class^="fl-"] { fill: none; stroke-width: 1.75; }
 .dg .fl-dueno { stroke: #13807f; }

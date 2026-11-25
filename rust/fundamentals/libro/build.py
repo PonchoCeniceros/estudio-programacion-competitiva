@@ -420,7 +420,13 @@ def construir_solo(archivo: str):
     print(relativo / "libro.pdf", file=sys.stderr)
 
 
+OPCIONES = {"--solo", "--solo-pdf", "--sin-verificar"}
+
+
 def main():
+    desconocidas = [a for a in sys.argv[1:] if a.startswith("-") and a not in OPCIONES]
+    if desconocidas:
+        sys.exit(__doc__)
     if "--solo" in sys.argv:
         construir_solo(sys.argv[sys.argv.index("--solo") + 1])
         return

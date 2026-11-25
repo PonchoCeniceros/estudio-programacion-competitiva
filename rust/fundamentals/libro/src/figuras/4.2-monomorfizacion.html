@@ -1,0 +1,43 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Monomorfización: una versión por tipo</span><span class="pie">El código genérico se escribe una vez. El compilador genera una función concreta por cada tipo con el que se llama.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 232" role="img" aria-label="A la izquierda, la función genérica mayor y cuatro llamadas con i32, char, f64 y otra vez i32. En el centro, el compilador. A la derecha, las tres versiones concretas que genera: una para i32, una para char y una para f64.">
+<text class="col" x="0" y="12">SE ESCRIBE</text>
+<text class="col" x="212" y="12">AL COMPILAR</text>
+<text class="col" x="332" y="12">QUEDA EN EL EJECUTABLE</text>
+
+<g class="r-neutro"><rect class="caja" x="0.75" y="22" width="186" height="46" rx="6"/>
+<text class="cod" x="10" y="41">fn mayor&lt;T: PartialOrd&gt;</text>
+<text class="cod" x="10" y="58" xml:space="preserve" style="white-space:pre">  (a: T, b: T) -&gt; T</text></g>
+
+<g class="num"><circle cx="10" cy="104" r="9"/><text x="10" y="108">1</text></g>
+<text class="cod" x="28" y="108">mayor(3, 7)</text>
+<g class="num"><circle cx="10" cy="144" r="9"/><text x="10" y="148">2</text></g>
+<text class="cod" x="28" y="148">mayor('a', 'z')</text>
+<g class="num"><circle cx="10" cy="184" r="9"/><text x="10" y="188">3</text></g>
+<text class="cod" x="28" y="188">mayor(1.5, 0.2)</text>
+<g class="num"><circle cx="10" cy="218" r="9"/><text x="10" y="222">4</text></g>
+<text class="cod" x="28" y="222">mayor(10, 2)</text>
+<text class="nota" x="124" y="222">usa la versión de 1</text>
+
+<path class="fl-neutro" d="M187,45 H260 V78"/><polygon class="pt-neutro" points="260,85 256,77 264,77"/>
+<path class="fl-neutro" d="M144,104 H201"/><polygon class="pt-neutro" points="208,104 200,100 200,108"/>
+<path class="fl-neutro" d="M144,144 H201"/><polygon class="pt-neutro" points="208,144 200,140 200,148"/>
+<path class="fl-neutro" d="M144,184 H201"/><polygon class="pt-neutro" points="208,184 200,180 200,188"/>
+
+<g class="r-dueno"><rect class="caja" x="212" y="88" width="96" height="112" rx="6"/>
+<text class="tit" x="260" y="136" text-anchor="middle">compilador</text>
+<text class="val" x="260" y="156">T = ?</text></g>
+
+<path class="fl-dueno" d="M308,104 H321"/><polygon class="pt-dueno" points="328,104 320,100 320,108"/>
+<path class="fl-dueno" d="M308,144 H321"/><polygon class="pt-dueno" points="328,144 320,140 320,148"/>
+<path class="fl-dueno" d="M308,184 H321"/><polygon class="pt-dueno" points="328,184 320,180 320,188"/>
+
+<g class="r-dueno"><rect class="caja" x="332" y="88" width="187" height="32" rx="6"/>
+<text class="cod" x="342" y="108">fn(i32, i32) -&gt; i32</text></g>
+<g class="r-dueno"><rect class="caja" x="332" y="128" width="187" height="32" rx="6"/>
+<text class="cod" x="342" y="148">fn(char, char) -&gt; char</text></g>
+<g class="r-dueno"><rect class="caja" x="332" y="168" width="187" height="32" rx="6"/>
+<text class="cod" x="342" y="188">fn(f64, f64) -&gt; f64</text></g>
+<text class="nota" x="332" y="222">tres funciones, ningún T</text>
+</svg>
+</figure>

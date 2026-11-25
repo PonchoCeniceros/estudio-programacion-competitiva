@@ -99,6 +99,7 @@ Un término, una traducción, en todo el libro:
 | *scope* | scope |
 | *slice* | slice |
 | *trait*, *struct*, *enum* | sin traducir |
+| *closure* | closure, en femenino: «una closure» |
 | *array* | arreglo |
 | *statement* / *expression* | enunciado / expresión |
 

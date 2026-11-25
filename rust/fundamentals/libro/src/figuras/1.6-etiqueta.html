@@ -1,0 +1,20 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">A dónde salta cada break</span><span class="pie">Sin etiqueta, break sale solo del bucle que lo contiene. Con etiqueta, sale del bucle que nombra.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Dos bucles anidados. A la izquierda, break sale del bucle interior y el exterior sigue con la siguiente i. A la derecha, break 'externo sale de los dos bucles y el programa sigue después de ellos.">
+<g><rect class="panel" x="0.75" y="0.75" width="248.5" height="238.5" rx="6"/><text class="tit" x="125" y="22" text-anchor="middle">break</text>
+<g class="r-dueno"><rect class="caja" x="14" y="36" width="222" height="140" rx="6"/></g><text class="cod" x="24" y="54">'externo: for i in 1..=9</text>
+<g class="r-ref"><rect class="caja" x="28" y="66" width="132" height="84" rx="6"/></g><text class="cod" x="38" y="84">for j in 1..=9</text>
+<text class="val" x="94" y="122">break;</text>
+<path class="fl-ref" d="M120,118 H188"/><polygon class="pt-ref" points="195,118 187,114 187,122"/>
+<text class="nota" x="200" y="146" text-anchor="middle">vuelve al</text><text class="nota" x="200" y="160" text-anchor="middle">for i</text>
+<text class="cod gris" x="125" y="206" text-anchor="middle">después de los bucles</text>
+<text class="nota" x="125" y="226" text-anchor="middle">llega al acabar todas las i</text></g>
+<g><rect class="panel" x="270.75" y="0.75" width="248.5" height="238.5" rx="6"/><text class="tit" x="395" y="22" text-anchor="middle">break 'externo</text>
+<g class="r-dueno"><rect class="caja" x="284" y="36" width="216" height="140" rx="6"/></g><text class="cod" x="294" y="54">'externo: for i in 1..=9</text>
+<g class="r-ref"><rect class="caja" x="298" y="66" width="132" height="84" rx="6"/></g><text class="cod" x="308" y="84">for j in 1..=9</text>
+<text class="val" x="364" y="122">break 'externo;</text>
+<path class="fl-dueno" d="M421,118 H510 V202 H481"/><polygon class="pt-dueno" points="474,202 482,198 482,206"/>
+<text class="cod" x="390" y="206" text-anchor="middle">después de los bucles</text>
+<text class="nota" x="390" y="226" text-anchor="middle">llega de inmediato</text></g>
+</svg>
+</figure>
