@@ -222,6 +222,8 @@ svg.dg { display: block; width: 100%; height: auto; }
 .dg .num text { fill: #ffffff; font-weight: 700; font-size: 11px; text-anchor: middle; }
 .dg .caja { stroke-width: 1.5; }
 .dg .celda { fill: #ffffff; stroke-width: 1; }
+.dg .idx { font-size: 9.5px; fill: var(--muted); text-anchor: middle; }
+.dg .r-heap .celda.en-slice { fill: #dbe7f3; stroke: #2f5f8f; }
 
 .dg .r-dueno .caja { fill: #e8f1f0; stroke: #13807f; }
 .dg .r-dueno .celda { stroke: #13807f; }

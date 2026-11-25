@@ -17,7 +17,7 @@ capitulos = [
   { numero = "3.1", titulo = "Stack y heap" },
   { numero = "3.2", titulo = "Ownership", archivo = "src/3-memoria/3.2-ownership.md" },
   { numero = "3.3", titulo = "Borrowing", archivo = "src/3-memoria/3.3-borrowing.md" },
-  { numero = "3.4", titulo = "Strings" },
+  { numero = "3.4", titulo = "Strings", archivo = "src/3-memoria/3.4-strings.md" },
   { numero = "3.5", titulo = "impl y métodos" },
   { numero = "3.6", titulo = "Lifetimes" },
 ]

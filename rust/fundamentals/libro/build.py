@@ -7,7 +7,8 @@
 
 Pasos:
   1. Verifica los bloques ```rust de cada capítulo con rustc: los normales deben
-     compilar y los ```rust,compile_fail deben fallar.
+     compilar, los ```rust,compile_fail deben fallar al compilar y los
+     ```rust,should_panic deben compilar y fallar al ejecutar.
   2. Preprocesa el Markdown: resalta el código con los colores del tema, agrupa
      cada bloque que no compila con su ```salida, inserta las figuras y resuelve
      las referencias [3.3 Borrowing]{.ref}.
@@ -146,9 +147,10 @@ def preprocesar(sec: dict, cap: dict) -> str:
             cuerpo = resaltar_rust(codigo)
         else:
             cuerpo = html.escape(codigo)
-        if "compile_fail" in info:
+        if "compile_fail" in info or "should_panic" in info:
+            rotulo = "✗ NO COMPILA" if "compile_fail" in info else "✗ COMPILA, PERO FALLA AL EJECUTAR"
             partes = ['<div class="no-compila">',
-                      '<div class="cabecera">✗ NO COMPILA</div>',
+                      f'<div class="cabecera">{rotulo}</div>',
                       f'<pre class="fuente"><code>{cuerpo}</code></pre>']
             if m_salida is not None:
                 partes.append(f'<pre class="salida"><code>{resaltar_salida(m_salida[2].rstrip())}</code></pre>')
@@ -167,7 +169,8 @@ def preprocesar(sec: dict, cap: dict) -> str:
         m = bloques[i]
         piezas.append(texto[pos:m.start()])
         siguiente = bloques[i + 1] if i + 1 < len(bloques) else None
-        if ("compile_fail" in m[1] and siguiente is not None and siguiente[1] == "salida"
+        falla = "compile_fail" in m[1] or "should_panic" in m[1]
+        if (falla and siguiente is not None and siguiente[1] == "salida"
                 and texto[m.end():siguiente.start()].strip() == ""):
             piezas.append(bloque_html(m, siguiente))
             pos = siguiente.end()
@@ -224,6 +227,11 @@ def verificar() -> bool:
                     capture_output=True, text=True)
                 compilo = r.returncode == 0
                 linea = texto[:m.start()].count("\n") + 1
+                if "should_panic" in m[1] and compilo:
+                    corrida = subprocess.run([str(fuente.with_suffix(""))], capture_output=True)
+                    if corrida.returncode == 0:
+                        ok = False
+                        print(f"✗ {cap['archivo']}:{linea}: debía fallar al ejecutar", file=sys.stderr)
                 if compilo == debe_fallar:
                     ok = False
                     esperado = "fallar" if debe_fallar else "compilar"
