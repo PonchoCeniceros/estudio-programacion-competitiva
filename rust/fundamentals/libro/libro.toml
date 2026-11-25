@@ -81,12 +81,12 @@ capitulos = [
 numero = 7
 nombre = "Proyectos"
 capitulos = [
-  { numero = "7.1", titulo = "Módulos" },
-  { numero = "7.2", titulo = "Crates y Cargo" },
-  { numero = "7.3", titulo = "Tests" },
-  { numero = "7.4", titulo = "Manejo de errores idiomático" },
-  { numero = "7.5", titulo = "Entrada y salida" },
-  { numero = "7.6", titulo = "Macros y atributos" },
+  { numero = "7.1", titulo = "Módulos", archivo = "src/7-proyectos/7.1-modulos.md" },
+  { numero = "7.2", titulo = "Crates y Cargo", archivo = "src/7-proyectos/7.2-crates-cargo.md" },
+  { numero = "7.3", titulo = "Tests", archivo = "src/7-proyectos/7.3-tests.md" },
+  { numero = "7.4", titulo = "Manejo de errores idiomático", archivo = "src/7-proyectos/7.4-errores-idiomaticos.md" },
+  { numero = "7.5", titulo = "Entrada y salida", archivo = "src/7-proyectos/7.5-entrada-salida.md" },
+  { numero = "7.6", titulo = "Macros y atributos", archivo = "src/7-proyectos/7.6-macros-atributos.md" },
 ]
 
 [[secciones]]

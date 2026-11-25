@@ -247,6 +247,16 @@ def verificar(archivos=None) -> bool:
                     print(f"✗ {cap['archivo']}:{linea}: debía {esperado}", file=sys.stderr)
                     if not compilo:
                         print(r.stderr, file=sys.stderr)
+                # rustc deja fuera lo que está bajo #[cfg(test)]: se compila aparte.
+                if compilo and not debe_fallar and "#[test]" in m[2]:
+                    rt = subprocess.run(
+                        ["rustc", "--edition", "2024", "--test", "-A", "warnings",
+                         "-o", str(fuente.with_suffix(".t")), str(fuente)],
+                        capture_output=True, text=True)
+                    if rt.returncode != 0:
+                        ok = False
+                        print(f"✗ {cap['archivo']}:{linea}: los tests no compilan", file=sys.stderr)
+                        print(rt.stderr, file=sys.stderr)
     print("código verificado" if ok else "hay bloques de código mal", file=sys.stderr)
     return ok
 

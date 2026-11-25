@@ -1,0 +1,35 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Dos árboles: archivos y módulos</span><span class="pie">Las líneas mod del padre arman el árbol; la carpeta solo guarda los archivos de los hijos.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 212" role="img" aria-label="A la izquierda, la carpeta src con main.rs, geometria.rs y la carpeta geometria con circulo.rs y punto.rs. A la derecha, el módulo raíz crate contiene a geometria, que contiene a circulo y a punto. Cada archivo apunta a su módulo.">
+<text class="col" x="0" y="12">ARCHIVOS</text>
+<text class="col" x="228" y="12">MÓDULOS</text>
+
+<text class="cod gris" x="0" y="32">src/</text>
+<text class="cod" x="0" y="58" xml:space="preserve" style="white-space:pre">├── main.rs</text>
+<text class="cod" x="0" y="88" xml:space="preserve" style="white-space:pre">├── geometria.rs</text>
+<text class="cod gris" x="0" y="118" xml:space="preserve" style="white-space:pre">└── geometria/</text>
+<text class="cod" x="0" y="148" xml:space="preserve" style="white-space:pre">    ├── circulo.rs</text>
+<text class="cod" x="0" y="178" xml:space="preserve" style="white-space:pre">    └── punto.rs</text>
+
+<g class="r-dueno"><rect class="caja" x="228" y="40" width="290" height="166" rx="6"/>
+<text class="tit" x="238" y="58">crate</text>
+<text class="nota" x="508" y="58" text-anchor="end">la raíz: main.rs</text></g>
+
+<g class="r-neutro"><rect class="caja" x="244" y="70" width="264" height="126" rx="6"/>
+<text class="tit" x="254" y="88">geometria</text>
+<text class="cod gris" x="498" y="88" text-anchor="end">mod geometria;</text></g>
+
+<g class="r-neutro"><rect class="caja" x="262" y="130" width="236" height="26" rx="6"/>
+<text class="tit" x="272" y="148">circulo</text>
+<text class="cod gris" x="488" y="148" text-anchor="end">pub mod circulo;</text></g>
+
+<g class="r-neutro"><rect class="caja" x="262" y="160" width="236" height="26" rx="6"/>
+<text class="tit" x="272" y="178">punto</text>
+<text class="cod gris" x="488" y="178" text-anchor="end">pub mod punto;</text></g>
+
+<path class="fl-neutro" d="M90,54 H221"/><polygon class="pt-neutro" points="228,54 220,50 220,58"/>
+<path class="fl-neutro" d="M126,84 H237"/><polygon class="pt-neutro" points="244,84 236,80 236,88"/>
+<path class="fl-neutro" d="M142,144 H255"/><polygon class="pt-neutro" points="262,144 254,140 254,148"/>
+<path class="fl-neutro" d="M128,174 H255"/><polygon class="pt-neutro" points="262,174 254,170 254,178"/>
+</svg>
+</figure>

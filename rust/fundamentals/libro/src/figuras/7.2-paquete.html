@@ -1,0 +1,39 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Un paquete por dentro</span><span class="pie">Un Cargo.toml, a lo más un crate de librería y cualquier número de crates binarios. Cada crate tiene su raíz y se compila por separado; los binarios usan la librería como cualquier dependencia.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 262" role="img" aria-label="El paquete temperatura contiene un Cargo.toml, un crate de librería con raíz src/lib.rs y dos crates binarios con raíces src/main.rs y src/bin/tabla.rs. Flechas van de cada binario hacia la librería.">
+<text class="col" x="0" y="12">PAQUETE TEMPERATURA</text>
+<rect class="panel" x="0.75" y="22" width="518.5" height="214" rx="6"/>
+
+<g class="r-neutro"><rect class="caja" x="16" y="36" width="150" height="30" rx="6"/>
+<text class="val" x="91" y="56">Cargo.toml</text></g>
+<text class="nota" x="180" y="56">nombre, versión, edición y dependencias</text>
+
+<g class="r-dueno"><rect class="caja" x="16" y="84" width="200" height="104" rx="6"/>
+<text class="tit" x="30" y="104">crate de librería</text>
+<rect class="celda" x="30" y="114" width="172" height="26" rx="3"/>
+<text class="cod" x="40" y="131">src/lib.rs</text>
+<text class="nota" x="30" y="160">no se ejecuta: se usa</text>
+<text class="nota" x="30" y="177">a lo más una por paquete</text></g>
+
+<g class="r-neutro"><rect class="caja" x="304" y="84" width="200" height="48" rx="6"/>
+<text class="tit" x="318" y="102">crate binario temperatura</text>
+<text class="cod" x="318" y="122">src/main.rs</text></g>
+
+<g class="r-neutro"><rect class="caja" x="304" y="142" width="200" height="48" rx="6"/>
+<text class="tit" x="318" y="160">crate binario tabla</text>
+<text class="cod" x="318" y="180">src/bin/tabla.rs</text></g>
+
+<path class="fl-dueno" d="M304,108 H223"/><polygon class="pt-dueno" points="216,108 224,104 224,112"/>
+<path class="fl-dueno" d="M304,166 H223"/><polygon class="pt-dueno" points="216,166 224,162 224,170"/>
+<text class="nota" x="260" y="101" text-anchor="middle">usa</text>
+<text class="nota" x="260" y="159" text-anchor="middle">usa</text>
+
+<text class="nota" x="304" y="210">cualquier número: uno por archivo</text>
+<text class="nota" x="304" y="226">de src/bin/, más src/main.rs</text>
+
+<text class="nota" x="16" y="256">produce</text>
+<text class="cod" x="70" y="256">libtemperatura.rlib</text>
+<text class="nota" x="304" y="256">produce</text>
+<text class="cod" x="358" y="256">temperatura, tabla</text>
+</svg>
+</figure>

@@ -174,6 +174,8 @@ carpeta temporal fuera del repo, lo compila y lo ejecuta, y lo dice en su report
 Si el ejemplo cabe en un solo archivo (módulos en línea con `mod x { ... }`, tests
 junto a un `fn main()`), va como bloque `rust` normal. `Cargo.toml` va en un bloque
 ` ```toml `, y los comandos y su salida en ` ```salida `.
+Si el archivo no compila, `rust,ignore,compile_fail` le pone la cabecera roja y lo
+une a su `salida`, sin que el build intente compilarlo.
 
 **Ancho: 62 columnas como máximo, en el código y en los bloques `salida`.** Más
 ancho parte la línea en el PDF. Los comentarios al margen se acortan antes que
