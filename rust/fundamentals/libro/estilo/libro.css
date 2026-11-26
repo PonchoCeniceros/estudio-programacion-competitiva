@@ -319,3 +319,15 @@ svg.dg { display: block; width: 100%; height: auto; }
 .bibliografia a { white-space: nowrap; }
 .pagina-nueva { break-before: page; }
 img.dg-img { display: block; width: 100%; height: auto; }
+
+/* ── Mapa del lenguaje ──────────────────────────────── */
+.dg .mapa-eje { stroke: #13807f; stroke-width: 2.5; fill: none; }
+.dg .mapa-rama { stroke: #9aa3a4; stroke-width: 1; fill: none; stroke-dasharray: 2 2; }
+.dg .mapa-nodo { fill: #13807f; stroke: #0f6f6e; stroke-width: 1; }
+.dg text.mapa-sec { font-family: var(--serif); font-weight: 700; font-size: 11.5px; fill: #ffffff; text-anchor: middle; }
+.dg text.mapa-idea { font-family: var(--serif); font-style: italic; font-size: 8.3px; fill: #d9efed; text-anchor: middle; }
+.dg .mapa-chip { fill: #ffffff; stroke: #9fc9c6; stroke-width: 1; }
+.dg .mapa-chip.pendiente { stroke-dasharray: 2 2; stroke: #c5cccd; }
+.dg text.mapa-n { font-family: var(--mono); font-size: 8px; fill: #13807f; }
+.dg text.mapa-t { font-family: var(--serif); font-size: 9.6px; fill: #1d2224; }
+svg.dg.mapa { max-height: 6.1in; width: auto; max-width: 100%; margin: 14px auto 0; }

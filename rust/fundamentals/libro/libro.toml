@@ -22,6 +22,7 @@ referencias = "src/0-preliminares/referencias.md"
 [[secciones]]
 numero = 1
 nombre = "Fundamentos"
+idea = "todo tiene tipo, todo es expresión"
 capitulos = [
   { numero = "1.1", titulo = "Tokens", archivo = "src/1-fundamentos/1.1-tokens.md" },
   { numero = "1.2", titulo = "Tipos escalares", archivo = "src/1-fundamentos/1.2-tipos-escalares.md" },
@@ -34,6 +35,7 @@ capitulos = [
 [[secciones]]
 numero = 2
 nombre = "Tipos compuestos"
+idea = "datos con forma"
 capitulos = [
   { numero = "2.1", titulo = "Tuplas y arreglos", archivo = "src/2-tipos-compuestos/2.1-tuplas-arreglos.md" },
   { numero = "2.2", titulo = "Structs", archivo = "src/2-tipos-compuestos/2.2-structs.md" },
@@ -44,6 +46,7 @@ capitulos = [
 [[secciones]]
 numero = 3
 nombre = "Memoria"
+idea = "un dueño, préstamos comprobados"
 capitulos = [
   { numero = "3.1", titulo = "Stack y heap", archivo = "src/3-memoria/3.1-stack-heap.md" },
   { numero = "3.2", titulo = "Ownership", archivo = "src/3-memoria/3.2-ownership.md" },
@@ -56,6 +59,7 @@ capitulos = [
 [[secciones]]
 numero = 4
 nombre = "Abstracciones de costo cero"
+idea = "comportamiento compartido, sin costo"
 capitulos = [
   { numero = "4.1", titulo = "Traits", archivo = "src/4-abstracciones/4.1-traits.md" },
   { numero = "4.2", titulo = "Generics", archivo = "src/4-abstracciones/4.2-generics.md" },
@@ -67,6 +71,7 @@ capitulos = [
 [[secciones]]
 numero = 5
 nombre = "Vocabulario stdlib"
+idea = "el vocabulario de todos los días"
 capitulos = [
   { numero = "5.1", titulo = "Option", archivo = "src/5-stdlib/5.1-option.md" },
   { numero = "5.2", titulo = "Result", archivo = "src/5-stdlib/5.2-result.md" },
@@ -80,6 +85,7 @@ capitulos = [
 [[secciones]]
 numero = 6
 nombre = "Indirección"
+idea = "cuando un dueño no alcanza"
 capitulos = [
   { numero = "6.1", titulo = "Box y listas enlazadas", archivo = "src/6-indireccion/6.1-box-listas.md" },
   { numero = "6.2", titulo = "Rc, RefCell y árboles", archivo = "src/6-indireccion/6.2-rc-refcell-arboles.md" },
@@ -89,6 +95,7 @@ capitulos = [
 [[secciones]]
 numero = 7
 nombre = "Proyectos"
+idea = "del archivo al paquete"
 capitulos = [
   { numero = "7.1", titulo = "Módulos", archivo = "src/7-proyectos/7.1-modulos.md" },
   { numero = "7.2", titulo = "Crates y Cargo", archivo = "src/7-proyectos/7.2-crates-cargo.md" },
@@ -101,6 +108,7 @@ capitulos = [
 [[secciones]]
 numero = 8
 nombre = "Concurrencia"
+idea = "las mismas reglas, entre hilos"
 capitulos = [
   { numero = "8.1", titulo = "Hilos", archivo = "src/8-concurrencia/8.1-hilos.md" },
   { numero = "8.2", titulo = "Send y Sync", archivo = "src/8-concurrencia/8.2-send-sync.md" },
@@ -110,6 +118,7 @@ capitulos = [
 [[secciones]]
 numero = 9
 nombre = "Async"
+idea = "esperar sin ocupar un hilo"
 capitulos = [
   { numero = "9.1", titulo = "El problema", archivo = "src/9-async/9.1-el-problema.md" },
   { numero = "9.2", titulo = "async, await y Future", archivo = "src/9-async/9.2-async-await.md" },
@@ -117,4 +126,14 @@ capitulos = [
   { numero = "9.4", titulo = "Send en las tareas", archivo = "src/9-async/9.4-send-en-tareas.md" },
   { numero = "9.5", titulo = "async o hilos", archivo = "src/9-async/9.5-async-o-hilos.md" },
   { numero = "9.6", titulo = "Un servidor mínimo", archivo = "src/9-async/9.6-un-servidor-minimo.md" },
+  { numero = "9.7", titulo = "Una API con serde y axum" },
+  { numero = "9.8", titulo = "Un servidor MCP" },
+]
+
+[[secciones]]
+numero = 10
+nombre = "Lo que sigue"
+idea = "crates, herramientas y práctica"
+capitulos = [
+  { numero = "10.1", titulo = "El ecosistema" },
 ]

@@ -304,6 +304,7 @@ def html_contenido() -> str:
               '<a class="pag pag-ref" href="#{0}"></a></div></div>')
     partes.append(suelto.format("prefacio", "Prefacio"))
     partes.append(suelto.format("agradecimientos", "Agradecimientos"))
+    partes.append(suelto.format("mapa", "Mapa del lenguaje"))
     for sec in LIBRO["secciones"]:
         href = f"#sec-{sec['numero']}"
         titulo = f'{sec["numero"]}. {html.escape(sec["nombre"])}'
@@ -323,6 +324,64 @@ def preliminar(clave: str) -> str:
     return (RAIZ / LIBRO[clave]).read_text()
 
 
+def mapa_md() -> str:
+    """El mapa del lenguaje: las secciones en una columna central y sus capítulos a
+    los lados. Se dibuja desde libro.toml, así que siempre coincide con el contenido."""
+    e = html.escape
+    ancho, cx, nodo_w = 600, 300, 178
+    fila, sep = 18, 11
+    partes, y = [], 8
+    bloques = []
+    for sec in LIBRO["secciones"]:
+        caps = sec["capitulos"]
+        mitad = (len(caps) + 1) // 2
+        filas = max(mitad, 2)
+        alto = filas * fila
+        bloques.append((sec, caps[:mitad], caps[mitad:], y, alto))
+        y += alto + sep
+    total = y - sep + 8
+    partes.append(f'<path class="mapa-eje" d="M{cx} 0 L{cx} {total}"/>')
+
+    def chip(cap, x, yc, derecha):
+        n, t = cap["numero"], cap["titulo"]
+        w = 34 + len(t) * 5.3 + (5 if len(n) > 3 else 0)
+        x0 = x if derecha else x - w
+        tx = x0 + (27 if len(n) <= 3 else 32)
+        clase = "mapa-chip" if "archivo" in cap else "mapa-chip pendiente"
+        cuerpo = (f'<rect class="{clase}" x="{x0:.1f}" y="{yc - 7.5}" width="{w:.1f}" height="15" rx="3"/>'
+                  f'<text class="mapa-n" x="{x0 + 5:.1f}" y="{yc + 3}">{e(n)}</text>'
+                  f'<text class="mapa-t" x="{tx:.1f}" y="{yc + 3.2}">{e(t)}</text>')
+        if "archivo" in cap:
+            return f'<a href="#{ancla(n)}">{cuerpo}</a>'
+        return cuerpo
+
+    for sec, izq, der, y0, alto in bloques:
+        yc = y0 + alto / 2
+        for lado, caps in ((False, izq), (True, der)):
+            if not caps:
+                continue
+            xb = cx + (nodo_w / 2 + 14) * (1 if lado else -1)
+            xn = cx + (nodo_w / 2) * (1 if lado else -1)
+            ys = [yc + (i - (len(caps) - 1) / 2) * fila for i in range(len(caps))]
+            partes.append(f'<path class="mapa-rama" d="M{xn} {yc} L{xb} {yc} M{xb} {ys[0]} L{xb} {ys[-1]}"/>')
+            for cap, yy in zip(caps, ys):
+                xc = xb + (6 if lado else -6)
+                partes.append(f'<path class="mapa-rama" d="M{xb} {yy} L{xc} {yy}"/>')
+                partes.append(chip(cap, xc, yy, lado))
+        partes.append(
+            f'<a href="#sec-{sec["numero"]}"><rect class="mapa-nodo" x="{cx - nodo_w / 2}" y="{yc - 15}" '
+            f'width="{nodo_w}" height="30" rx="5"/>'
+            f'<text class="mapa-sec" x="{cx}" y="{yc - 2}">{sec["numero"]} · {e(sec["nombre"])}</text>'
+            f'<text class="mapa-idea" x="{cx}" y="{yc + 10}">{e(sec.get("idea", ""))}</text></a>')
+    svg = (f'<svg class="dg mapa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {ancho} {total}" '
+           f'role="img" aria-label="Mapa del lenguaje: las secciones del libro en orden, '
+           f'cada una con sus capítulos.">' + "".join(partes) + "</svg>")
+    return ('# [Mapa del lenguaje]{.nombre} {#mapa cornisa="Mapa del lenguaje"}\n\n'
+            "Las secciones, de arriba abajo, en el orden en que se leen: cada una usa "
+            "solo lo que explican las anteriores. A los lados, sus capítulos.\n\n"
+            "```{=html}\n" + svg + "\n```\n")
+
+
 def html_apertura(sec: dict) -> str:
     return f"""<div class="apertura" id="sec-{sec['numero']}">
 <div class="banda"><div class="rotulo">SECCIÓN</div>
@@ -335,7 +394,8 @@ def html_apertura(sec: dict) -> str:
 def construir_pdf():
     cuerpo = [html_portada(), html_contenido(),
               pandoc(preliminar("prefacio"), "--to", "html5", "--section-divs"),
-              pandoc(preliminar("agradecimientos"), "--to", "html5", "--section-divs")]
+              pandoc(preliminar("agradecimientos"), "--to", "html5", "--section-divs"),
+              pandoc(mapa_md(), "--to", "html5", "--section-divs")]
     for sec in LIBRO["secciones"]:
         if not any("archivo" in cap for cap in sec["capitulos"]):
             continue
@@ -451,7 +511,8 @@ def diagramas_como_imagen(texto: str, contador: list) -> str:
 def construir_epub():
     (BUILD / "tmp").mkdir(exist_ok=True)
     contador = [0]
-    entradas = [preliminar("prefacio"), preliminar("agradecimientos")]
+    entradas = [preliminar("prefacio"), preliminar("agradecimientos"),
+                diagramas_como_imagen(mapa_md(), contador)]
     for sec in LIBRO["secciones"]:
         for cap in sec["capitulos"]:
             if "archivo" in cap:
