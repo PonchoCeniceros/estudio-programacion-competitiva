@@ -140,7 +140,7 @@ chapter.** It fixes the chapter structure, the component syntax, the 62-column c
 limit, the diagram style and the verification steps. Chapters 3.2–3.4 are the
 reference. `libro/notas/curso-aprende-rust.md` summarizes the course the
 explanations follow, and `notes/FUSION-CURSO.md` maps its exercises to chapters.
-All 46 chapters (sections 1–9) are written, plus a preface and references in
+All 49 chapters (sections 1–10) are written, plus a preface and references in
 `src/0-preliminares/`; a final end-to-end review pass is still pending. Blocks marked
 `rust,ignore` (Cargo projects, external crates) are not compiled by the build: they
 were verified by hand, so re-check them when touching sections 7–9.

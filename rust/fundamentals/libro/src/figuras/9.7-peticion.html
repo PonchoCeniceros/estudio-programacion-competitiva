@@ -1,0 +1,65 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">El camino de un POST /suma</span><span class="pie">A la derecha, la respuesta si el paso falla. Los pasos 2, 3 y 4 son del extractor.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 266" role="img" aria-label="Seis cajas en columna unidas por flechas: el enrutador encuentra la ruta, Json de Suma revisa la cabecera Content-Type, serde_json lee el texto, el impl derivado arma el struct Suma, el manejador calcula y Json de Resultado serializa la respuesta. De las cuatro primeras sale a la derecha una caja roja con el código de la respuesta cuando el paso falla: 405, 415, 400 y 422. De la última sale la respuesta 200.">
+<text class="col" x="24" y="11">EL PASO</text>
+<text class="col" x="352" y="11">SI FALLA</text>
+
+<g class="num"><circle cx="10" cy="37" r="9"/><text x="10" y="41">1</text></g>
+<g class="r-neutro"><rect class="caja" x="24" y="20" width="290" height="34" rx="6"/>
+<text class="tit" x="36" y="34">El enrutador encuentra la ruta</text>
+<text class="cod" x="36" y="48">.route("/suma", post(suma))</text></g>
+<path class="fl-err" d="M314,37 H343"/><polygon class="pt-err" points="351,37 343,33 343,41"/>
+<g class="r-err"><rect class="caja" x="352" y="20" width="167" height="34" rx="6"/>
+<text x="362" y="34" style="font-size: 10.5px; font-weight: 700; fill: #b0443a">405 Method Not Allowed</text>
+<text class="nota" x="362" y="48">la ruta existe, el método no</text></g>
+<path class="fl-neutro" d="M150,54 V56"/><polygon class="pt-neutro" points="150,62 146,56 154,56"/>
+
+<g class="num"><circle cx="10" cy="79" r="9"/><text x="10" y="83">2</text></g>
+<g class="r-ref"><rect class="caja" x="24" y="62" width="290" height="34" rx="6"/>
+<text class="tit" x="36" y="76">Json&lt;Suma&gt; revisa la cabecera</text>
+<text class="cod" x="36" y="90">Content-Type: application/json</text></g>
+<path class="fl-err" d="M314,79 H343"/><polygon class="pt-err" points="351,79 343,75 343,83"/>
+<g class="r-err"><rect class="caja" x="352" y="62" width="167" height="34" rx="6"/>
+<text x="362" y="76" style="font-size: 10.5px; font-weight: 700; fill: #b0443a">415 Unsupported Media…</text>
+<text class="nota" x="362" y="90">falta la cabecera, o es otra</text></g>
+<path class="fl-neutro" d="M150,96 V98"/><polygon class="pt-neutro" points="150,104 146,98 154,98"/>
+
+<g class="num"><circle cx="10" cy="121" r="9"/><text x="10" y="125">3</text></g>
+<g class="r-ref"><rect class="caja" x="24" y="104" width="290" height="34" rx="6"/>
+<text class="tit" x="36" y="118">serde_json lee el texto</text>
+<text class="cod" x="36" y="132">{"a": 2, "b": 40}</text></g>
+<path class="fl-err" d="M314,121 H343"/><polygon class="pt-err" points="351,121 343,117 343,125"/>
+<g class="r-err"><rect class="caja" x="352" y="104" width="167" height="34" rx="6"/>
+<text x="362" y="118" style="font-size: 10.5px; font-weight: 700; fill: #b0443a">400 Bad Request</text>
+<text class="nota" x="362" y="132">el texto no es JSON</text></g>
+<path class="fl-neutro" d="M150,138 V140"/><polygon class="pt-neutro" points="150,146 146,140 154,140"/>
+
+<g class="num"><circle cx="10" cy="163" r="9"/><text x="10" y="167">4</text></g>
+<g class="r-ref"><rect class="caja" x="24" y="146" width="290" height="34" rx="6"/>
+<text class="tit" x="36" y="160">El impl derivado arma el struct</text>
+<text class="cod" x="36" y="174">Suma { a: 2, b: 40 }</text></g>
+<path class="fl-err" d="M314,163 H343"/><polygon class="pt-err" points="351,163 343,159 343,167"/>
+<g class="r-err"><rect class="caja" x="352" y="146" width="167" height="34" rx="6"/>
+<text x="362" y="160" style="font-size: 10.5px; font-weight: 700; fill: #b0443a">422 Unprocessable Entity</text>
+<text class="nota" x="362" y="174">campo ausente o de otro tipo</text></g>
+<path class="fl-dueno" d="M150,180 V182"/><polygon class="pt-dueno" points="150,188 146,182 154,182"/>
+
+<g class="num"><circle cx="10" cy="205" r="9"/><text x="10" y="209">5</text></g>
+<g class="r-dueno"><rect class="caja" x="24" y="188" width="290" height="34" rx="6"/>
+<text class="tit" x="36" y="202">El manejador calcula</text>
+<text class="cod" x="36" y="216">datos.a + datos.b</text></g>
+<text class="nota" x="352" y="202">Lo único que escribió</text>
+<text class="nota" x="352" y="216">quien hizo el programa.</text>
+<path class="fl-dueno" d="M150,222 V224"/><polygon class="pt-dueno" points="150,230 146,224 154,224"/>
+
+<g class="num"><circle cx="10" cy="247" r="9"/><text x="10" y="251">6</text></g>
+<g class="r-ref"><rect class="caja" x="24" y="230" width="290" height="34" rx="6"/>
+<text class="tit" x="36" y="244">Json&lt;Resultado&gt; serializa</text>
+<text class="cod" x="36" y="258">{"resultado":42}</text></g>
+<path class="fl-dueno" d="M314,247 H343"/><polygon class="pt-dueno" points="351,247 343,243 343,251"/>
+<g class="r-dueno"><rect class="caja" x="352" y="230" width="167" height="34" rx="6"/>
+<text x="362" y="244" style="font-size: 10.5px; font-weight: 700; fill: #0f6f6e">200 OK</text>
+<text class="nota" x="362" y="258">con content-type de JSON</text></g>
+
+</svg>
+</figure>

@@ -1,0 +1,58 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">Las capas del programa</span><span class="pie">Cada flecha es una dependencia y apunta de fuera hacia dentro. Los dos binarios solo cambian el transporte: la librería es la misma.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-label="A la izquierda, el asistente, que es el cliente MCP. De él salen dos flechas hacia dos transportes: HTTP, en src/main.rs con axum, y stdio, en examples/stdio.rs. Las dos llegan a la misma caja, servidor.rs, dentro de la librería del paquete. De servidor.rs salen flechas hacia params.rs y hacia dominio.rs, que no dependen de nadie.">
+<text class="col" x="0" y="12">CLIENTE</text>
+<text class="col" x="118" y="12">TRANSPORTE</text>
+<text class="col" x="292" y="12">LIBRERÍA · src/lib.rs</text>
+
+<g class="r-neutro"><rect class="caja" x="0.75" y="92" width="92" height="104" rx="6"/>
+<text class="tit" x="10" y="112">El asistente</text>
+<text class="nota" x="10" y="130">cliente MCP</text>
+<text class="cod" x="10" y="158" style="font-size: 10.5px">tools/list</text>
+<text class="cod" x="10" y="176" style="font-size: 10.5px">tools/call</text></g>
+
+<g class="r-ref"><rect class="caja" x="118" y="40" width="150" height="76" rx="6"/>
+<text class="tit" x="130" y="60">HTTP</text>
+<text class="cod" x="130" y="80">src/main.rs</text>
+<text class="nota" x="130" y="100">axum, ruta /mcp</text></g>
+
+<g class="r-ref"><rect class="caja" x="118" y="172" width="150" height="76" rx="6"/>
+<text class="tit" x="130" y="192">stdio</text>
+<text class="cod" x="130" y="212">examples/stdio.rs</text>
+<text class="nota" x="130" y="232">stdin y stdout</text></g>
+
+<path class="fl-neutro" d="M93,128 H105 V78 H111"/><polygon class="pt-neutro" points="118,78 110,74 110,82"/>
+<path class="fl-neutro" d="M93,160 H105 V210 H111"/><polygon class="pt-neutro" points="118,210 110,206 110,214"/>
+
+<rect class="panel" x="292" y="22" width="227" height="238" rx="6"/>
+
+<g class="r-dueno"><rect class="caja" x="304" y="36" width="203" height="86" rx="6"/>
+<text class="tit" x="316" y="56">servidor.rs · la capa MCP</text>
+<text class="cod" x="316" y="78">Servidor</text>
+<text class="cod" x="316" y="98">#[tool] saludo, suma</text>
+<text class="nota" x="316" y="114">traduce, no calcula</text></g>
+
+<g class="r-neutro"><rect class="caja" x="304" y="162" width="96" height="86" rx="6"/>
+<text class="tit" x="314" y="182">params.rs</text>
+<text class="cod" x="314" y="204" style="font-size: 10.5px">SaludoParams</text>
+<text class="cod" x="314" y="220" style="font-size: 10.5px">SumaParams</text>
+<text class="nota" x="314" y="238">el contrato</text></g>
+
+<g class="r-heap"><rect class="caja" x="411" y="162" width="96" height="86" rx="6"/>
+<text class="tit" x="421" y="182" style="fill: #9a5b2a">dominio.rs</text>
+<text class="cod" x="421" y="204" style="font-size: 10.5px">saludar</text>
+<text class="cod" x="421" y="220" style="font-size: 10.5px">sumar</text>
+<text class="nota" x="421" y="238">Rust puro</text></g>
+
+<path class="fl-ref" d="M268,78 H296"/><polygon class="pt-ref" points="304,78 296,74 296,82"/>
+<path class="fl-ref" d="M268,210 H280 V104 H296"/><polygon class="pt-ref" points="304,104 296,100 296,108"/>
+
+<path class="fl-dueno" d="M352,122 V154"/><polygon class="pt-dueno" points="352,162 348,154 356,154"/>
+<path class="fl-dueno" d="M459,122 V154"/><polygon class="pt-dueno" points="459,162 455,154 463,154"/>
+<text class="nota" x="360" y="146">usa</text>
+<text class="nota" x="467" y="146">usa</text>
+
+<text class="nota" x="0" y="280">dominio.rs y params.rs no conocen a servidor.rs, y servidor.rs no sabe</text>
+<text class="nota" x="0" y="296">por cuál de los dos transportes llegó el mensaje.</text>
+</svg>
+</figure>

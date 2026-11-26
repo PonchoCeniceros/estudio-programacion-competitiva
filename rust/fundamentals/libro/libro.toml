@@ -126,8 +126,8 @@ capitulos = [
   { numero = "9.4", titulo = "Send en las tareas", archivo = "src/9-async/9.4-send-en-tareas.md" },
   { numero = "9.5", titulo = "async o hilos", archivo = "src/9-async/9.5-async-o-hilos.md" },
   { numero = "9.6", titulo = "Un servidor mínimo", archivo = "src/9-async/9.6-un-servidor-minimo.md" },
-  { numero = "9.7", titulo = "Una API con serde y axum" },
-  { numero = "9.8", titulo = "Un servidor MCP" },
+  { numero = "9.7", titulo = "Una API con serde y axum", archivo = "src/9-async/9.7-una-api.md" },
+  { numero = "9.8", titulo = "Un servidor MCP", archivo = "src/9-async/9.8-un-servidor-mcp.md" },
 ]
 
 [[secciones]]
@@ -135,5 +135,5 @@ numero = 10
 nombre = "Lo que sigue"
 idea = "crates, herramientas y práctica"
 capitulos = [
-  { numero = "10.1", titulo = "El ecosistema" },
+  { numero = "10.1", titulo = "El ecosistema", archivo = "src/10-lo-que-sigue/10.1-el-ecosistema.md" },
 ]

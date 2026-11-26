@@ -1,0 +1,53 @@
+<figure class="diagrama">
+<figcaption><span class="titulo">serde está en medio</span><span class="pie">Los tipos conocen a serde, y cada crate de formato también. Cambiar de formato es cambiar de crate, no de struct.</span></figcaption>
+<svg class="dg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" role="img" aria-label="Tres columnas. A la izquierda, los tipos del programa: struct Suma, Vec y Option. En el centro, serde, que define los dos traits y un modelo de datos. A la derecha, los crates de formato: serde_json para JSON, toml para TOML y otros. Una flecha de izquierda a derecha rotulada Serialize va del valor al formato; otra de derecha a izquierda rotulada Deserialize va del formato al valor o a un error.">
+<text class="cod" x="0" y="14" style="fill: #0f6f6e">Serialize</text>
+<text class="nota" x="74" y="14">de un valor a un formato</text>
+<path class="fl-dueno" d="M214,10 H510"/><polygon class="pt-dueno" points="519,10 510,6 510,14"/>
+
+<text class="col" x="0" y="38">TIPOS DE RUST</text>
+<text class="col" x="196" y="38">EL PUENTE</text>
+<text class="col" x="360" y="38">CRATES DE FORMATO</text>
+
+<g class="r-dueno"><rect class="caja" x="1" y="46" width="160" height="120" rx="6"/>
+<text class="tit" x="13" y="63">Los tipos del programa</text>
+<rect class="celda" x="13" y="72" width="136" height="24" rx="3"/>
+<text class="val" x="81" y="88">struct Suma</text>
+<rect class="celda" x="13" y="101" width="136" height="24" rx="3"/>
+<text class="val" x="81" y="117">Vec&lt;Renglon&gt;</text>
+<rect class="celda" x="13" y="130" width="136" height="24" rx="3"/>
+<text class="val" x="81" y="146">Option&lt;String&gt;</text></g>
+
+<path class="fl-neutro" d="M161,106 H196"/>
+
+<g class="r-neutro"><rect class="caja" x="196" y="46" width="128" height="120" rx="6"/>
+<text class="val" x="260" y="66" style="font-weight: 700">serde</text>
+<text class="nota" x="260" y="88" style="text-anchor: middle">define los dos traits</text>
+<text class="nota" x="260" y="103" style="text-anchor: middle">y un modelo de datos:</text>
+<text class="nota" x="260" y="124" style="text-anchor: middle">enteros, textos,</text>
+<text class="nota" x="260" y="139" style="text-anchor: middle">listas, mapas,</text>
+<text class="nota" x="260" y="154" style="text-anchor: middle">opcionales</text></g>
+
+<path class="fl-neutro" d="M324,64 H360"/>
+<path class="fl-neutro" d="M324,106 H360"/>
+<path class="fl-neutro" d="M324,148 H360"/>
+
+<g class="r-heap"><rect class="caja" x="360" y="46" width="159" height="36" rx="6"/>
+<text class="cod" x="371" y="61">serde_json</text>
+<text class="col" x="509" y="61" text-anchor="end">JSON</text>
+<text x="371" y="76" style="font-size: 11px">{"a":2,"b":40}</text></g>
+
+<g class="r-heap"><rect class="caja" x="360" y="88" width="159" height="36" rx="6"/>
+<text class="cod" x="371" y="103">toml</text>
+<text class="col" x="509" y="103" text-anchor="end">TOML</text>
+<text x="371" y="118" style="font-size: 11px">a = 2 ↵ b = 40</text></g>
+
+<g class="r-heap"><rect class="caja" x="360" y="130" width="159" height="36" rx="6"/>
+<text class="cod" x="371" y="145">csv, rmp-serde</text>
+<text class="nota" x="371" y="160">CSV, MessagePack y más</text></g>
+
+<path class="fl-ref" d="M519,188 H308"/><polygon class="pt-ref" points="299,188 308,184 308,192"/>
+<text class="cod" x="0" y="192" style="fill: #2f5f8f">Deserialize</text>
+<text class="nota" x="88" y="192">de un formato a un valor, o a un error</text>
+</svg>
+</figure>
